@@ -1,9 +1,19 @@
 import React from "react";
-import {Button, makeStyles, Typography} from "@material-ui/core";
+import {
+    Button, Checkbox, Radio,
+    Dialog,
+    DialogContent,
+    DialogContentText,
+    DialogTitle, FormControl, FormGroup, FormLabel,
+    IconButton,
+    makeStyles, TextField,
+    Typography, DialogActions
+} from "@material-ui/core";
 import TwitterIcon from '@material-ui/icons/Twitter';
 import SearchIcon from '@material-ui/icons/Search';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import ForumIcon from '@material-ui/icons/Forum';
+import CloseIcon from '@material-ui/icons/Close';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,18 +27,17 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        position: 'relative',
+        overflow: 'hidden',
     },
     lightIconTwitter: {
         position: 'absolute',
-        left: 0,
-        maxWidth: 'none',
+        left: '70%',
+        top: '50%',
         color: 'rgba(29,161,242,1.00)',
-        userSelect: 'none',
-        verticalAlign: 'text-bottom',
-        fill: 'currentcolor',
-        overflow: 'hidden',
-        height: '850%',
-        width: '85%',
+        transform: 'translate(-50%, -50%)',
+        width: '170%',
+        height: '170%',
     },
     loginSide: {
         backgroundColor: '#fff',
@@ -75,10 +84,20 @@ const useStyles = makeStyles((theme) => ({
             },
         },
     },
+    margin: {},
 }));
 
 function SignIn() {
+    const [open, setOpen] = React.useState(false);
     const classes = useStyles();
+
+    const handleClickOpen = () => {
+        setOpen(true)
+    };
+
+    const handelClose = ()=> {
+        setOpen(false);
+    };
 
     return (
         <div className={classes.wrapper}>
@@ -111,7 +130,61 @@ function SignIn() {
                     <Typography variant="h4" className={classes.loginSideTitle}>Узнайте, что происходит в мире прямо сейчас.</Typography>
                     <Typography className={classes.loginDescription}>Присоединяйтесь к Тввитеру прямо сейчас!</Typography>
                     <Button variant="contained" color="primary" fullWidth className={classes.formTop}>Зарегестрироваться</Button>
-                    <Button variant="outlined" color="primary" fullWidth>Войти</Button>
+                    <Button variant="outlined" color="primary" fullWidth onClick={handleClickOpen}>Войти</Button>
+
+                    <Dialog onClose={handelClose} open={open}>
+                        <DialogTitle id="form-dialog-title">
+                            <IconButton
+                                onClick={handelClose}
+                                color="secondary"
+                                aria-label='close'
+                                className={classes.margin}
+                            >
+                                <CloseIcon style={{fontSize: 26}}/>
+                            </IconButton >
+                            Настройка поиска
+                        </DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>
+                                Gjlgbibntcm
+                            </DialogContentText>
+                            <FormControl component="fieldset" fullWidth>
+                                <FormGroup aria-label="position" row>
+                                    <TextField
+                                        autoFocus
+                                        margin="dense"
+                                        id="name"
+                                        label="Email Address"
+                                        type="email"
+                                        fullWidth
+                                    >
+                                        <div>
+                                            <div>
+                                                <FormLabel style={{ display: 'flex'}}>
+                                                    <p style={{flex: 1}}>Скрыть содержания</p>
+                                                    <Checkbox color="primary"/>
+                                                </FormLabel>
+                                                <Typography variant="body2">
+                                                    Предотвращает появление содержимого поиска.
+                                                </Typography>
+                                            </div>
+                                            <div>
+                                                <Radio value="a" name="radio-button-data"/>
+                                            </div>
+                                        </div>
+                                    </TextField>
+                                </FormGroup>
+                            </FormControl>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handelClose} color="primary" fullWidth>
+                                Cancel
+                            </Button>
+                            <Button onClick={handelClose} color="primary" variant="contained" fullWidth>
+                                Subscribe
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
                 </div>
             </div>
         </div>
