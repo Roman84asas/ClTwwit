@@ -1,6 +1,9 @@
 import React from "react";
 import {Button, makeStyles, Typography} from "@material-ui/core";
 import TwitterIcon from '@material-ui/icons/Twitter';
+import SearchIcon from '@material-ui/icons/Search';
+import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
+import ForumIcon from '@material-ui/icons/Forum';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -9,10 +12,27 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
     },
     blueSide: {
-        backgroundColor: '#1DA1F2',
+        backgroundColor: 'rgb(122, 204, 254)',
         flex: "0 0 50%",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    lightIconTwitter: {
+        position: 'absolute',
+        left: 0,
+        maxWidth: 'none',
+        color: 'rgba(29,161,242,1.00)',
+        userSelect: 'none',
+        verticalAlign: 'text-bottom',
+        fill: 'currentcolor',
+        overflow: 'hidden',
+        height: '850%',
+        width: '85%',
     },
     loginSide: {
+        backgroundColor: '#fff',
+        zIndex: 10,
         flex: "0 0 50%",
         display: 'flex',
         alignItems: 'center',
@@ -26,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     },
     loginSideTitle: {
         fontWeight: 700,
-        fontSize: 32,
+        fontSize: 30,
         marginBottom: 45,
         marginTop: 20,
     },
@@ -36,7 +56,25 @@ const useStyles = makeStyles((theme) => ({
     },
     formTop: {
         marginBottom: 15,
-    }
+    },
+    blueSideList: {
+        listStyle: 'none',
+        padding: 0,
+        margin: 0,
+        color: '#ffffff',
+        width: 400,
+        zIndex: 10,
+        '& h6': {
+            display: 'flex',
+            fontWeight: 500,
+            fontSize: 20,
+            marginBottom: 35,
+            '& svg': {
+                fontSize: 32,
+                marginRight: 10,
+            },
+        },
+    },
 }));
 
 function SignIn() {
@@ -45,19 +83,23 @@ function SignIn() {
     return (
         <div className={classes.wrapper}>
             <div className={classes.blueSide}>
-                <ul>
-                    <li>
-                        <Typography>
+                <TwitterIcon className={classes.lightIconTwitter}/>
+                <ul className={classes.blueSideList}>
+                    <li style={{ marginBottom: 7}}>
+                        <Typography variant="h6" >
+                            <SearchIcon/>
                             Читайте о том, что Вам интересно.
                         </Typography>
                     </li>
-                    <li>
-                        <Typography>
+                    <li style={{ marginBottom: 7}}>
+                        <Typography variant="h6">
+                            <PeopleOutlineIcon />
                             Узнайте, о чем говорят в мире.
                         </Typography>
                     </li>
-                    <li>
-                        <Typography>
+                    <li style={{ marginBottom: 7}}>
+                        <Typography variant="h6">
+                            <ForumIcon />
                             Присоединяйтесь к общению
                         </Typography>
                     </li>
