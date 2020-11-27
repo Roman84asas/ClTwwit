@@ -1,13 +1,15 @@
 import React from "react";
 import {
-    Button, Checkbox, Radio,
+    Button,
     Dialog,
     DialogContent,
-    DialogContentText,
-    DialogTitle, FormControl, FormGroup, FormLabel,
+    DialogTitle,
+    FormControl,
+    FormGroup,
     IconButton,
-    makeStyles, TextField,
-    Typography, DialogActions
+    makeStyles,
+    TextField,
+    Typography,
 } from "@material-ui/core";
 import TwitterIcon from '@material-ui/icons/Twitter';
 import SearchIcon from '@material-ui/icons/Search';
@@ -84,7 +86,10 @@ const useStyles = makeStyles((theme) => ({
             },
         },
     },
-    margin: {},
+    loginSideField: {
+        marginBottom: 18,
+
+    },
 }));
 
 function SignIn() {
@@ -132,58 +137,52 @@ function SignIn() {
                     <Button variant="contained" color="primary" fullWidth className={classes.formTop}>Зарегестрироваться</Button>
                     <Button variant="outlined" color="primary" fullWidth onClick={handleClickOpen}>Войти</Button>
 
-                    <Dialog onClose={handelClose} open={open}>
+                    <Dialog onClose={handelClose} open={open} fullWidth>
                         <DialogTitle id="form-dialog-title">
                             <IconButton
                                 onClick={handelClose}
                                 color="secondary"
                                 aria-label='close'
-                                className={classes.margin}
                             >
                                 <CloseIcon style={{fontSize: 26}}/>
                             </IconButton >
-                            Настройка поиска
+                            Войти в Твиттер
                         </DialogTitle>
                         <DialogContent>
-                            <DialogContentText>
-                                Gjlgbibntcm
-                            </DialogContentText>
                             <FormControl component="fieldset" fullWidth>
                                 <FormGroup aria-label="position" row>
                                     <TextField
+                                        className={classes.loginSideField}
                                         autoFocus
-                                        margin="dense"
-                                        id="name"
-                                        label="Email Address"
+                                        id="email"
+                                        label="Email пользователя"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
                                         type="email"
+                                        variant="filled"
                                         fullWidth
                                     >
-                                        <div>
-                                            <div>
-                                                <FormLabel style={{ display: 'flex'}}>
-                                                    <p style={{flex: 1}}>Скрыть содержания</p>
-                                                    <Checkbox color="primary"/>
-                                                </FormLabel>
-                                                <Typography variant="body2">
-                                                    Предотвращает появление содержимого поиска.
-                                                </Typography>
-                                            </div>
-                                            <div>
-                                                <Radio value="a" name="radio-button-data"/>
-                                            </div>
-                                        </div>
+                                    </TextField>
+                                    <TextField
+                                        className={classes.loginSideField}
+                                        autoFocus
+                                        id="password"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        label="Ваш пароль"
+                                        type="password"
+                                        variant="filled"
+                                        fullWidth
+                                    >
                                     </TextField>
                                 </FormGroup>
                             </FormControl>
+                            <Button onClick={handelClose} color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
+                                Войти
+                            </Button>
                         </DialogContent>
-                        <DialogActions>
-                            <Button onClick={handelClose} color="primary" fullWidth>
-                                Cancel
-                            </Button>
-                            <Button onClick={handelClose} color="primary" variant="contained" fullWidth>
-                                Subscribe
-                            </Button>
-                        </DialogActions>
                     </Dialog>
                 </div>
             </div>
