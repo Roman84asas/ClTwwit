@@ -1,11 +1,12 @@
 import React from "react";
 import {makeStyles, Typography} from "@material-ui/core";
+import TwitterIcon from '@material-ui/icons/Twitter';
 
 
 const useStyles = makeStyles((theme) => ({
     wrapper: {
         display: 'flex',
-        height: '100%',
+        height: '100vh',
     },
     blueSide: {
         backgroundColor: '#1DA1F2',
@@ -38,7 +39,9 @@ function SignIn() {
                 </ul>
             </div>
             <div className={classes.loginSide}>
-
+                <TwitterIcon />
+                <Typography>Узнайте, что происходит в мире прямо сейчас.</Typography>
+                <Typography>Присоединяйтесь к Тввитеру прямо сейчас!</Typography>
             </div>
         </div>
     )
