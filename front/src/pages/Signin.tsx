@@ -1,12 +1,8 @@
 import React from "react";
 import {
     Button,
-    Dialog,
-    DialogContent,
-    DialogTitle,
     FormControl,
     FormGroup,
-    IconButton,
     makeStyles,
     TextField,
     Typography,
@@ -15,13 +11,17 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import SearchIcon from '@material-ui/icons/Search';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import ForumIcon from '@material-ui/icons/Forum';
-import CloseIcon from '@material-ui/icons/Close';
+import ModalBlock  from "../components/ModalBlock";
 
 
 const useStyles = makeStyles((theme) => ({
     wrapper: {
         display: 'flex',
         height: '100vh',
+    },
+    loginSideField: {
+        marginBottom: 18,
+
     },
     blueSide: {
         backgroundColor: 'rgb(122, 204, 254)',
@@ -86,15 +86,11 @@ const useStyles = makeStyles((theme) => ({
             },
         },
     },
-    loginSideField: {
-        marginBottom: 18,
-
-    },
 }));
 
 function SignIn() {
-    const [open, setOpen] = React.useState(false);
     const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
         setOpen(true)
@@ -103,7 +99,6 @@ function SignIn() {
     const handelClose = ()=> {
         setOpen(false);
     };
-
     return (
         <div className={classes.wrapper}>
             <div className={classes.blueSide}>
@@ -131,59 +126,48 @@ function SignIn() {
             </div>
             <div className={classes.loginSide}>
                 <div className={classes.loginSideWrapper}>
+
                     <TwitterIcon color="primary" className={classes.loginSideTwitterIcon}/>
                     <Typography variant="h4" className={classes.loginSideTitle}>Узнайте, что происходит в мире прямо сейчас.</Typography>
                     <Typography className={classes.loginDescription}>Присоединяйтесь к Тввитеру прямо сейчас!</Typography>
                     <Button variant="contained" color="primary" fullWidth className={classes.formTop}>Зарегестрироваться</Button>
                     <Button variant="outlined" color="primary" fullWidth onClick={handleClickOpen}>Войти</Button>
 
-                    <Dialog onClose={handelClose} open={open} fullWidth>
-                        <DialogTitle id="form-dialog-title">
-                            <IconButton
-                                onClick={handelClose}
-                                color="secondary"
-                                aria-label='close'
-                            >
-                                <CloseIcon style={{fontSize: 26}}/>
-                            </IconButton >
-                            Войти в Твиттер
-                        </DialogTitle>
-                        <DialogContent>
-                            <FormControl component="fieldset" fullWidth>
-                                <FormGroup aria-label="position" row>
-                                    <TextField
-                                        className={classes.loginSideField}
-                                        autoFocus
-                                        id="email"
-                                        label="Email пользователя"
-                                        InputLabelProps={{
-                                            shrink: true,
-                                        }}
-                                        type="email"
-                                        variant="filled"
-                                        fullWidth
-                                    >
-                                    </TextField>
-                                    <TextField
-                                        className={classes.loginSideField}
-                                        autoFocus
-                                        id="password"
-                                        InputLabelProps={{
-                                            shrink: true,
-                                        }}
-                                        label="Ваш пароль"
-                                        type="password"
-                                        variant="filled"
-                                        fullWidth
-                                    >
-                                    </TextField>
-                                </FormGroup>
-                            </FormControl>
-                            <Button onClick={handelClose} color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
-                                Войти
-                            </Button>
-                        </DialogContent>
-                    </Dialog>
+                    <ModalBlock title="Войти в Твиттер" visible={open} onClose={handelClose}>
+                        <FormControl component="fieldset" fullWidth>
+                            <FormGroup aria-label="position" row>
+                                <TextField
+                                    className={classes.loginSideField}
+                                    autoFocus
+                                    id="email"
+                                    label="Email пользователя"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    type="email"
+                                    variant="filled"
+                                    fullWidth
+                                >
+                                </TextField>
+                                <TextField
+                                    className={classes.loginSideField}
+                                    autoFocus
+                                    id="password"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    label="Ваш пароль"
+                                    type="password"
+                                    variant="filled"
+                                    fullWidth
+                                >
+                                </TextField>
+                            </FormGroup>
+                        </FormControl>
+                        <Button onClick={handelClose} color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
+                            Войти
+                        </Button>
+                    </ModalBlock>
                 </div>
             </div>
         </div>
