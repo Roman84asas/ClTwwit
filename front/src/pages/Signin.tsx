@@ -68,6 +68,9 @@ const useStyles = makeStyles((theme) => ({
     formTop: {
         marginBottom: 15,
     },
+    registerSideField: {
+        marginBottom: 25,
+    },
     blueSideList: {
         listStyle: 'none',
         padding: 0,
@@ -170,14 +173,27 @@ function SignIn() {
                             Войти
                         </Button>
                     </ModalBlock>
-                    <ModalBlock title="Войти в Твиттер" visible={open === 'signUp'} onClose={handelCloseModel}>
+                    <ModalBlock title="Создайте учетную запись" visible={open === 'signUp'} onClose={handelCloseModel}>
                         <FormControl component="fieldset" fullWidth>
                             <FormGroup aria-label="position" row>
                                 <TextField
                                     className={classes.loginSideField}
                                     autoFocus
+                                    id="name"
+                                    label="Имя"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    type="name"
+                                    variant="filled"
+                                    fullWidth
+                                >
+                                </TextField>
+                                <TextField
+                                    className={classes.loginSideField}
+                                    autoFocus
                                     id="email"
-                                    label="Email пользователя"
+                                    label="Email"
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
@@ -187,7 +203,7 @@ function SignIn() {
                                 >
                                 </TextField>
                                 <TextField
-                                    className={classes.loginSideField}
+                                    className={classes.registerSideField}
                                     autoFocus
                                     id="password"
                                     InputLabelProps={{
