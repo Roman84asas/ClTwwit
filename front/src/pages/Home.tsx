@@ -11,9 +11,12 @@ import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import PersonIcon from '@material-ui/icons/Person';
 
-import {IconButton, Typography} from "@material-ui/core";
+import {Container, IconButton, Typography} from "@material-ui/core";
 
 const useHomeStyles = makeStyles((theme) => ({
+    wrapper: {
+        height: '100vh',
+    },
     sideMenuLists: {
         listStyle: 'none',
         padding: 0,
@@ -36,7 +39,7 @@ export const Home = () => {
     const classes = useHomeStyles();
 
     return (
-        <main>
+        <Container maxWidth="lg" className={classes.wrapper}>
             <Grid container spacing={3}>
                 <Grid item xs={2}>
                     <ul className={classes.sideMenuLists}>
@@ -102,6 +105,6 @@ export const Home = () => {
                     <Paper >Right</Paper>
                 </Grid>
             </Grid>
-        </main>
+        </Container>
     )
 };
