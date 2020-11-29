@@ -23,6 +23,13 @@ const useHomeStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
     },
+    sideMenuListItemLabel: {
+        fontWeight: 700,
+        fontSize: 20,
+    },
+    sideMenuListItemIcon: {
+        fontSize: 25,
+    },
 }));
 
 export const Home = () => {
@@ -35,54 +42,54 @@ export const Home = () => {
                     <ul className={classes.sideMenuLists}>
                         <li className={classes.sideMenuListItem}>
                             <IconButton aria-label="delete" color='primary' >
-                                <TwitterIcon />
+                                <TwitterIcon className={classes.sideMenuListItemIcon}/>
                             </IconButton>
                         </li>
                         <li className={classes.sideMenuListItem}>
                             <IconButton aria-label="delete" color='default' >
-                                <SearchIcon />
+                                <SearchIcon className={classes.sideMenuListItemIcon}/>
                             </IconButton>
-                            <Typography variant="h6">
+                            <Typography variant="h6" className={classes.sideMenuListItemLabel}>
                                 Поиск
                             </Typography>
                         </li>
                         <li className={classes.sideMenuListItem}>
                             <IconButton aria-label="delete" color='default' >
-                                <NotificationsNoneIcon />
+                                <NotificationsNoneIcon className={classes.sideMenuListItemIcon}/>
                             </IconButton>
-                            <Typography variant="h6">
+                            <Typography variant="h6" className={classes.sideMenuListItemLabel}>
                                 Уведомления
                             </Typography>
                         </li>
                         <li className={classes.sideMenuListItem}>
                             <IconButton aria-label="delete" color='default' >
-                                <MailOutlineIcon />
+                                <MailOutlineIcon className={classes.sideMenuListItemIcon}/>
                             </IconButton>
-                            <Typography variant="h6">
+                            <Typography variant="h6" className={classes.sideMenuListItemLabel}>
                                 Сообщения
                             </Typography>
                         </li>
                         <li className={classes.sideMenuListItem}>
                             <IconButton aria-label="delete" color='default' >
-                                <BookmarkBorderIcon />
+                                <BookmarkBorderIcon className={classes.sideMenuListItemIcon}/>
                             </IconButton>
-                            <Typography variant="h6">
+                            <Typography variant="h6" className={classes.sideMenuListItemLabel}>
                                 Закладки
                             </Typography>
                         </li>
                         <li className={classes.sideMenuListItem}>
                             <IconButton aria-label="delete" color='default' >
-                                <ListAltIcon />
+                                <ListAltIcon className={classes.sideMenuListItemIcon}/>
                             </IconButton>
-                            <Typography variant="h6">
+                            <Typography variant="h6" className={classes.sideMenuListItemLabel}>
                                 Список
                             </Typography>
                         </li>
                         <li className={classes.sideMenuListItem}>
                             <IconButton aria-label="delete" color='default' >
-                                <PersonIcon />
+                                <PersonIcon className={classes.sideMenuListItemIcon}/>
                             </IconButton>
-                            <Typography variant="h6">
+                            <Typography variant="h6" className={classes.sideMenuListItemLabel}>
                                 Профиль
                             </Typography>
                         </li>
