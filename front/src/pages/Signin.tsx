@@ -7,6 +7,7 @@ import {
     TextField,
     Typography,
 } from "@material-ui/core";
+
 import TwitterIcon from '@material-ui/icons/Twitter';
 import SearchIcon from '@material-ui/icons/Search';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
@@ -91,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function SignIn() {
+export const SignIn: React.FC = (): React.ReactElement => {
     const classes = useStyles();
     const [open, setOpen] = React.useState<'signIn' | 'signUp'>();
 
@@ -225,5 +226,4 @@ function SignIn() {
             </div>
         </div>
     );
-}
-export default SignIn;
+};
