@@ -44,12 +44,12 @@ export const Home = () => {
                 <Grid item xs={2}>
                     <ul className={classes.sideMenuLists}>
                         <li className={classes.sideMenuListItem}>
-                            <IconButton aria-label="delete" color='primary' >
+                            <IconButton color='primary' >
                                 <TwitterIcon className={classes.sideMenuListItemIcon}/>
                             </IconButton>
                         </li>
                         <li className={classes.sideMenuListItem}>
-                            <IconButton aria-label="delete" color='default' >
+                            <IconButton color='default' >
                                 <SearchIcon className={classes.sideMenuListItemIcon}/>
                             </IconButton>
                             <Typography variant="h6" className={classes.sideMenuListItemLabel}>
@@ -57,7 +57,7 @@ export const Home = () => {
                             </Typography>
                         </li>
                         <li className={classes.sideMenuListItem}>
-                            <IconButton aria-label="delete" color='default' >
+                            <IconButton color='default' >
                                 <NotificationsNoneIcon className={classes.sideMenuListItemIcon}/>
                             </IconButton>
                             <Typography variant="h6" className={classes.sideMenuListItemLabel}>
@@ -65,7 +65,7 @@ export const Home = () => {
                             </Typography>
                         </li>
                         <li className={classes.sideMenuListItem}>
-                            <IconButton aria-label="delete" color='default' >
+                            <IconButton color='default' >
                                 <MailOutlineIcon className={classes.sideMenuListItemIcon}/>
                             </IconButton>
                             <Typography variant="h6" className={classes.sideMenuListItemLabel}>
@@ -73,7 +73,7 @@ export const Home = () => {
                             </Typography>
                         </li>
                         <li className={classes.sideMenuListItem}>
-                            <IconButton aria-label="delete" color='default' >
+                            <IconButton color='default' >
                                 <BookmarkBorderIcon className={classes.sideMenuListItemIcon}/>
                             </IconButton>
                             <Typography variant="h6" className={classes.sideMenuListItemLabel}>
@@ -81,7 +81,7 @@ export const Home = () => {
                             </Typography>
                         </li>
                         <li className={classes.sideMenuListItem}>
-                            <IconButton aria-label="delete" color='default' >
+                            <IconButton color='default' >
                                 <ListAltIcon className={classes.sideMenuListItemIcon}/>
                             </IconButton>
                             <Typography variant="h6" className={classes.sideMenuListItemLabel}>
@@ -89,7 +89,7 @@ export const Home = () => {
                             </Typography>
                         </li>
                         <li className={classes.sideMenuListItem}>
-                            <IconButton aria-label="delete" color='default' >
+                            <IconButton color='default' >
                                 <PersonIcon className={classes.sideMenuListItemIcon}/>
                             </IconButton>
                             <Typography variant="h6" className={classes.sideMenuListItemLabel}>
