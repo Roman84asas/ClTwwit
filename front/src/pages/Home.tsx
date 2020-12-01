@@ -41,7 +41,7 @@ export const Home = () => {
     return (
         <Container maxWidth="lg" className={classes.wrapper}>
             <Grid container spacing={3}>
-                <Grid item xs={2}>
+                <Grid item xs={3}>
                     <ul className={classes.sideMenuLists}>
                         <li className={classes.sideMenuListItem}>
                             <IconButton color='primary' >
@@ -98,7 +98,7 @@ export const Home = () => {
                         </li>
                     </ul>
                 </Grid>
-                <Grid item xs={7}>
+                <Grid item xs={6}>
                     <Paper >Center</Paper>
                 </Grid>
                 <Grid item xs={3}>
