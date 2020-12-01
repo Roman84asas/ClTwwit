@@ -11,7 +11,7 @@ import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import PersonIcon from '@material-ui/icons/Person';
 
-import {Container, IconButton, InputBase, Typography} from "@material-ui/core";
+import {Avatar, Container, IconButton, InputBase, Typography} from "@material-ui/core";
 
 const useHomeStyles = makeStyles((theme) => ({
     wrapper: {
@@ -36,6 +36,22 @@ const useHomeStyles = makeStyles((theme) => ({
     },
     sideMenuListItemIcon: {
         fontSize: 25,
+    },
+    tweetsWrapper: {
+        borderRadius: 0,
+        height: '100%',
+        borderTop: 0,
+        borderBottom: 0,
+    },
+    tweetsHeader: {
+        borderTop: 0,
+        borderLeft: 0,
+        borderRight: 0,
+        borderRadius: 0,
+        padding: '10px 10px',
+        '& h5': {
+            fontWeight: 900,
+        },
     },
 }));
 
@@ -116,8 +132,24 @@ export const Home = () => {
                     </ul>
                 </Grid>
                 <Grid item xs={6}>
-                    <Paper style={{ height: '100%', }} variant="outlined">
-                        Center
+                    <Paper variant="outlined" className={classes.tweetsWrapper}>
+                        <Paper variant="outlined" className={classes.tweetsHeader}>
+                            <Typography variant="h5">
+                                Главная
+                            </Typography>
+                        </Paper>
+                        <Paper variant="outlined" className={classes.tweetsHeader}>
+                            <Grid container >
+                                <Grid item xs={1}>
+                                    <Avatar alt="User Avatar" src="https://sun1-29.userapi.com/impg/CYgQtfMx7yLxGtfGYLrr0Oly-IMf7s5JV7V_LA/x6NxEd7C4n8.jpg?size=50x0&quality=96&crop=1,142,899,899&sign=871e9e636fe8e0549539e2611488e721&ava=1" />
+                                </Grid>
+                                <Grid item xs={11}>
+                                    <Typography >
+                                        <b>romanmereni</b> @romanmereni
+                                    </Typography>
+                                </Grid>
+                            </Grid>
+                        </Paper>
                     </Paper>
                 </Grid>
                 <Grid item xs={3}>
