@@ -17,6 +17,10 @@ const useHomeStyles = makeStyles((theme) => ({
     wrapper: {
         height: '100vh',
     },
+    logo: {
+        fontSize: 35,
+        marginBottom: '10px 0',
+    },
     sideMenuLists: {
         listStyle: 'none',
         padding: 0,
@@ -45,7 +49,7 @@ export const Home = () => {
                     <ul className={classes.sideMenuLists}>
                         <li className={classes.sideMenuListItem}>
                             <IconButton color='primary' >
-                                <TwitterIcon className={classes.sideMenuListItemIcon}/>
+                                <TwitterIcon className={classes.logo}/>
                             </IconButton>
                         </li>
                         <li className={classes.sideMenuListItem}>
