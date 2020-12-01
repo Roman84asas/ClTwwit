@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
+import {createStyles, makeStyles, withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
@@ -11,7 +11,7 @@ import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import PersonIcon from '@material-ui/icons/Person';
 
-import {Container, IconButton, Typography} from "@material-ui/core";
+import {Container, IconButton, InputBase, Typography} from "@material-ui/core";
 
 const useHomeStyles = makeStyles((theme) => ({
     wrapper: {
@@ -38,6 +38,19 @@ const useHomeStyles = makeStyles((theme) => ({
         fontSize: 25,
     },
 }));
+
+
+const SearchTextField = withStyles(() =>
+    createStyles({
+        input: {
+            borderRadius: 30,
+            backgroundColor: '#E6ECF0',
+            height: 45,
+            padding: 0,
+
+        },
+    }),
+)(InputBase);
 
 export const Home = () => {
     const classes = useHomeStyles();
@@ -103,10 +116,15 @@ export const Home = () => {
                     </ul>
                 </Grid>
                 <Grid item xs={6}>
-                    <Paper >Center</Paper>
+                    <Paper style={{ height: '100%', }} variant="outlined">
+                        Center
+                    </Paper>
                 </Grid>
                 <Grid item xs={3}>
-                    <Paper >Right</Paper>
+                    <SearchTextField
+                        placeholder="Поиск по Твиттеру"
+                        fullWidth
+                    />
                 </Grid>
             </Grid>
         </Container>
