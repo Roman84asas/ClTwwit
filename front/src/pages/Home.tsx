@@ -58,8 +58,13 @@ const useHomeStyles = makeStyles((theme) => ({
             fontWeight: 900,
         },
     },
-    tweetsUserName: {
+    tweetUserName: {
         color: grey[500],
+    },
+    tweetFooter: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: 450,
     },
 }));
 
@@ -78,7 +83,6 @@ const SearchTextField = withStyles(() =>
 
 export const Home = () => {
     const classes = useHomeStyles();
-
     return (
         <Container maxWidth="lg" className={classes.wrapper}>
             <Grid container spacing={3}>
@@ -153,36 +157,38 @@ export const Home = () => {
                                 </Grid>
                                 <Grid item xs={11}>
                                     <Typography >
-                                        <b>romanmereni</b> <span className={classes.tweetsUserName}>@romanmereni</span>
+                                        <b>romanmereni</b> <span className={classes.tweetUserName}>@romanmereni</span>
                                     </Typography>
                                     <Typography variant="body1" gutterBottom>
                                         мы потерпели сегодня тактическое, тяжёлое поражение
                                         невзирая на протесты улицы и политическое меньшинство, промосковским фракциям Додона с примкнувшей фракцией Шор и остатками фракции
                                         беглого мафиози №1 Молдовы Плахотнюка проголосовали скандальные законы 57 мандатами из 101
                                     </Typography>
-                                    <div>
-                                        <IconButton >
-                                            <ChatIcon style={{ fontSize: 16}}/>
-                                        </IconButton>
-                                        <span style={{ fontSize: 15}}>1</span>
-                                    </div>
-                                    <div>
-                                        <IconButton >
-                                            <RepeatIcon style={{ fontSize: 16}}/>
-                                        </IconButton>
-                                        <span style={{ fontSize: 15}}>1</span>
-                                    </div>
-                                    <div>
-                                        <IconButton >
-                                            <LikeIcon style={{ fontSize: 16}}/>
-                                        </IconButton>
-                                        <span style={{ fontSize: 15}}>1</span>
-                                    </div>
-                                    <div>
-                                        <IconButton >
-                                            <ShareIcon style={{ fontSize: 16}}/>
-                                        </IconButton>
-                                        <span style={{ fontSize: 15}}>1</span>
+                                    <div className={classes.tweetFooter}>
+                                        <div>
+                                            <IconButton >
+                                                <ChatIcon style={{ fontSize: 20}}/>
+                                            </IconButton>
+                                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
+                                        </div>
+                                        <div>
+                                            <IconButton >
+                                                <RepeatIcon style={{ fontSize: 20}}/>
+                                            </IconButton>
+                                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
+                                        </div>
+                                        <div>
+                                            <IconButton >
+                                                <LikeIcon style={{ fontSize: 20}}/>
+                                            </IconButton>
+                                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
+                                        </div>
+                                        <div>
+                                            <IconButton >
+                                                <ShareIcon style={{ fontSize: 20}}/>
+                                            </IconButton>
+                                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
+                                        </div>
                                     </div>
                                 </Grid>
                             </Grid>
