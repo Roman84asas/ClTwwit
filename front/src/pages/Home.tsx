@@ -10,6 +10,11 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import PersonIcon from '@material-ui/icons/Person';
+import grey from '@material-ui/core/colors/grey';
+import ChatIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
+import RepeatIcon from '@material-ui/icons/RepeatOutlined';
+import LikeIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import ShareIcon from '@material-ui/icons/PresentToAllOutlined';
 
 import {Avatar, Container, IconButton, InputBase, Typography} from "@material-ui/core";
 
@@ -52,6 +57,9 @@ const useHomeStyles = makeStyles((theme) => ({
         '& h5': {
             fontWeight: 900,
         },
+    },
+    tweetsUserName: {
+        color: grey[500],
     },
 }));
 
@@ -145,8 +153,37 @@ export const Home = () => {
                                 </Grid>
                                 <Grid item xs={11}>
                                     <Typography >
-                                        <b>romanmereni</b> @romanmereni
+                                        <b>romanmereni</b> <span className={classes.tweetsUserName}>@romanmereni</span>
                                     </Typography>
+                                    <Typography variant="body1" gutterBottom>
+                                        мы потерпели сегодня тактическое, тяжёлое поражение
+                                        невзирая на протесты улицы и политическое меньшинство, промосковским фракциям Додона с примкнувшей фракцией Шор и остатками фракции
+                                        беглого мафиози №1 Молдовы Плахотнюка проголосовали скандальные законы 57 мандатами из 101
+                                    </Typography>
+                                    <div>
+                                        <IconButton >
+                                            <ChatIcon style={{ fontSize: 16}}/>
+                                        </IconButton>
+                                        <span style={{ fontSize: 15}}>1</span>
+                                    </div>
+                                    <div>
+                                        <IconButton >
+                                            <RepeatIcon style={{ fontSize: 16}}/>
+                                        </IconButton>
+                                        <span style={{ fontSize: 15}}>1</span>
+                                    </div>
+                                    <div>
+                                        <IconButton >
+                                            <LikeIcon style={{ fontSize: 16}}/>
+                                        </IconButton>
+                                        <span style={{ fontSize: 15}}>1</span>
+                                    </div>
+                                    <div>
+                                        <IconButton >
+                                            <ShareIcon style={{ fontSize: 16}}/>
+                                        </IconButton>
+                                        <span style={{ fontSize: 15}}>1</span>
+                                    </div>
                                 </Grid>
                             </Grid>
                         </Paper>
