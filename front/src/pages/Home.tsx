@@ -157,7 +157,7 @@ export const Home = () => {
                                 </Grid>
                                 <Grid item xs={11}>
                                     <Typography >
-                                        <b>romanmereni</b> <span className={classes.tweetUserName}>@romanmereni</span>
+                                        <b>romanmereni</b> <span className={classes.tweetUserName}>@romanmeren</span>
                                     </Typography>
                                     <Typography variant="body1" gutterBottom>
                                         мы потерпели сегодня тактическое, тяжёлое поражение
