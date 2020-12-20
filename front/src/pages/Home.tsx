@@ -19,7 +19,7 @@ export const useHomeStyles = makeStyles((theme) => ({
     },
     logo: {
         fontSize: 35,
-        marginBottom: '10px 0',
+        margin: '20px 0',
     },
     sideMenuLists: {
         listStyle: 'none',
@@ -31,6 +31,7 @@ export const useHomeStyles = makeStyles((theme) => ({
         '& div': {
             display: 'inline-flex',
             alignItems: 'center',
+            marginBottom: 10,
             padding: '10px 15px',
             borderRadius: '30px',
             cursor: 'pointer',
@@ -44,7 +45,7 @@ export const useHomeStyles = makeStyles((theme) => ({
         },
     },
     sideMenuTweetButton: {
-        marginTop: 25,
+        marginTop: 20,
         padding: theme.spacing(3),
     },
     sideMenuListItemLabel: {
