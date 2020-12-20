@@ -1,5 +1,5 @@
 import React from "react";
-import {IconButton, Typography} from "@material-ui/core";
+import {Button, IconButton, Typography} from "@material-ui/core";
 
 import TwitterIcon from '@material-ui/icons/Twitter';
 import SearchIcon from '@material-ui/icons/Search';
@@ -69,6 +69,9 @@ export const SideMenu: React.FC<SideMenuProps> = ({classes}: SideMenuProps): Rea
                         Профиль
                     </Typography>
                 </div>
+            </li>
+            <li className={classes.sideMenuListItem}>
+                <Button className={classes.sideMenuTweetButton} variant="contained" color="primary" fullWidth>Твитнуть</Button>
             </li>
         </ul>
     )

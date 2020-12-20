@@ -25,6 +25,7 @@ export const useHomeStyles = makeStyles((theme) => ({
         listStyle: 'none',
         padding: 0,
         margin: 0,
+        width: 230,
     },
     sideMenuListItem: {
         '& div': {
@@ -41,6 +42,10 @@ export const useHomeStyles = makeStyles((theme) => ({
                 color: 'rgb(29, 161, 242)',
             },
         },
+    },
+    sideMenuTweetButton: {
+        marginTop: 25,
+        padding: theme.spacing(3),
     },
     sideMenuListItemLabel: {
         fontWeight: 700,
