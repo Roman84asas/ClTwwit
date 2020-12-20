@@ -30,14 +30,15 @@ export const useHomeStyles = makeStyles((theme) => ({
         '& div': {
             display: 'inline-flex',
             alignItems: 'center',
-            padding: '15px 15px',
+            padding: '10px 15px',
             borderRadius: '30px',
             cursor: 'pointer',
             '& svg': {
                 marginRight: 15,
             },
             '&:hover': {
-                backgroundColor: 'rgba(29,161,242,0.1)'
+                backgroundColor: 'rgba(29,161,242,0.1)',
+                color: 'rgb(29, 161, 242)',
             },
         },
     },
