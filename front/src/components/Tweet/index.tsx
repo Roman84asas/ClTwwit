@@ -18,7 +18,6 @@ interface TweetProps {
         username: string;
         avatar: string;
     };
-
 }
 
 export const Tweet: React.FC<TweetProps> = ({text, classes, user}: TweetProps): React.ReactElement => {
