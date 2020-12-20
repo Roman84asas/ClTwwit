@@ -2,6 +2,7 @@ import React from "react";
 import {createStyles, makeStyles, withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import classNames from 'classnames';
 
 import TwitterIcon from '@material-ui/icons/Twitter';
 import SearchIcon from '@material-ui/icons/Search';
@@ -17,6 +18,7 @@ import LikeIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import ShareIcon from '@material-ui/icons/PresentToAllOutlined';
 
 import {Avatar, Container, IconButton, InputBase, Typography} from "@material-ui/core";
+
 
 const useHomeStyles = makeStyles((theme) => ({
     wrapper: {
@@ -56,6 +58,12 @@ const useHomeStyles = makeStyles((theme) => ({
         padding: '10px 10px',
         '& h5': {
             fontWeight: 900,
+        },
+    },
+    tweet: {
+        cursor: 'pointer',
+        '&:hover': {
+            backgroundColor: 'rgb(245,248,250)',
         },
     },
     tweetUserName: {
@@ -150,7 +158,7 @@ export const Home = () => {
                                 Главная
                             </Typography>
                         </Paper>
-                        <Paper variant="outlined" className={classes.tweetsHeader}>
+                        <Paper variant="outlined" className={classNames(classes.tweet, classes.tweetsHeader)}>
                             <Grid container >
                                 <Grid item xs={1}>
                                     <Avatar alt="User Avatar" src="https://sun1-29.userapi.com/impg/CYgQtfMx7yLxGtfGYLrr0Oly-IMf7s5JV7V_LA/x6NxEd7C4n8.jpg?size=50x0&quality=96&crop=1,142,899,899&sign=871e9e636fe8e0549539e2611488e721&ava=1" />
@@ -166,25 +174,25 @@ export const Home = () => {
                                     </Typography>
                                     <div className={classes.tweetFooter}>
                                         <div>
-                                            <IconButton >
+                                            <IconButton color="primary">
                                                 <ChatIcon style={{ fontSize: 20}}/>
                                             </IconButton>
                                             <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
                                         </div>
                                         <div>
-                                            <IconButton >
+                                            <IconButton color="primary">
                                                 <RepeatIcon style={{ fontSize: 20}}/>
                                             </IconButton>
                                             <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
                                         </div>
                                         <div>
-                                            <IconButton >
+                                            <IconButton color="primary">
                                                 <LikeIcon style={{ fontSize: 20}}/>
                                             </IconButton>
                                             <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
                                         </div>
                                         <div>
-                                            <IconButton >
+                                            <IconButton color="primary">
                                                 <ShareIcon style={{ fontSize: 20}}/>
                                             </IconButton>
                                             <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
