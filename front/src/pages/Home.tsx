@@ -2,7 +2,8 @@ import React from "react";
 import {createStyles, makeStyles, withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import classNames from 'classnames';
+
+import {Tweet} from "../components/Tweet/index";
 
 import TwitterIcon from '@material-ui/icons/Twitter';
 import SearchIcon from '@material-ui/icons/Search';
@@ -12,15 +13,12 @@ import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import PersonIcon from '@material-ui/icons/Person';
 import grey from '@material-ui/core/colors/grey';
-import ChatIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
-import RepeatIcon from '@material-ui/icons/RepeatOutlined';
-import LikeIcon from '@material-ui/icons/FavoriteBorderOutlined';
-import ShareIcon from '@material-ui/icons/PresentToAllOutlined';
 
-import {Avatar, Container, IconButton, InputBase, Typography} from "@material-ui/core";
+import {Container, IconButton, InputBase, Typography} from "@material-ui/core";
 
 
-const useHomeStyles = makeStyles((theme) => ({
+
+export const useHomeStyles = makeStyles((theme) => ({
     wrapper: {
         height: '100vh',
     },
@@ -158,49 +156,15 @@ export const Home = () => {
                                 Главная
                             </Typography>
                         </Paper>
-                        <Paper variant="outlined" className={classNames(classes.tweet, classes.tweetsHeader)}>
-                            <Grid container >
-                                <Grid item xs={1}>
-                                    <Avatar alt="User Avatar" src="https://sun1-29.userapi.com/impg/CYgQtfMx7yLxGtfGYLrr0Oly-IMf7s5JV7V_LA/x6NxEd7C4n8.jpg?size=50x0&quality=96&crop=1,142,899,899&sign=871e9e636fe8e0549539e2611488e721&ava=1" />
-                                </Grid>
-                                <Grid item xs={11}>
-                                    <Typography >
-                                        <b>romanmereni</b> <span className={classes.tweetUserName}>@romanmeren</span>
-                                    </Typography>
-                                    <Typography variant="body1" gutterBottom>
-                                        мы потерпели сегодня тактическое, тяжёлое поражение
-                                        невзирая на протесты улицы и политическое меньшинство, промосковским фракциям Додона с примкнувшей фракцией Шор и остатками фракции
-                                        беглого мафиози №1 Молдовы Плахотнюка проголосовали скандальные законы 57 мандатами из 101
-                                    </Typography>
-                                    <div className={classes.tweetFooter}>
-                                        <div>
-                                            <IconButton color="primary">
-                                                <ChatIcon style={{ fontSize: 20}}/>
-                                            </IconButton>
-                                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
-                                        </div>
-                                        <div>
-                                            <IconButton color="primary">
-                                                <RepeatIcon style={{ fontSize: 20}}/>
-                                            </IconButton>
-                                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
-                                        </div>
-                                        <div>
-                                            <IconButton color="primary">
-                                                <LikeIcon style={{ fontSize: 20}}/>
-                                            </IconButton>
-                                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
-                                        </div>
-                                        <div>
-                                            <IconButton color="primary">
-                                                <ShareIcon style={{ fontSize: 20}}/>
-                                            </IconButton>
-                                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
-                                        </div>
-                                    </div>
-                                </Grid>
-                            </Grid>
-                        </Paper>
+                        <Tweet
+                            text='Machine Learning AZ™: Hands-On Python & R In Data Science Learn to create Machine Learning Algorithms in Python and R from two Data Science experts '
+                            user={{
+                                fullname: 'Roman Mereneanu',
+                                username: 'RMereneanu',
+                                avatar: 'https://pbs.twimg.com/profile_images/977608975771426816/0YqLd6K2_bigger.jpg'
+                            }}
+                            classes={classes}
+                        />
                     </Paper>
                 </Grid>
                 <Grid item xs={3}>
