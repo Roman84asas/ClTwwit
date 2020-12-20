@@ -24,9 +24,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({classes}: SideMenuProps): Rea
             </li>
             <li className={classes.sideMenuListItem}>
                <div>
-                   <IconButton color='default' >
-                       <SearchIcon className={classes.sideMenuListItemIcon}/>
-                   </IconButton>
+                   <SearchIcon className={classes.sideMenuListItemIcon}/>
                    <Typography variant="h6" className={classes.sideMenuListItemLabel}>
                        Поиск
                    </Typography>
@@ -34,9 +32,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({classes}: SideMenuProps): Rea
             </li>
             <li className={classes.sideMenuListItem}>
                 <div>
-                    <IconButton color='default' >
-                        <NotificationsNoneIcon className={classes.sideMenuListItemIcon}/>
-                    </IconButton>
+                    <NotificationsNoneIcon className={classes.sideMenuListItemIcon}/>
                     <Typography variant="h6" className={classes.sideMenuListItemLabel}>
                         Уведомления
                     </Typography>
@@ -44,9 +40,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({classes}: SideMenuProps): Rea
             </li>
             <li className={classes.sideMenuListItem}>
                 <div>
-                    <IconButton color='default' >
-                        <MailOutlineIcon className={classes.sideMenuListItemIcon}/>
-                    </IconButton>
+                    <MailOutlineIcon className={classes.sideMenuListItemIcon}/>
                     <Typography variant="h6" className={classes.sideMenuListItemLabel}>
                         Сообщения
                     </Typography>
@@ -54,9 +48,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({classes}: SideMenuProps): Rea
             </li>
             <li className={classes.sideMenuListItem}>
                 <div>
-                    <IconButton color='default' >
-                        <BookmarkBorderIcon className={classes.sideMenuListItemIcon}/>
-                    </IconButton>
+                    <BookmarkBorderIcon className={classes.sideMenuListItemIcon}/>
                     <Typography variant="h6" className={classes.sideMenuListItemLabel}>
                         Закладки
                     </Typography>
@@ -64,9 +56,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({classes}: SideMenuProps): Rea
             </li>
             <li className={classes.sideMenuListItem}>
                 <div>
-                    <IconButton color='default' >
-                        <ListAltIcon className={classes.sideMenuListItemIcon}/>
-                    </IconButton>
+                    <ListAltIcon className={classes.sideMenuListItemIcon}/>
                     <Typography variant="h6" className={classes.sideMenuListItemLabel}>
                         Список
                     </Typography>
@@ -74,9 +64,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({classes}: SideMenuProps): Rea
             </li>
             <li className={classes.sideMenuListItem}>
                 <div>
-                    <IconButton color='default' >
-                        <PersonIcon className={classes.sideMenuListItemIcon}/>
-                    </IconButton>
+                    <PersonIcon className={classes.sideMenuListItemIcon}/>
                     <Typography variant="h6" className={classes.sideMenuListItemLabel}>
                         Профиль
                     </Typography>
