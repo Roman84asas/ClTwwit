@@ -27,8 +27,16 @@ export const useHomeStyles = makeStyles((theme) => ({
         margin: 0,
     },
     sideMenuListItem: {
-        display: 'flex',
-        alignItems: 'center',
+        '& div': {
+            display: 'inline-flex',
+            alignItems: 'center',
+            padding: '10px 5px',
+            borderRadius: '30px',
+            cursor: 'pointer',
+            '&:hover': {
+                backgroundColor: 'rgba(29,161,242,0.1)'
+            },
+        },
     },
     sideMenuListItemLabel: {
         fontWeight: 700,

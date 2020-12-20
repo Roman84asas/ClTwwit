@@ -23,52 +23,64 @@ export const SideMenu: React.FC<SideMenuProps> = ({classes}: SideMenuProps): Rea
                 </IconButton>
             </li>
             <li className={classes.sideMenuListItem}>
-                <IconButton color='default' >
-                    <SearchIcon className={classes.sideMenuListItemIcon}/>
-                </IconButton>
-                <Typography variant="h6" className={classes.sideMenuListItemLabel}>
-                    Поиск
-                </Typography>
+               <div>
+                   <IconButton color='default' >
+                       <SearchIcon className={classes.sideMenuListItemIcon}/>
+                   </IconButton>
+                   <Typography variant="h6" className={classes.sideMenuListItemLabel}>
+                       Поиск
+                   </Typography>
+               </div>
             </li>
             <li className={classes.sideMenuListItem}>
-                <IconButton color='default' >
-                    <NotificationsNoneIcon className={classes.sideMenuListItemIcon}/>
-                </IconButton>
-                <Typography variant="h6" className={classes.sideMenuListItemLabel}>
-                    Уведомления
-                </Typography>
+                <div>
+                    <IconButton color='default' >
+                        <NotificationsNoneIcon className={classes.sideMenuListItemIcon}/>
+                    </IconButton>
+                    <Typography variant="h6" className={classes.sideMenuListItemLabel}>
+                        Уведомления
+                    </Typography>
+                </div>
             </li>
             <li className={classes.sideMenuListItem}>
-                <IconButton color='default' >
-                    <MailOutlineIcon className={classes.sideMenuListItemIcon}/>
-                </IconButton>
-                <Typography variant="h6" className={classes.sideMenuListItemLabel}>
-                    Сообщения
-                </Typography>
+                <div>
+                    <IconButton color='default' >
+                        <MailOutlineIcon className={classes.sideMenuListItemIcon}/>
+                    </IconButton>
+                    <Typography variant="h6" className={classes.sideMenuListItemLabel}>
+                        Сообщения
+                    </Typography>
+                </div>
             </li>
             <li className={classes.sideMenuListItem}>
-                <IconButton color='default' >
-                    <BookmarkBorderIcon className={classes.sideMenuListItemIcon}/>
-                </IconButton>
-                <Typography variant="h6" className={classes.sideMenuListItemLabel}>
-                    Закладки
-                </Typography>
+                <div>
+                    <IconButton color='default' >
+                        <BookmarkBorderIcon className={classes.sideMenuListItemIcon}/>
+                    </IconButton>
+                    <Typography variant="h6" className={classes.sideMenuListItemLabel}>
+                        Закладки
+                    </Typography>
+                </div>
             </li>
             <li className={classes.sideMenuListItem}>
-                <IconButton color='default' >
-                    <ListAltIcon className={classes.sideMenuListItemIcon}/>
-                </IconButton>
-                <Typography variant="h6" className={classes.sideMenuListItemLabel}>
-                    Список
-                </Typography>
+                <div>
+                    <IconButton color='default' >
+                        <ListAltIcon className={classes.sideMenuListItemIcon}/>
+                    </IconButton>
+                    <Typography variant="h6" className={classes.sideMenuListItemLabel}>
+                        Список
+                    </Typography>
+                </div>
             </li>
             <li className={classes.sideMenuListItem}>
-                <IconButton color='default' >
-                    <PersonIcon className={classes.sideMenuListItemIcon}/>
-                </IconButton>
-                <Typography variant="h6" className={classes.sideMenuListItemLabel}>
-                    Профиль
-                </Typography>
+                <div>
+                    <IconButton color='default' >
+                        <PersonIcon className={classes.sideMenuListItemIcon}/>
+                    </IconButton>
+                    <Typography variant="h6" className={classes.sideMenuListItemLabel}>
+                        Профиль
+                    </Typography>
+                </div>
             </li>
         </ul>
     )
