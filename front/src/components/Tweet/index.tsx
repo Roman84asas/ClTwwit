@@ -32,7 +32,10 @@ export const Tweet: React.FC<TweetProps> = ({text, classes, user}: TweetProps): 
                 </Grid>
                 <Grid item xs={11}>
                     <Typography >
-                        <b>{user.fullname}</b> <span className={classes.tweetUserName}>@{user.username}</span>
+                        <b>{user.fullname} </b>
+                        <span className={classes.tweetUserName}>@{user.username}</span>
+                        <span className={classes.tweetUserName}> · </span>
+                        <span className={classes.tweetUserName}> 1 ч.</span>
                     </Typography>
                     <Typography variant="body1" gutterBottom>
                         {text}
