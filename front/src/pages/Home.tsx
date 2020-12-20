@@ -25,7 +25,7 @@ export const useHomeStyles = makeStyles((theme) => ({
         listStyle: 'none',
         padding: 0,
         margin: 0,
-        width: 230,
+        maxWidth: 230,
     },
     sideMenuListItem: {
         '& div': {
@@ -67,6 +67,7 @@ export const useHomeStyles = makeStyles((theme) => ({
         borderRight: 0,
         borderRadius: 0,
         padding: '10px 10px',
+        display: 'flex',
         '& h5': {
             fontWeight: 900,
         },
