@@ -11,6 +11,7 @@ interface AddTweetFormProps {
 
 export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes}: AddTweetFormProps): React.ReactElement => {
     const [text, setText] = React.useState<string>('');
+    const textLimitPercent = (text.length/280)*100;
 
     const handleChangeTextArea = (e: React.FormEvent<HTMLTextAreaElement>) => {
         if (e.currentTarget){
@@ -43,16 +44,20 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes}: AddTweetFor
                     </IconButton>
                 </div>
                 <div className={classes.addFormBottomRight}>
-                    <span>280</span>
-                    <div className={classes.addFormCircleProgress}>
-                        <CircularProgress variant="static" size={20} thickness={4} value={18}/>
-                        <CircularProgress
-                            style={{color: 'rgba(0,0,0,0.1)'}}
-                            variant="static"
-                            size={20}
-                            thickness={4}
-                            value={100}/>
-                    </div>
+                    {text && (
+                        <>
+                            <span>{text.length}</span>
+                            <div className={classes.addFormCircleProgress}>
+                                <CircularProgress variant="static" size={20} thickness={4} value={textLimitPercent}/>
+                                <CircularProgress
+                                    style={{color: 'rgba(0,0,0,0.1)'}}
+                                    variant="static"
+                                    size={20}
+                                    thickness={4}
+                                    value={100}/>
+                            </div>
+                        </>
+                    )}
                     <Button variant="contained" color="primary">
                         Твитнуть
                     </Button>
