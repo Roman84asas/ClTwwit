@@ -10,6 +10,14 @@ interface AddTweetFormProps {
 
 
 export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes}: AddTweetFormProps): React.ReactElement => {
+    const [text, setText] = React.useState<string>('');
+
+    const handleChangeTextArea = (e: React.FormEvent<HTMLTextAreaElement>) => {
+        if (e.currentTarget){
+            setText(e.currentTarget.value);
+        }
+    };
+
     return  (
         <div className={classes.addForm}>
             <div className={classes.addFormBody}>
