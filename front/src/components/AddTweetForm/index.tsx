@@ -27,8 +27,10 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes}: AddTweetFor
                     src="https://pbs.twimg.com/profile_images/977608975771426816/0YqLd6K2_bigger.jpg"
                 />
                 <TextareaAutosize
+                    onChange={handleChangeTextArea}
                     className={classes.addFormTextarea}
                     placeholder="Что происходит?"
+                    value={text}
                 />
             </div>
             <div className={classes.addFormBottom}>
