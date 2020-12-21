@@ -7,18 +7,13 @@ import {makeStyles, Theme, withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import grey from '@material-ui/core/colors/grey';
-import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined';
-import ImageOutlinedIcon from '@material-ui/icons/AddPhotoAlternateOutlined';
 import SearchIcon from '@material-ui/icons/Search';
 import PersonAddIcon from '@material-ui/icons/PersonAddOutlined';
 
 import {
     Container,
-    TextareaAutosize,
-    CircularProgress,
     Typography,
     TextField,
-    IconButton,
     Button,
     InputAdornment,
     List,
@@ -28,6 +23,7 @@ import {
     ListItemAvatar,
     Avatar
 } from "@material-ui/core";
+import {AddTweetForm} from "../components/AddTweetForm";
 
 
 
@@ -245,44 +241,7 @@ export const Home = (): React.ReactElement => {
                             </Typography>
                         </Paper>
                         <Paper>
-                           <div className={classes.addForm}>
-                               <div className={classes.addFormBody}>
-                                   <Avatar
-                                       className={classes.tweetAvatar}
-                                       alt={`Аватарка пользователя UserAvatar`}
-                                       src="https://pbs.twimg.com/profile_images/977608975771426816/0YqLd6K2_bigger.jpg"
-                                   />
-                                   <TextareaAutosize
-                                       className={classes.addFormTextarea}
-                                       placeholder="Что происходит?"
-                                   />
-                               </div>
-                               <div className={classes.addFormBottom}>
-                                   <div className={classes.addFormBottomActions}>
-                                       <IconButton color="primary">
-                                           <ImageOutlinedIcon style={{ fontSize: 26}} />
-                                       </IconButton>
-                                       <IconButton color="primary">
-                                           <EmojiIcon style={{ fontSize: 26}} />
-                                       </IconButton>
-                                   </div>
-                                   <div className={classes.addFormBottomRight}>
-                                       <span>280</span>
-                                       <div className={classes.addFormCircleProgress}>
-                                           <CircularProgress variant="static" size={20} thickness={4} value={18}/>
-                                           <CircularProgress
-                                               style={{color: 'rgba(0,0,0,0.1)'}}
-                                               variant="static"
-                                               size={20}
-                                               thickness={4}
-                                               value={100}/>
-                                       </div>
-                                       <Button variant="contained" color="primary">
-                                           Твитнуть
-                                       </Button>
-                                   </div>
-                               </div>
-                           </div>
+                            <AddTweetForm classes={classes} />
                             <div className={classes.addFormBottomLine} />
                         </Paper>
                         <Tweet
