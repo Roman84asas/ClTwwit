@@ -1,6 +1,6 @@
 import React from 'react';
 import {Avatar, Button, CircularProgress, IconButton, TextareaAutosize} from "@material-ui/core";
-import {useHomeStyles} from "../../pages/Home";
+import {useHomeStyles} from "../../pages/Home/theme";
 import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined';
 import ImageOutlinedIcon from '@material-ui/icons/AddPhotoAlternateOutlined';
 

@@ -9,7 +9,7 @@ import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import PersonIcon from '@material-ui/icons/Person';
 import CreateIcon from '@material-ui/icons/Create';
-import {useHomeStyles} from "../../pages/Home";
+import {useHomeStyles} from "../../pages/Home/theme";
 
 interface SideMenuProps {
     classes: ReturnType<typeof useHomeStyles>;
