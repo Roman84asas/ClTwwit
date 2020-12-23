@@ -1,6 +1,5 @@
 import React from "react";
 import classNames from "classnames";
-import Grid from "@material-ui/core/Grid";
 import {Avatar, IconButton, Typography} from "@material-ui/core";
 import Paper from "@material-ui/core/Paper/Paper";
 import ChatIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
