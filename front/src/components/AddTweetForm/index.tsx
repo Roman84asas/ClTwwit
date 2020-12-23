@@ -3,20 +3,26 @@ import {Avatar, Button, CircularProgress, IconButton, TextareaAutosize} from "@m
 import {useHomeStyles} from "../../pages/Home";
 import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined';
 import ImageOutlinedIcon from '@material-ui/icons/AddPhotoAlternateOutlined';
+import set = Reflect.set;
 
 interface AddTweetFormProps {
     classes: ReturnType<typeof useHomeStyles>;
 }
 
+const MAX_LENGTH = 280;
 
 export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes}: AddTweetFormProps): React.ReactElement => {
     const [text, setText] = React.useState<string>('');
     const textLimitPercent = Math.round((text.length/280)*100);
+    const maxLength = MAX_LENGTH - text.length;
 
-    const handleChangeTextArea = (e: React.FormEvent<HTMLTextAreaElement>) => {
+    const handleChangeTextArea = (e: React.FormEvent<HTMLTextAreaElement>): void => {
         if (e.currentTarget){
             setText(e.currentTarget.value);
         }
+    };
+    const handleClickAddTweet = (): void => {
+        setText('');
     };
 
     return  (
@@ -46,14 +52,14 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes}: AddTweetFor
                 <div className={classes.addFormBottomRight}>
                     {text && (
                         <>
-                            <span>{text.length}</span>
+                            <span>{maxLength}</span>
                             <div className={classes.addFormCircleProgress}>
                                 <CircularProgress
                                     variant="static"
                                     size={20}
                                     thickness={4}
-                                    value={textLimitPercent > 100 ? 100 : textLimitPercent}
-                                    style={textLimitPercent >= 100? {color: 'red'} : undefined}
+                                    value={text.length >= MAX_LENGTH ? 100 : textLimitPercent}
+                                    style={text.length >= MAX_LENGTH ? {color: 'red'} : undefined}
                                 />
                                 <CircularProgress
                                     style={{color: 'rgba(0,0,0,0.1)'}}
@@ -64,7 +70,11 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes}: AddTweetFor
                             </div>
                         </>
                     )}
-                    <Button disabled={textLimitPercent >= 100} variant="contained" color="primary">
+                    <Button
+                        onClick={handleClickAddTweet}
+                        disabled={text.length >= MAX_LENGTH}
+                        variant="contained"
+                        color="primary">
                         Твитнуть
                     </Button>
                 </div>
