@@ -3,7 +3,6 @@ import {Avatar, Button, CircularProgress, IconButton, TextareaAutosize} from "@m
 import {useHomeStyles} from "../../pages/Home";
 import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined';
 import ImageOutlinedIcon from '@material-ui/icons/AddPhotoAlternateOutlined';
-import set = Reflect.set;
 
 interface AddTweetFormProps {
     classes: ReturnType<typeof useHomeStyles>;
