@@ -103,8 +103,8 @@ export const SideMenu: React.FC<SideMenuProps> = ({classes}: SideMenuProps): Rea
                         <CreateIcon />
                     </Hidden>
                 </Button>
-                <ModalBlock onClose={onCloseAddTweet} visible={visibleAddTweet} title="">
-                    <AddTweetForm classes={classes} />
+                <ModalBlock onClose={onCloseAddTweet} visible={visibleAddTweet}>
+                    <AddTweetForm maxRows={15} classes={classes} />
                 </ModalBlock>
             </li>
         </ul>

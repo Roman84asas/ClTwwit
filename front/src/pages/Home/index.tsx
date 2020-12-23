@@ -44,7 +44,9 @@ export const Home = (): React.ReactElement => {
                             </Typography>
                         </Paper>
                         <Paper>
-                            <AddTweetForm classes={classes} />
+                            <div  className={classes.addForm}>
+                                <AddTweetForm classes={classes} />
+                            </div>
                             <div className={classes.addFormBottomLine} />
                         </Paper>
                         <Tweet
