@@ -14,7 +14,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes}: AddTweetFor
     const textLimitPercent = (text.length/280)*100;
 
     const handleChangeTextArea = (e: React.FormEvent<HTMLTextAreaElement>) => {
-        if (e.currentTarget){
+        if (e.currentTarget && text.length <= 279){
             setText(e.currentTarget.value);
         }
     };
@@ -48,7 +48,13 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes}: AddTweetFor
                         <>
                             <span>{text.length}</span>
                             <div className={classes.addFormCircleProgress}>
-                                <CircularProgress variant="static" size={20} thickness={4} value={textLimitPercent}/>
+                                <CircularProgress
+                                    variant="static"
+                                    size={20}
+                                    thickness={4}
+                                    value={textLimitPercent}
+                                    style={textLimitPercent === 100? {color: 'red'} : undefined}
+                                />
                                 <CircularProgress
                                     style={{color: 'rgba(0,0,0,0.1)'}}
                                     variant="static"
