@@ -15,7 +15,7 @@ import ForumIcon from '@material-ui/icons/Forum';
 import ModalBlock  from "../components/ModalBlock";
 
 
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
     wrapper: {
         display: 'flex',
         height: '100vh',
