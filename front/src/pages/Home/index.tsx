@@ -30,6 +30,8 @@ import {SearchTextField} from "../../components/SearchTextField";
 
 export const Home = (): React.ReactElement => {
     const classes = useHomeStyles();
+
+
     return (
         <Container maxWidth="lg" className={classes.wrapper}>
             <Grid container spacing={3}>
