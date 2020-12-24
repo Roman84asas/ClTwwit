@@ -1,9 +1,6 @@
-import {createStore} from "redux";
+import {compose, createStore} from "redux";
+import {rootReducer} from "./rootReducer";
 
-/*
-function reducer(state = 0, action: any): void {
-    console.log(state, action);
-}
 
 declare global {
     interface Window {
@@ -14,6 +11,5 @@ declare global {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
-const store = createStore(reducer);
-*/
+const store = createStore(rootReducer);
 
