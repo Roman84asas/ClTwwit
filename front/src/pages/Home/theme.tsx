@@ -161,4 +161,8 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         justifyContent: 'space-between',
         width: 450,
     },
+    tweetsCentred: {
+        textAlign: 'center',
+        marginTop: 50,
+    }
 }));

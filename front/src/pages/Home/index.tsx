@@ -1,36 +1,41 @@
 import React from "react";
+import {useDispatch, useSelector} from "react-redux";
 
 import {Tweet} from "../../components/Tweet/";
 import {SideMenu} from "../../components/SideMenu";
 
 
+import {fetchTweets} from "../../store/ducks/tweets/actionCreators";
+import {selectIsTweetsLoading, selectTweetsItems} from "../../store/ducks/tweets/selectors";
+
+import {useHomeStyles} from "./theme";
+
+import {AddTweetForm} from "../../components/AddTweetForm";
+import {SearchTextField} from "../../components/SearchTextField";
+
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import SearchIcon from '@material-ui/icons/Search';
 import PersonAddIcon from '@material-ui/icons/PersonAddOutlined';
+import { Container, Typography, Button, InputAdornment, List, ListItem, ListItemText, Divider, ListItemAvatar, Avatar } from "@material-ui/core";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-import {
-    Container,
-    Typography,
-    Button,
-    InputAdornment,
-    List,
-    ListItem,
-    ListItemText,
-    Divider,
-    ListItemAvatar,
-    Avatar
-} from "@material-ui/core";
-import {AddTweetForm} from "../../components/AddTweetForm";
 
-import {useHomeStyles} from "./theme";
-import {SearchTextField} from "../../components/SearchTextField";
+
 
 
 
 export const Home = (): React.ReactElement => {
     const classes = useHomeStyles();
 
+    const dispatch = useDispatch();
+    const tweets = useSelector(selectTweetsItems);
+    const isLoading = useSelector(selectIsTweetsLoading);
+
+
+    React.useEffect(() => {
+        dispatch(fetchTweets());
+    }, [dispatch]);
 
     return (
         <Container maxWidth="lg" className={classes.wrapper}>
@@ -51,15 +56,14 @@ export const Home = (): React.ReactElement => {
                             </div>
                             <div className={classes.addFormBottomLine} />
                         </Paper>
-                        <Tweet
-                            text='Machine Learning AZ™: Hands-On Python & R In Data Science Learn to create Machine Learning Algorithms in Python and R from two Data Science experts '
-                            user={{
-                                fullname: 'Roman Mereneanu',
-                                username: 'RMereneanu',
-                                avatar: 'https://pbs.twimg.com/profile_images/977608975771426816/0YqLd6K2_bigger.jpg'
-                            }}
-                            classes={classes}
-                        />
+                        {isLoading ? (
+                            <div className={classes.tweetsCentred}><CircularProgress color="secondary" /></div>
+                            ) : (
+                                tweets.map(tweet => (
+                            <Tweet key={tweet._id} text={tweet.text} user={tweet.user} classes={classes} />
+                            ))
+                        )}
+
                     </Paper>
                 </Grid>
                 <Grid xs={3} item>
