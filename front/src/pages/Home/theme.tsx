@@ -3,7 +3,7 @@ import grey from "@material-ui/core/colors/grey";
 
 export const useHomeStyles = makeStyles((theme: Theme) => ({
     wrapper: {
-        height: '100vh',
+        height: 'auto',
     },
     logo: {
         fontSize: 35,
