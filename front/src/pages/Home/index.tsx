@@ -135,7 +135,7 @@ export const Home = (): React.ReactElement => {
                                         primary="Paris"
                                         secondary={
                                             <Typography component="span" variant="body2">
-                                                Твитов:3 388
+                                                {/*Твитов:3 388*/} Happy new Year
                                             </Typography>
                                         }
                                     />
