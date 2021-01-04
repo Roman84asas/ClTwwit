@@ -7,7 +7,7 @@ import CircularProgress from "@material-ui/core/CircularProgress/CircularProgres
 
 import {Tweet} from "../../../components/Tweet";
 
-import {fetchTweetData} from "../../../store/ducks/tweet/actionCreators";
+import {fetchTweetData, setTweetData} from "../../../store/ducks/tweet/actionCreators";
 import {selectTweetData} from "../../../store/ducks/tweet/selectors";
 import {selectIsTweetLoading} from "../../../store/ducks/tweet/selectors";
 
@@ -25,6 +25,9 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
     React.useEffect(() => {
         if (id) {
             dispatch(fetchTweetData(id));
+        }
+        return () => {
+            dispatch(setTweetData(undefined));
         }
     }, [dispatch, id]);
 
