@@ -3,16 +3,20 @@ import { Divider, List, ListItem, ListItemText, Typography} from "@material-ui/c
 import Paper from "@material-ui/core/Paper/Paper";
 import { useHomeStyles } from '../../pages/Home/theme';
 import {useSelector} from "react-redux";
-import {selectTagsItems} from "../../store/tags/selectors";
+import {selectIsTagsLoaded, selectTagsItems} from "../../store/tags/selectors";
 
 
 interface TagsProperty {
     classes: ReturnType<typeof useHomeStyles>;
 }
 
-export const Tags: React.FC<TagsProperty> = ({classes}: TagsProperty): React.ReactElement => {
+export const Tags: React.FC<TagsProperty> = ({classes}: TagsProperty): React.ReactElement | null => {
     const items = useSelector(selectTagsItems);
+    const isLoaded = useSelector(selectIsTagsLoaded);
 
+    if (!isLoaded) {
+        return null;
+    }
     return(
         <Paper className={classes.rightSideBlock}>
             <Paper className={classes.rightSideBlockHeader} >
