@@ -34,7 +34,6 @@ import {fetchTags} from "../../store/ducks/tags/actionCreators";
 import {Tags} from "../../components/Tags/Tags";
 import {BackButton} from "../../components/BackButton/BackButton";
 import {FullTweet} from "./components/FullTweet";
-import {fetchTweetData} from "../../store/ducks/tweet/actionCreators";
 
 
 
@@ -52,7 +51,6 @@ export const Home = (): React.ReactElement => {
     React.useEffect(() => {
         dispatch(fetchTweets());
         dispatch(fetchTags());
-        //dispatch(fetchTweetData());
     }, [dispatch]);
 
     return (
@@ -100,7 +98,6 @@ export const Home = (): React.ReactElement => {
                             )}
                         </Route>
                         <Route path="/home/tweet/:id" component={FullTweet} exact>
-
                         </Route>
                     </Paper>
                 </Grid>
