@@ -1,5 +1,6 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
+import { Route } from "react-router-dom";
 
 import {Tweet} from "../../components/Tweet/";
 import {SideMenu} from "../../components/SideMenu";
@@ -59,14 +60,15 @@ export const Home = (): React.ReactElement => {
                             </div>
                             <div className={classes.addFormBottomLine} />
                         </Paper>
-                        {isLoading ? (
-                            <div className={classes.tweetsCentred}><CircularProgress color="secondary" /></div>
+                        <Route path="/home" exact>
+                            {isLoading ? (
+                                <div className={classes.tweetsCentred}><CircularProgress color="secondary" /></div>
                             ) : (
                                 tweets.map(tweet => (
-                            <Tweet key={tweet._id} text={tweet.text} user={tweet.user} classes={classes} />
-                            ))
-                        )}
-
+                                    <Tweet key={tweet._id} text={tweet.text} user={tweet.user} classes={classes} />
+                                ))
+                            )}
+                        </Route>
                     </Paper>
                 </Grid>
                 <Grid xs={3} item>
