@@ -54,7 +54,7 @@ export const Home = (): React.ReactElement => {
                                 Главная
                             </Typography>
                         </Paper>
-                       <Route path="/home/">
+                       <Route path={['/home', '/home/search']} exact>
                            <Paper>
                                <div  className={classes.addForm}>
                                    <AddTweetForm classes={classes} />

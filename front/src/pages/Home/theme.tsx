@@ -7,14 +7,13 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     },
     logo: {
         fontSize: 35,
-        margin: '20px 0',
     },
     sideMenuLists: {
         position: 'sticky',
         top: 0,
         listStyle: 'none',
         padding: 0,
-        margin: 0,
+        margin: '20px 0',
         maxWidth: 230,
     },
     sideMenuListItem: {
@@ -52,6 +51,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         borderBottom: 0,
         '& a': {
             textDecoration: 'none',
+            color: 'inherit',
         },
     },
     tweetsHeader: {
