@@ -29,7 +29,7 @@ export const setTagsLoadingState = (payload: LoadingState): SetTagsLoadingStateA
     type: TagsActionsType.SET_LOADING_STATE,
     payload,
 });
-export const fetchTweets = (): FetchTagsActionInterface => ({
+export const fetchTags = (): FetchTagsActionInterface => ({
     type: TagsActionsType.FETCH_TAGS
 });
 

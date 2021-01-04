@@ -19,6 +19,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import PersonAddIcon from '@material-ui/icons/PersonAddOutlined';
 import { Container, Typography, Button, InputAdornment, List, ListItem, ListItemText, Divider, ListItemAvatar, Avatar } from "@material-ui/core";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import {fetchTags} from "../../store/tags/actionCreators";
+import {Tags} from "../../components/Tags/Tags";
+import {selectTagsItems} from "../../store/tags/selectors";
 
 
 
@@ -30,11 +33,13 @@ export const Home = (): React.ReactElement => {
 
     const dispatch = useDispatch();
     const tweets = useSelector(selectTweetsItems);
+    const tags = useSelector(selectTagsItems);
     const isLoading = useSelector(selectIsTweetsLoading);
 
 
     React.useEffect(() => {
         dispatch(fetchTweets());
+        dispatch(fetchTags());
     }, [dispatch]);
 
     return (
@@ -80,45 +85,7 @@ export const Home = (): React.ReactElement => {
                             }}
                             fullWidth
                         />
-                        <Paper className={classes.rightSideBlock}>
-                            <Paper className={classes.rightSideBlockHeader} >
-                                <b>Актуальные темы</b>
-                            </Paper>
-                            <List>
-                                <ListItem className={classes.rightSideBlockItem}>
-                                    <ListItemText
-                                        primary="Paris"
-                                        secondary={
-                                            <Typography component="span" variant="body2">
-                                                Твитов:3 388
-                                            </Typography>
-                                        }
-                                    />
-                                </ListItem>
-                                <Divider component='li' />
-                                <ListItem className={classes.rightSideBlockItem}>
-                                    <ListItemText
-                                        primary="#Paris"
-                                        secondary={
-                                            <Typography component="span" variant="body2">
-                                                Твитов:3 388
-                                            </Typography>
-                                        }
-                                    />
-                                </ListItem>
-                                <Divider component='li' />
-                                <ListItem className={classes.rightSideBlockItem}>
-                                    <ListItemText
-                                        primary="#Paris"
-                                        secondary={
-                                            <Typography component="span" variant="body2">
-                                                Твитов:3 388
-                                            </Typography>
-                                        }
-                                    />
-                                </ListItem>
-                            </List>
-                        </Paper>
+                        <Tags classes={classes} items={tags} />
                         <Paper className={classes.rightSideBlock}>
                             <Paper className={classes.rightSideBlockHeader} >
                                 <b>Кого читать</b>

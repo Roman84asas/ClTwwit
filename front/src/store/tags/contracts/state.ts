@@ -7,7 +7,7 @@ export enum LoadingState {
 
 export interface Tag {
     _id: string;
-    text: string;
+    name: string;
     count: number;
 }
 
