@@ -3,7 +3,7 @@ import {rootReducer} from "./rootReducer";
 import createSagaMiddleware from 'redux-saga'
 import rootSaga from "./saga";
 import {TweetsState} from "./ducks/tweets/contracts/state";
-import {TagsState} from "./tags/contracts/state";
+import {TagsState} from "./ducks/tags/contracts/state";
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

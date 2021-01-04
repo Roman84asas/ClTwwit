@@ -30,7 +30,7 @@ import {
     Avatar,
 } from "@material-ui/core";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {fetchTags} from "../../store/tags/actionCreators";
+import {fetchTags} from "../../store/ducks/tags/actionCreators";
 import {Tags} from "../../components/Tags/Tags";
 import {BackButton} from "../../components/BackButton/BackButton";
 

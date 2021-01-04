@@ -3,7 +3,7 @@ import { Divider, List, ListItem, ListItemText, Typography} from "@material-ui/c
 import Paper from "@material-ui/core/Paper/Paper";
 import { useHomeStyles } from '../../pages/Home/theme';
 import {useSelector} from "react-redux";
-import {selectIsTagsLoaded, selectTagsItems} from "../../store/tags/selectors";
+import {selectIsTagsLoaded, selectTagsItems} from "../../store/ducks/tags/selectors";
 import {Link} from "react-router-dom";
 
 
