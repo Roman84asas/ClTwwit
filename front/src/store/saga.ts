@@ -1,5 +1,5 @@
 import { all } from 'redux-saga/effects'
-import {tweetsSaga} from "./tweets/sagas";
+import {tweetsSaga} from "./ducks/tweets/sagas";
 
 export default function* rootSaga() {
     yield all([

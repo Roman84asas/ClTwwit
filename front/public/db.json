@@ -91,6 +91,28 @@
       }
     }
   ],
+  "themes": [
+    {"name": "#adoptmetrades", "count": 50},
+    {"name": "#CES2021","count": 455},
+    {"name": "#ArtificialIntelligence","count": 321}
+  ],
+  "users": [
+    {
+      "fullname": "Rhodes Pate",
+      "username": "shari",
+      "avatar": "https://source.unsplash.com/random/100x100?2"
+    },
+    {
+      "fullname": "Dunlap Webb",
+      "username": "maricela",
+      "avatar": "https://source.unsplash.com/random/100x100?5"
+    },
+    {
+      "fullname": "Washington Vargas",
+      "username": "mccullough",
+      "avatar": "https://source.unsplash.com/random/100x100?1"
+    }
+  ],
   "user": {
     "_id": "5fe4c9156f7713d984174a11",
     "fullname": "Roman Mereneanu",
