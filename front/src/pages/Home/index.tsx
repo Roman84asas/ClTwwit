@@ -18,10 +18,21 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import SearchIcon from '@material-ui/icons/Search';
 import PersonAddIcon from '@material-ui/icons/PersonAddOutlined';
-import { Container, Typography, Button, InputAdornment, List, ListItem, ListItemText, ListItemAvatar, Avatar } from "@material-ui/core";
+import {
+    Container,
+    Typography,
+    Button,
+    InputAdornment,
+    List,
+    ListItem,
+    ListItemText,
+    ListItemAvatar,
+    Avatar,
+} from "@material-ui/core";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {fetchTags} from "../../store/tags/actionCreators";
 import {Tags} from "../../components/Tags/Tags";
+import {BackButton} from "../../components/BackButton/BackButton";
 
 
 
@@ -50,9 +61,23 @@ export const Home = (): React.ReactElement => {
                 <Grid  xs={6} item>
                     <Paper variant="outlined" className={classes.tweetsWrapper}>
                         <Paper variant="outlined" className={classes.tweetsHeader}>
-                            <Typography variant="h5">
-                                Главная
-                            </Typography>
+                            <Route path="/home/tweet">
+                                <Typography variant="h5">
+                                    <BackButton classes={classes} />
+                                    Твитнуть
+                                </Typography>
+                            </Route>
+                            <Route path='/home/search' >
+                                <Typography variant="h5">
+                                    <BackButton classes={classes} />
+                                    Твиты
+                                </Typography>
+                            </Route>
+                            <Route path='/home' exact>
+                                <Typography variant="h5">
+                                    Главная
+                                </Typography>
+                            </Route>
                         </Paper>
                        <Route path={['/home', '/home/search']} exact>
                            <Paper>
