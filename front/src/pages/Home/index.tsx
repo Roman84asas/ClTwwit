@@ -17,11 +17,10 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import SearchIcon from '@material-ui/icons/Search';
 import PersonAddIcon from '@material-ui/icons/PersonAddOutlined';
-import { Container, Typography, Button, InputAdornment, List, ListItem, ListItemText, Divider, ListItemAvatar, Avatar } from "@material-ui/core";
+import { Container, Typography, Button, InputAdornment, List, ListItem, ListItemText, ListItemAvatar, Avatar } from "@material-ui/core";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {fetchTags} from "../../store/tags/actionCreators";
 import {Tags} from "../../components/Tags/Tags";
-import {selectTagsItems} from "../../store/tags/selectors";
 
 
 
@@ -33,7 +32,6 @@ export const Home = (): React.ReactElement => {
 
     const dispatch = useDispatch();
     const tweets = useSelector(selectTweetsItems);
-    const tags = useSelector(selectTagsItems);
     const isLoading = useSelector(selectIsTweetsLoading);
 
 
@@ -85,7 +83,7 @@ export const Home = (): React.ReactElement => {
                             }}
                             fullWidth
                         />
-                        <Tags classes={classes} items={tags} />
+                        <Tags classes={classes} />
                         <Paper className={classes.rightSideBlock}>
                             <Paper className={classes.rightSideBlockHeader} >
                                 <b>Кого читать</b>

@@ -2,15 +2,17 @@ import React from "react";
 import { Divider, List, ListItem, ListItemText, Typography} from "@material-ui/core";
 import Paper from "@material-ui/core/Paper/Paper";
 import { useHomeStyles } from '../../pages/Home/theme';
-import {TagsState} from "../../store/tags/contracts/state";
+import {useSelector} from "react-redux";
+import {selectTagsItems} from "../../store/tags/selectors";
 
 
 interface TagsProperty {
-    items: TagsState['items'];
     classes: ReturnType<typeof useHomeStyles>;
 }
 
-export const Tags: React.FC<TagsProperty> = ({items, classes}: TagsProperty): React.ReactElement => {
+export const Tags: React.FC<TagsProperty> = ({classes}: TagsProperty): React.ReactElement => {
+    const items = useSelector(selectTagsItems);
+
     return(
         <Paper className={classes.rightSideBlock}>
             <Paper className={classes.rightSideBlockHeader} >
