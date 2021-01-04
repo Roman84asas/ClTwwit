@@ -102,6 +102,10 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     },
     rightSideBlockItem: {
         cursor: 'pointer',
+        '& a': {
+            textDecoration: 'none',
+            color: 'inherit',
+        },
         '& .MuiTypography-body1': {
             fontWeight: 700,
         },

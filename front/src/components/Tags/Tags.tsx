@@ -4,6 +4,7 @@ import Paper from "@material-ui/core/Paper/Paper";
 import { useHomeStyles } from '../../pages/Home/theme';
 import {useSelector} from "react-redux";
 import {selectIsTagsLoaded, selectTagsItems} from "../../store/tags/selectors";
+import {Link} from "react-router-dom";
 
 
 interface TagsProperty {
@@ -25,19 +26,21 @@ export const Tags: React.FC<TagsProperty> = ({classes}: TagsProperty): React.Rea
             <List>
                 {
                     items.map((obj)=>(
-                        <>
-                            <ListItem key={obj._id} className={classes.rightSideBlockItem}>
-                                <ListItemText
-                                    primary={obj.name}
-                                    secondary={
-                                        <Typography component="span" variant="body2">
-                                            Твитов: {obj.count}
-                                        </Typography>
-                                    }
-                                />
-                            </ListItem>
-                            <Divider component='li' />
-                        </>
+                        <React.Fragment key={obj._id}>
+                                <ListItem className={classes.rightSideBlockItem}>
+                                    <Link to={`/home/search?q=${obj.name}`}>
+                                    <ListItemText
+                                        primary={obj.name}
+                                        secondary={
+                                            <Typography component="span" variant="body2">
+                                                Твитов: {obj.count}
+                                            </Typography>
+                                        }
+                                    />
+                                    </Link>
+                                </ListItem>
+                                <Divider component='li' />
+                        </React.Fragment>
                     ))
                 }
             </List>
