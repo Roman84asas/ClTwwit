@@ -1,21 +1,21 @@
 import {call, put, takeLatest} from 'redux-saga/effects'
-import {setTweets, setTweetsLoadingState, TweetsActionsType} from "./actionCreators";
-import {TweetsApi} from "../../../services/api/tweetsApi";
+import {setTags,  setTagsLoadingState, TagsActionsType} from "./actionCreators";
+import {TagsApi} from "../../services/api/tagsApi";
 import {LoadingState} from "./contracts/state";
 
 
 // Our worker Saga: will perform the async increment task
-export function* fetchTweetsRequest() {
+export function* fetchTagsRequest() {
     try {
-        const items = yield call(TweetsApi.fetchTweets);
-        yield put(setTweets(items))
+        const items = yield call(TagsApi.fetchTags);
+        yield put(setTags(items))
     } catch (e) {
-        yield put(setTweetsLoadingState(LoadingState.ERROR));
+        yield put(setTagsLoadingState(LoadingState.ERROR));
     }
 
 }
 
 // Our watcher Saga: spawn a new incrementAsync task on each INCREMENT_ASYNC
-export function* tweetsSaga() {
-    yield takeLatest(TweetsActionsType.FETCH_TWEETS, fetchTweetsRequest)
+export function* tagsSaga() {
+    yield takeLatest(TagsActionsType.FETCH_TAGS, fetchTagsRequest)
 }
