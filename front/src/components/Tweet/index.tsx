@@ -7,9 +7,11 @@ import RepeatIcon from '@material-ui/icons/RepeatOutlined';
 import LikeIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import ShareIcon from '@material-ui/icons/PresentToAllOutlined';
 import { useHomeStyles } from '../../pages/Home/theme';
+import { Link } from "react-router-dom";
 
 
 interface TweetProps {
+    _id: string
     text: string;
     classes: ReturnType<typeof useHomeStyles>;
     user: {
@@ -19,15 +21,16 @@ interface TweetProps {
     };
 }
 
-export const Tweet: React.FC<TweetProps> = ({text, classes, user}: TweetProps): React.ReactElement => {
+export const Tweet: React.FC<TweetProps> = ({_id, text, classes, user}: TweetProps): React.ReactElement => {
     return(
-        <Paper variant="outlined" className={classNames(classes.tweet, classes.tweetsHeader)}>
-            <Avatar
-                className={classes.tweetAvatar}
-                alt={`Аватарка пользователя ${user.fullname}`}
-                src={user.avatar}
-                style={{marginRight: 25}}
-            />
+        <Link to={`/home/tweet/${_id}`}>
+            <Paper variant="outlined" className={classNames(classes.tweet, classes.tweetsHeader)}>
+                <Avatar
+                    className={classes.tweetAvatar}
+                    alt={`Аватарка пользователя ${user.fullname}`}
+                    src={user.avatar}
+                    style={{marginRight: 25}}
+                />
                 <div>
                     <Typography >
                         <b>{user.fullname} </b>
@@ -65,6 +68,7 @@ export const Tweet: React.FC<TweetProps> = ({text, classes, user}: TweetProps): 
                         </div>
                     </div>
                 </div>
-        </Paper>
+            </Paper>
+        </Link>
     )
 };

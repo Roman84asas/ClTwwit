@@ -50,6 +50,9 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         height: '100%',
         borderTop: 0,
         borderBottom: 0,
+        '& a': {
+            textDecoration: 'none',
+        },
     },
     tweetsHeader: {
         borderTop: 0,

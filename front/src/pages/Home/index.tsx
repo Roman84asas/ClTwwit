@@ -54,18 +54,20 @@ export const Home = (): React.ReactElement => {
                                 Главная
                             </Typography>
                         </Paper>
-                        <Paper>
-                            <div  className={classes.addForm}>
-                                <AddTweetForm classes={classes} />
-                            </div>
-                            <div className={classes.addFormBottomLine} />
-                        </Paper>
+                       <Route path="/home/">
+                           <Paper>
+                               <div  className={classes.addForm}>
+                                   <AddTweetForm classes={classes} />
+                               </div>
+                               <div className={classes.addFormBottomLine} />
+                           </Paper>
+                       </Route>
                         <Route path="/home" exact>
                             {isLoading ? (
                                 <div className={classes.tweetsCentred}><CircularProgress color="secondary" /></div>
                             ) : (
                                 tweets.map(tweet => (
-                                    <Tweet key={tweet._id} text={tweet.text} user={tweet.user} classes={classes} />
+                                    <Tweet key={tweet._id} classes={classes} {...tweet}/>
                                 ))
                             )}
                         </Route>
