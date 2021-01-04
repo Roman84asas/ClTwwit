@@ -1,6 +1,5 @@
 import {RootState} from "../../store";
 import {LoadingState, TweetState} from "./contracts/state";
-import {createSelector} from "reselect";
 
 export const selectTweet = (state: RootState): TweetState => state.tweet;
 
