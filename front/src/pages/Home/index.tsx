@@ -33,6 +33,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import {fetchTags} from "../../store/ducks/tags/actionCreators";
 import {Tags} from "../../components/Tags/Tags";
 import {BackButton} from "../../components/BackButton/BackButton";
+import {FullTweet} from "./components/FullTweet";
+import {fetchTweetData} from "../../store/ducks/tweet/actionCreators";
 
 
 
@@ -50,6 +52,7 @@ export const Home = (): React.ReactElement => {
     React.useEffect(() => {
         dispatch(fetchTweets());
         dispatch(fetchTags());
+        //dispatch(fetchTweetData());
     }, [dispatch]);
 
     return (
@@ -79,14 +82,14 @@ export const Home = (): React.ReactElement => {
                                 </Typography>
                             </Route>
                         </Paper>
-                       <Route path={['/home', '/home/search']} exact>
-                           <Paper>
-                               <div  className={classes.addForm}>
-                                   <AddTweetForm classes={classes} />
-                               </div>
-                               <div className={classes.addFormBottomLine} />
-                           </Paper>
-                       </Route>
+                        <Route path={['/home', '/home/search']} exact>
+                            <Paper>
+                                <div  className={classes.addForm}>
+                                    <AddTweetForm classes={classes} />
+                                </div>
+                                <div className={classes.addFormBottomLine} />
+                            </Paper>
+                        </Route>
                         <Route path="/home" exact>
                             {isLoading ? (
                                 <div className={classes.tweetsCentred}><CircularProgress color="secondary" /></div>
@@ -95,6 +98,9 @@ export const Home = (): React.ReactElement => {
                                     <Tweet key={tweet._id} classes={classes} {...tweet}/>
                                 ))
                             )}
+                        </Route>
+                        <Route path="/home/tweet/:id" component={FullTweet} exact>
+
                         </Route>
                     </Paper>
                 </Grid>
