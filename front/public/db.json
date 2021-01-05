@@ -1,6 +1,7 @@
 {
   "tweets": [
     {
+      "id": 1,
       "_id": "5fe4c9156f7713d984174a10",
       "text": "Consectetur fugiat ut dolor aute amet mollit laboris sint reprehenderit ad. Excepteur commodo et mollit sint ad adipisicing dolor ad. Ea Lorem non consequat nisi do et minim id consectetur eiusmod amet. Tempor reprehenderit et ut ad duis ea magna ullamco.",
       "user": {
