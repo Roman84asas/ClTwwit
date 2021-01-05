@@ -21,7 +21,6 @@ export interface SetTweetLoadingStateActionInterface extends Action<TweetActions
     payload: LoadingState;
 }
 
-
 export const setTweetData = (payload: TweetState['data']): SetTweetActionInterface => ({
     type: TweetActionsType.SET_TWEET_DATA,
     payload,
