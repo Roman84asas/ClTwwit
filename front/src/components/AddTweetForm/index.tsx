@@ -29,7 +29,6 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, maxRows}: Ad
         dispatch(fetchAddTweet(text));
         setText('');
     };
-
     return  (
         <div>
             <div className={classes.addFormBody}>
