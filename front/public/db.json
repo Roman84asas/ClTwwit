@@ -90,12 +90,34 @@
         "username": "stokes",
         "avatar": "https://source.unsplash.com/random/100x100?4"
       }
+    },
+    {
+      "_id": "m067dmg4ok",
+      "text": "Проверка Экшенов и Саги на добавление твиттов!",
+      "user": {
+        "fullname": "Renee Petty",
+        "username": "angeline",
+        "avatar": "https://source.unsplash.com/random/100x100?5"
+      },
+      "id": 2
     }
   ],
   "themes": [
-    {"_id": "5fe4c915326f7w7z3d984174a15", "name": "#adoptmetrades", "count": 50},
-    {"_id": "1fe4c9156sf7713dd984174a16", "name": "#CES2021","count": 455},
-    {"_id": "fe4c9bb156f7dgz713d984174a17", "name": "#ArtificialIntelligence","count": 321}
+    {
+      "_id": "5fe4c915326f7w7z3d984174a15",
+      "name": "#adoptmetrades",
+      "count": 50
+    },
+    {
+      "_id": "1fe4c9156sf7713dd984174a16",
+      "name": "#CES2021",
+      "count": 455
+    },
+    {
+      "_id": "fe4c9bb156f7dgz713d984174a17",
+      "name": "#ArtificialIntelligence",
+      "count": 321
+    }
   ],
   "users": [
     {

@@ -3,6 +3,8 @@ import {Avatar, Button, CircularProgress, IconButton, TextareaAutosize} from "@m
 import {useHomeStyles} from "../../pages/Home/theme";
 import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined';
 import ImageOutlinedIcon from '@material-ui/icons/AddPhotoAlternateOutlined';
+import {useDispatch} from "react-redux";
+import {fetchAddTweet} from "../../store/ducks/tweets/actionCreators";
 
 interface AddTweetFormProps {
     classes: ReturnType<typeof useHomeStyles>;
@@ -16,12 +18,15 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, maxRows}: Ad
     const textLimitPercent = Math.round((text.length/280)*100);
     const maxLength = MAX_LENGTH - text.length;
 
+    const dispatch = useDispatch();
+
     const handleChangeTextArea = (e: React.FormEvent<HTMLTextAreaElement>): void => {
         if (e.currentTarget){
             setText(e.currentTarget.value);
         }
     };
     const handleClickAddTweet = (): void => {
+        dispatch(fetchAddTweet(text));
         setText('');
     };
 
