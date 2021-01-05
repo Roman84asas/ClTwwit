@@ -3,8 +3,11 @@ import {Avatar, Button, CircularProgress, IconButton, TextareaAutosize} from "@m
 import {useHomeStyles} from "../../pages/Home/theme";
 import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined';
 import ImageOutlinedIcon from '@material-ui/icons/AddPhotoAlternateOutlined';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {fetchAddTweet} from "../../store/ducks/tweets/actionCreators";
+import {selectAddFormState} from "../../store/ducks/tweets/selectors";
+import {AddFormState} from "../../store/ducks/tweets/contracts/state";
+import Alert from '@material-ui/lab/Alert';
 
 interface AddTweetFormProps {
     classes: ReturnType<typeof useHomeStyles>;
@@ -19,6 +22,8 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, maxRows}: Ad
     const maxLength = MAX_LENGTH - text.length;
 
     const dispatch = useDispatch();
+    const addFormState = useSelector(selectAddFormState);
+
 
     const handleChangeTextArea = (e: React.FormEvent<HTMLTextAreaElement>): void => {
         if (e.currentTarget){
@@ -31,6 +36,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, maxRows}: Ad
     };
     return  (
         <div>
+
             <div className={classes.addFormBody}>
                 <Avatar
                     className={classes.tweetAvatar}
@@ -84,6 +90,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, maxRows}: Ad
                     </Button>
                 </div>
             </div>
+            { addFormState === AddFormState.ERROR && <Alert severity="error">Что-то произошло и твит не прошел!</Alert>}
         </div>
     )
 };
