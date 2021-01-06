@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 
 import {useHomeStyles} from "../theme";
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
@@ -10,6 +10,10 @@ import {Tweet} from "../../../components/Tweet";
 import {fetchTweetData, setTweetData} from "../../../store/ducks/tweet/actionCreators";
 import {selectTweetData} from "../../../store/ducks/tweet/selectors";
 import {selectIsTweetLoading} from "../../../store/ducks/tweet/selectors";
+import Paper from "@material-ui/core/Paper/Paper";
+import classNames from "classnames";
+import {Avatar, IconButton, Typography} from "@material-ui/core";
+import ChatIcon from "@material-ui/core/SvgIcon/SvgIcon";
 
 
 
@@ -35,7 +39,51 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
         return <div className={classes.tweetsCentred}><CircularProgress color="secondary" /></div>;
     }
     if (tweetData) {
-        return<Tweet classes={classes} {...tweetData}/>;
+        return <Paper variant="outlined" className={classNames(classes.tweet, classes.tweetsHeader)}>
+                <Avatar
+                    className={classes.tweetAvatar}
+                    alt={`Аватарка пользователя ${user.fullname}`}
+                    src={user.avatar}
+                    style={{marginRight: 25}}
+                />
+                <div>
+                    <Typography >
+                        <b>{user.fullname} </b>
+                        <span className={classes.tweetUserName}>@{user.username}</span>
+                        <span className={classes.tweetUserName}> · </span>
+                        <span className={classes.tweetUserName}> 1 ч.</span>
+                    </Typography>
+                    <Typography variant="body1" gutterBottom>
+                        {text}
+                    </Typography>
+                    <div className={classes.tweetFooter}>
+                        <div>
+                            <IconButton color="primary">
+                                <ChatIcon style={{ fontSize: 20}}/>
+                            </IconButton>
+                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
+                        </div>
+                        <div>
+                            <IconButton color="primary">
+                                <RepeatIcon style={{ fontSize: 20}}/>
+                            </IconButton>
+                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
+                        </div>
+                        <div>
+                            <IconButton color="primary">
+                                <LikeIcon style={{ fontSize: 20}}/>
+                            </IconButton>
+                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
+                        </div>
+                        <div>
+                            <IconButton color="primary">
+                                <ShareIcon style={{ fontSize: 20}}/>
+                            </IconButton>
+                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
+                        </div>
+                    </div>
+                </div>
+            </Paper>
     }
     return null;
 };
