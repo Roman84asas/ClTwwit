@@ -77,6 +77,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     fullTweetText: {
         fontSize: 24,
         lineHeight: 1.3,
+        wordBreak: 'break-word',
     },
     tweet: {
         cursor: 'pointer',
