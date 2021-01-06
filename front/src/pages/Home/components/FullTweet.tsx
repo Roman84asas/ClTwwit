@@ -1,12 +1,9 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useParams} from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 
 import {useHomeStyles} from "../theme";
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
-
-import {Tweet} from "../../../components/Tweet";
-
 import {fetchTweetData, setTweetData} from "../../../store/ducks/tweet/actionCreators";
 import {selectTweetData} from "../../../store/ducks/tweet/selectors";
 import {selectIsTweetLoading} from "../../../store/ducks/tweet/selectors";
@@ -14,7 +11,9 @@ import Paper from "@material-ui/core/Paper/Paper";
 import classNames from "classnames";
 import {Avatar, IconButton, Typography} from "@material-ui/core";
 import ChatIcon from "@material-ui/core/SvgIcon/SvgIcon";
-
+import RepeatIcon from '@material-ui/icons/RepeatOutlined';
+import LikeIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import ShareIcon from '@material-ui/icons/PresentToAllOutlined';
 
 
 
@@ -39,22 +38,22 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
         return <div className={classes.tweetsCentred}><CircularProgress color="secondary" /></div>;
     }
     if (tweetData) {
-        return <Paper variant="outlined" className={classNames(classes.tweet, classes.tweetsHeader)}>
+        return <Paper variant="outlined" className={classNames(classes.tweetsHeader)}>
                 <Avatar
                     className={classes.tweetAvatar}
-                    alt={`Аватарка пользователя ${user.fullname}`}
-                    src={user.avatar}
+                    alt={`Аватарка пользователя ${tweetData.user.fullname}`}
+                    src={tweetData.user.avatar}
                     style={{marginRight: 25}}
                 />
                 <div>
                     <Typography >
-                        <b>{user.fullname} </b>
-                        <span className={classes.tweetUserName}>@{user.username}</span>
+                        <b>{tweetData.user.fullname} </b>
+                        <span className={classes.tweetUserName}>@{tweetData.user.username}</span>
                         <span className={classes.tweetUserName}> · </span>
                         <span className={classes.tweetUserName}> 1 ч.</span>
                     </Typography>
                     <Typography variant="body1" gutterBottom>
-                        {text}
+                        {tweetData.text}
                     </Typography>
                     <div className={classes.tweetFooter}>
                         <div>
