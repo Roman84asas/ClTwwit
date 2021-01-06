@@ -38,50 +38,52 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
         return <div className={classes.tweetsCentred}><CircularProgress color="secondary" /></div>;
     }
     if (tweetData) {
-        return <Paper variant="outlined" className={classNames(classes.tweetsHeader)}>
-                <Avatar
-                    className={classes.tweetAvatar}
-                    alt={`Аватарка пользователя ${tweetData.user.fullname}`}
-                    src={tweetData.user.avatar}
-                    style={{marginRight: 25}}
-                />
-                <div>
+        return <Paper variant="outlined" className={classes.fullTweet}>
+                <div className={classNames(classes.tweetsHeaderUser)}>
+                    <Avatar
+                        className={classes.tweetAvatar}
+                        alt={`Аватарка пользователя ${tweetData.user.fullname}`}
+                        src={tweetData.user.avatar}
+                        style={{marginRight: 25}}
+                    />
                     <Typography >
                         <b>{tweetData.user.fullname} </b>
-                        <span className={classes.tweetUserName}>@{tweetData.user.username}</span>
-                        <span className={classes.tweetUserName}> · </span>
-                        <span className={classes.tweetUserName}> 1 ч.</span>
+                        <div>
+                            <span className={classes.tweetUserName}>@{tweetData.user.username}</span>
+                            <span className={classes.tweetUserName}> · </span>
+                            <span className={classes.tweetUserName}> 1 ч.</span>
+                        </div>
                     </Typography>
-                    <Typography variant="body1" gutterBottom>
-                        {tweetData.text}
-                    </Typography>
-                    <div className={classes.tweetFooter}>
-                        <div>
-                            <IconButton color="primary">
-                                <ChatIcon style={{ fontSize: 20}}/>
-                            </IconButton>
-                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
-                        </div>
-                        <div>
-                            <IconButton color="primary">
-                                <RepeatIcon style={{ fontSize: 20}}/>
-                            </IconButton>
-                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
-                        </div>
-                        <div>
-                            <IconButton color="primary">
-                                <LikeIcon style={{ fontSize: 20}}/>
-                            </IconButton>
-                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
-                        </div>
-                        <div>
-                            <IconButton color="primary">
-                                <ShareIcon style={{ fontSize: 20}}/>
-                            </IconButton>
-                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
-                        </div>
-                    </div>
                 </div>
+            <Typography className={classes.fullTweetText} gutterBottom>
+                {tweetData.text}
+            </Typography>
+            <div className={classes.tweetFooter}>
+                <div>
+                    <IconButton color="primary">
+                        <ChatIcon style={{ fontSize: 20}}/>
+                    </IconButton>
+                    <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
+                </div>
+                <div>
+                    <IconButton color="primary">
+                        <RepeatIcon style={{ fontSize: 20}}/>
+                    </IconButton>
+                    <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
+                </div>
+                <div>
+                    <IconButton color="primary">
+                        <LikeIcon style={{ fontSize: 20}}/>
+                    </IconButton>
+                    <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
+                </div>
+                <div>
+                    <IconButton color="primary">
+                        <ShareIcon style={{ fontSize: 20}}/>
+                    </IconButton>
+                    <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
+                </div>
+            </div>
             </Paper>
     }
     return null;

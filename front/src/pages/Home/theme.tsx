@@ -59,11 +59,24 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         borderLeft: 0,
         borderRight: 0,
         borderRadius: 0,
+        flex: 1,
         padding: '10px 10px',
         display: 'flex',
         '& h5': {
             fontWeight: 900,
         },
+    },
+    tweetsHeaderUser: {
+        display: 'flex',
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+    fullTweet: {
+        padding: 25,
+    },
+    fullTweetText: {
+        fontSize: 24,
+        lineHeight: 1.3,
     },
     tweet: {
         cursor: 'pointer',
