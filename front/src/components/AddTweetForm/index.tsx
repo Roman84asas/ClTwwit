@@ -9,6 +9,7 @@ import {selectAddFormState} from "../../store/ducks/tweets/selectors";
 import {AddFormState} from "../../store/ducks/tweets/contracts/state";
 import Alert from '@material-ui/lab/Alert';
 
+
 interface AddTweetFormProps {
     classes: ReturnType<typeof useHomeStyles>;
     maxRows?: number;
@@ -86,7 +87,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, maxRows}: Ad
                         disabled={!text || text.length >= MAX_LENGTH}
                         variant="contained"
                         color="primary">
-                        Твитнуть
+                        {addFormState === AddFormState.LOADING ? <CircularProgress size={16} /> : 'Твитнуть'}
                     </Button>
                 </div>
             </div>
