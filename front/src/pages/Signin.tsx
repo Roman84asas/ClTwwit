@@ -12,7 +12,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import SearchIcon from '@material-ui/icons/Search';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import ForumIcon from '@material-ui/icons/Forum';
-import ModalBlock  from "../components/ModalBlock";
+import {ModalBlock}  from "../components/ModalBlock";
 
 
 export const useStyles = makeStyles((theme) => ({
@@ -99,12 +99,15 @@ export const SignIn: React.FC = (): React.ReactElement => {
     const handleClickOpenSignIn = ():void => {
         setOpen('signIn')
     };
+
     const handleClickOpenSignUp = ():void => {
         setOpen('signUp')
     };
+
     const handelCloseModel = (): void => {
         setOpen(undefined);
     };
+
     return (
         <div className={classes.wrapper}>
             <div className={classes.blueSide}>
@@ -132,13 +135,11 @@ export const SignIn: React.FC = (): React.ReactElement => {
             </div>
             <div className={classes.loginSide}>
                 <div className={classes.loginSideWrapper}>
-
                     <TwitterIcon color="primary" className={classes.loginSideTwitterIcon}/>
                     <Typography variant="h4" className={classes.loginSideTitle}>Узнайте, что происходит в мире прямо сейчас.</Typography>
                     <Typography className={classes.loginDescription}>Присоединяйтесь к Тввитеру прямо сейчас!</Typography>
                     <Button variant="contained" color="primary" fullWidth className={classes.formTop} onClick={handleClickOpenSignUp}>Зарегестрироваться</Button>
                     <Button variant="outlined" color="primary" fullWidth onClick={handleClickOpenSignIn}>Войти</Button>
-
                     <ModalBlock title="Войти в Твиттер" visible={open === 'signIn'} onClose={handelCloseModel}>
                         <FormControl component="fieldset" fullWidth>
                             <FormGroup aria-label="position" row>

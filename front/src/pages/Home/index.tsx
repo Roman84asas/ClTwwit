@@ -36,10 +36,6 @@ import {BackButton} from "../../components/BackButton/BackButton";
 import {FullTweet} from "./components/FullTweet";
 
 
-
-
-
-
 export const Home = (): React.ReactElement => {
     const classes = useHomeStyles();
 

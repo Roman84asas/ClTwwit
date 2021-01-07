@@ -7,7 +7,6 @@ export enum TagsActionsType {
     SET_LOADING_STATE = 'tags/SET_LOADING_STATE',
 }
 
-
 export interface SetTagsActionInterface extends Action<TagsActionsType> {
     type: TagsActionsType.SET_TAGS;
     payload: TagsState['items'];
