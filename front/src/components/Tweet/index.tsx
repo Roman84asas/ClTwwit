@@ -9,7 +9,6 @@ import ShareIcon from '@material-ui/icons/PresentToAllOutlined';
 import { useHomeStyles } from '../../pages/Home/theme';
 import { Link } from "react-router-dom";
 
-
 interface TweetProps {
     _id: string
     text: string;

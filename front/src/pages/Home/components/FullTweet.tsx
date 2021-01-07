@@ -16,7 +16,6 @@ import LikeIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import ShareIcon from '@material-ui/icons/PresentToAllOutlined';
 
 
-
 export const FullTweet: React.FC = (): React.ReactElement | null => {
     const classes = useHomeStyles();
     const dispatch = useDispatch();
