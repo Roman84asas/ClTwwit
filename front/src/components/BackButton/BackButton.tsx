@@ -15,6 +15,7 @@ export const BackButton: React.FC<BackButtonProps> = ({classes}: BackButtonProps
     const handleClickButton = () => {
         history.goBack();
     };
+
     return (
         <IconButton onClick={handleClickButton} color='primary' >
             <ArrowBackIcon className={classes.logo}/>

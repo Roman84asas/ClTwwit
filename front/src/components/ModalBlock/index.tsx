@@ -16,7 +16,7 @@ interface ModalBlockProps {
     onClose: () => void;
 }
 
-const ModalBlock: React.FC<ModalBlockProps> = (
+export const ModalBlock: React.FC<ModalBlockProps> = (
     {
         title,
         children,
@@ -26,6 +26,7 @@ const ModalBlock: React.FC<ModalBlockProps> = (
     if (!visible) {
         return null;
     }
+
     return (
         <Dialog onClose={onClose} open={visible} fullWidth aria-label="position">
             <DialogTitle id="form-dialog-title">
@@ -44,4 +45,3 @@ const ModalBlock: React.FC<ModalBlockProps> = (
         </Dialog>
     )
 };
-export default ModalBlock;

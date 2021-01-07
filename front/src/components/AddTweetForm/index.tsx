@@ -25,19 +25,19 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, maxRows}: Ad
     const dispatch = useDispatch();
     const addFormState = useSelector(selectAddFormState);
 
-
     const handleChangeTextArea = (e: React.FormEvent<HTMLTextAreaElement>): void => {
         if (e.currentTarget){
             setText(e.currentTarget.value);
         }
     };
+
     const handleClickAddTweet = (): void => {
         dispatch(fetchAddTweet(text));
         setText('');
     };
+
     return  (
         <div>
-
             <div className={classes.addFormBody}>
                 <Avatar
                     className={classes.tweetAvatar}
