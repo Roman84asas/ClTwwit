@@ -35,7 +35,6 @@ export interface SetAddFormStateActionInterface extends Action<TweetsActionsType
     payload: AddFormState;
 }
 
-
 export const setTweets = (payload: TweetsState['items']): SetTweetsActionInterface => ({
     type: TweetsActionsType.SET_TWEETS,
     payload,

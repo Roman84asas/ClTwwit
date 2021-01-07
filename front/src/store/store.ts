@@ -9,8 +9,6 @@ import {TweetState} from "./ducks/tweet/contracts/state";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-
-
 const sagaMiddleware = createSagaMiddleware();
 
 export interface RootState {

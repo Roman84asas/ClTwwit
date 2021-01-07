@@ -10,7 +10,6 @@ import {TweetsApi} from "../../../services/api/tweetsApi";
 import {AddFormState, LoadingState} from "./contracts/state";
 
 
-// Our worker Saga: will perform the async increment task
 export function* fetchTweetsRequest() {
     try {
         const items = yield call(TweetsApi.fetchTweets);
@@ -36,10 +35,8 @@ export function* fetchAddTweetRequest({payload}: FetchAddTweetActionInterface) {
     } catch (e) {
         yield put(setAddFormState(AddFormState.ERROR));
     }
-
 }
 
-// Our watcher Saga: spawn a new incrementAsync task on each INCREMENT_ASYNC
 export function* tweetsSaga() {
     yield takeLatest(TweetsActionsType.FETCH_TWEETS, fetchTweetsRequest);
     yield takeLatest(TweetsActionsType.FETCH_ADD_TWEET, fetchAddTweetRequest)
