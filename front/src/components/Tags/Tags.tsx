@@ -1,11 +1,13 @@
 import React from "react";
-import { Divider, List, ListItem, ListItemText, Typography} from "@material-ui/core";
-import Paper from "@material-ui/core/Paper/Paper";
-import { useHomeStyles } from '../../pages/Home/theme';
 import {useSelector} from "react-redux";
-import {selectIsTagsLoaded, selectTagsItems} from "../../store/ducks/tags/selectors";
 import {Link} from "react-router-dom";
 
+
+import { useHomeStyles } from '../../pages/Home/theme';
+
+import { Divider, List, ListItem, ListItemText, Typography} from "@material-ui/core";
+import Paper from "@material-ui/core/Paper/Paper";
+import {selectIsTagsLoaded, selectTagsItems} from "../../store/ducks/tags/selectors";
 
 interface TagsProperty {
     classes: ReturnType<typeof useHomeStyles>;
@@ -18,6 +20,7 @@ export const Tags: React.FC<TagsProperty> = ({classes}: TagsProperty): React.Rea
     if (!isLoaded) {
         return null;
     }
+
     return(
         <Paper className={classes.rightSideBlock}>
             <Paper className={classes.rightSideBlockHeader} >

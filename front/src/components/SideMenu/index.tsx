@@ -10,7 +10,7 @@ import ListAltIcon from '@material-ui/icons/ListAlt';
 import PersonIcon from '@material-ui/icons/Person';
 import CreateIcon from '@material-ui/icons/Create';
 import {useHomeStyles} from "../../pages/Home/theme";
-import ModalBlock from "../ModalBlock";
+import {ModalBlock} from "../ModalBlock";
 import {AddTweetForm} from "../AddTweetForm";
 import {Link} from "react-router-dom";
 
@@ -19,7 +19,6 @@ interface SideMenuProps {
 }
 
 export const SideMenu: React.FC<SideMenuProps> = ({classes}: SideMenuProps): React.ReactElement => {
-
     const [visibleAddTweet, setVisibleAddTweet] = React.useState<boolean>(false);
 
     const handleClickOpenAddTweet = () => {

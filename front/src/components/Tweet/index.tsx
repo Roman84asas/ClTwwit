@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import classNames from "classnames";
+import { useHomeStyles } from '../../pages/Home/theme';
+
 import {Avatar, IconButton, Typography} from "@material-ui/core";
 import Paper from "@material-ui/core/Paper/Paper";
 import ChatIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
 import RepeatIcon from '@material-ui/icons/RepeatOutlined';
 import LikeIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import ShareIcon from '@material-ui/icons/PresentToAllOutlined';
-import { useHomeStyles } from '../../pages/Home/theme';
-import { Link } from "react-router-dom";
 
 interface TweetProps {
     _id: string

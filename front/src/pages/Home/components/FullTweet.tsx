@@ -20,9 +20,10 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
     const classes = useHomeStyles();
     const dispatch = useDispatch();
     const tweetData = useSelector(selectTweetData);
-    const params: {id?: string} = useParams();
-    const id = params.id;
     const isLoading = useSelector(selectIsTweetLoading);
+    const params: {id?: string} = useParams();
+
+    const id = params.id;
 
     React.useEffect(() => {
         if (id) {
@@ -36,6 +37,7 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
     if (isLoading) {
         return <div className={classes.tweetsCentred}><CircularProgress color="secondary" /></div>;
     }
+
     if (tweetData) {
         return <Paper variant="outlined" className={classes.fullTweet}>
                 <div className={classNames(classes.tweetsHeaderUser)}>
