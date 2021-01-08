@@ -1,6 +1,7 @@
 import express from "express";
 import { validationResult } from "express-validator";
 import { UserModel } from "../models/UserModel";
+import { generatedHash } from "../utils/generatedhash";
 
 class UserController {
     async index(_: any, res: express.Response): Promise<void> {
@@ -26,12 +27,12 @@ class UserController {
             if (!errors.isEmpty()) {
                 res.status(400).json({status: 'error', message: errors.array()});
             };
-
             const data = {
                 email: req.body.email,
                 fullname: req.body.fullname,
                 username: req.body.username,
                 password: req.body.password,
+                confirmed_hash: generatedHash(process.env.SECRET_KEY || Math.random().toString()),
             }
             const user = await UserModel.create(data);
 

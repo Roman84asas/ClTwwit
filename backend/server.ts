@@ -2,6 +2,8 @@ import express from 'express';
 import { UserCtrl } from './controlers/UserController';
 import { registerValidator } from './validations/rergister';
 
+
+
 const app = express();
 
 app.use(express.json())
