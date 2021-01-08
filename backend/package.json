@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@types/mongoose": "^5.10.3",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-validator": "^6.9.2",
