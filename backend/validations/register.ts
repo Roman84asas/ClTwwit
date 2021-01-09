@@ -30,7 +30,7 @@ export const registerValidator = [
     })
     .withMessage('Пароль не корректен!'),
     
-    body('password', 'Укажите пароль')
+    body('password2', 'Укажите пароль')
     .isString()
     .isLength({
         min: 6,
@@ -43,5 +43,5 @@ export const registerValidator = [
         } else {
             return value
         }
-    }),
-]
+    })
+];

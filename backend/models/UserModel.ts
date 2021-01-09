@@ -26,7 +26,7 @@ const UserSchema = new Schema({
         type: Boolean,
         default: false,
     },
-    confirmed_hash: {
+    confirmHash: {
         required:true,
         type: String,
     },
