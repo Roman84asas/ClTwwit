@@ -7,12 +7,10 @@ class UserController {
     async index(_: any, res: express.Response): Promise<void> {
         try {
             const users = await UserModel.find({}).exec();
-
         res.json({
             status: 'success',
             data: users,
         });
-
         } catch (error) {
             res.json({
                 status: 'error',
@@ -35,7 +33,6 @@ class UserController {
                 confirmed_hash: generatedHash(process.env.SECRET_KEY || Math.random().toString()),
             }
             const user = await UserModel.create(data);
-
             res.json({
                 status: 'success',
                 data: user
@@ -48,6 +45,6 @@ class UserController {
         }
     }
 
-    
+
 };
 export const UserCtrl = new UserController;
