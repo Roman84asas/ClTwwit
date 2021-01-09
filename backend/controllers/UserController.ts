@@ -1,9 +1,10 @@
 import express from "express";
 import { validationResult } from "express-validator";
 import { UserModel } from "../models/UserModel";
-import { generatedHash } from "../utils/generatedhash";
+import { generatedHash } from "../utils/generathash";
 
 class UserController {
+    
     async index(_: any, res: express.Response): Promise<void> {
         try {
             const users = await UserModel.find({}).exec();
