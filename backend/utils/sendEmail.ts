@@ -22,8 +22,6 @@ export const sendEmail = ({ emailFrom, emailTo, subject, html }: SendEmailProps,
     function (error: Error | null, info: SentMessageInfo) {
         if (error) {
             console.log(error);
-        } else {
-            console.log(info);
         }
     }      
     );

@@ -1,11 +1,9 @@
-import dotenv from 'dotenv';
 import express from "express";
 import { validationResult } from "express-validator";
 import { UserModel } from "../models/UserModel";
 import { generatedHash } from "../utils/generathash";
 import { sendEmail } from '../utils/sendEmail';
 
-dotenv.config();
 class UserController {
     
     async index(_: any, res: express.Response): Promise<void> {

@@ -1,12 +1,12 @@
 import dotenv from 'dotenv';
+dotenv.config();
 
 require('./core/db');
-
 import express from 'express';
 import { UserCtrl } from './controllers/UserController';
 import { registerValidator } from './validations/register';
 
-dotenv.config();
+
 
 const app = express();
 
