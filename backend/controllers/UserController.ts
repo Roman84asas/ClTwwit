@@ -47,5 +47,7 @@ class UserController {
             });
         }
     }
+
+    
 };
 export const UserCtrl = new UserController;
