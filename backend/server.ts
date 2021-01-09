@@ -17,6 +17,6 @@ app.post('/users', registerValidator, UserCtrl.create);
 //app.patch('/users', UserCtrl.patch);
 //app.delete('/users', UserCtrl.delete);
 
-app.listen(8000, () => {
+app.listen(process.env.PORT, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:8000`);
 });

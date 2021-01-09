@@ -1,8 +1,12 @@
+import dotenv from 'dotenv';
 import express from "express";
 import { validationResult } from "express-validator";
 import { UserModel } from "../models/UserModel";
 import { generatedHash } from "../utils/generathash";
+import mailer from '../core/mailer';
+import { SentMessageInfo } from "nodemailer";
 
+dotenv.config();
 class UserController {
     
     async index(_: any, res: express.Response): Promise<void> {
@@ -38,6 +42,21 @@ class UserController {
                 status: 'success',
                 data: user
             });
+            mailer.sendMail(
+                {
+                from: "admin@test.com",
+                to: req.body.email,
+                subject: "Подтверждение регистрации",
+                html: `Подтверждение регистрации по адрессу <a href='http://localhost:${process.env.PORT || 8000}/signup/verify?hash=${data.confirmed_hash}'></a>.`,
+            },
+            function (error:Error | null, info: SentMessageInfo) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(info);
+                }
+            }      
+            );
         } catch (error) {
             res.json({
                 status: 'error',
