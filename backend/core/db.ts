@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-mongoose.Promise = Promise;
+mongoose.Promise;
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/twitter', {
     useNewUrlParser: true,
