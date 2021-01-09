@@ -1,6 +1,6 @@
 import express from "express";
 import { validationResult } from "express-validator";
-import { UserModel } from "../models/UserModel";
+import { UserModel, UserModelInterface } from "../models/UserModel";
 import { generatedHash } from "../utils/generathash";
 import { sendEmail } from '../utils/sendEmail';
 
@@ -14,7 +14,7 @@ class UserController {
             data: users,
         });
         } catch (error) {
-            res.json({
+            res.status(500).json({
                 status: 'error',
                 message: JSON.stringify(error),
             });
@@ -28,7 +28,7 @@ class UserController {
                 res.status(400).json({status: 'error', message: errors.array()});
                 return
             };
-            const data = {
+            const data: UserModelInterface = {
                 email: req.body.email,
                 fullname: req.body.fullname,
                 username: req.body.username,
@@ -44,11 +44,11 @@ class UserController {
                 emailFrom: "admin@test.com",
                 emailTo: req.body.email,
                 subject: "Подтверждение регистрации",
-                html: `Подтверждение регистрации по адрессу <a href='http://localhost:${process.env.PORT || 8000}/signup/verify?hash=${data.confirmHash}'></a>.`,
+                html: `Подтверждение регистрации по адрессу <a href='http://localhost:${process.env.PORT || 8000}/verify?hash=${data.confirmHash}'></a>.`,
             },
             (error: Error | null ) => {
                 if (error) {
-                    res.json({
+                    res.status(400).json({
                         status: 'error',
                         message: error,
                     });
@@ -56,13 +56,41 @@ class UserController {
             }
             );            
         } catch (err) {
-            res.json({
+            res.status(500).json({
                 status: 'error',
                 message: JSON.stringify(err),
             });
         }
     }
 
+    async verify(req:express.Request, res: express.Response): Promise<void> {
+        try {
+            const hash = req.query.hash;            
+            if(!hash) {
+                res.status(400).send();
+                return
+            }
+            const user = await UserModel.findOne({confirmHash: String(hash)}).exec();
+            if (!user) {
+                res.status(404).json({
+                    status: 'error',
+                    message: "Пользователь не найден!",
+                });
+            }
+            user.confirmed = true;
+            user.save();
+
+            res.json({
+                status: 'success'
+            });   
+                        
+        } catch (error) {
+            res.status(500).json({
+                status: 'error',
+                message: JSON.stringify(error),
+            });
+        }        
+    }
 
 };
 export const UserCtrl = new UserController;
