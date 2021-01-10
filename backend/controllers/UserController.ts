@@ -5,7 +5,7 @@ import { generatedHash } from "../utils/generathash";
 import { sendEmail } from '../utils/sendEmail';
 
 class UserController {
-    
+    //return all Users
     async index(_: any, res: express.Response): Promise<void> {
         try {
             const users = await UserModel.find({}).exec();
@@ -21,6 +21,7 @@ class UserController {
         }        
     }
 
+    //return method creating User
     async create(req:express.Request, res: express.Response): Promise<void> {
         try {
             const errors = validationResult(req);
@@ -63,6 +64,7 @@ class UserController {
         }
     }
 
+    //return method verify created User
     async verify(req:express.Request, res: express.Response): Promise<void> {
         try {
             const hash = req.query.hash;            
