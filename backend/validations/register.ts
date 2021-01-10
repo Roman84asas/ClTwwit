@@ -5,7 +5,6 @@ export const registerValidator = [
         min: 11,
         max: 40
     }).withMessage('Длина адреса почты не корректная!'),
-
     body('fullname', 'Введите имя')
     .isString()
     .isLength({
@@ -13,7 +12,6 @@ export const registerValidator = [
         max: 40
     })
     .withMessage('Длина имени не корректная!'),
-
     body('username', 'Укажите логин')
     .isString()
     .isLength({
@@ -21,15 +19,13 @@ export const registerValidator = [
         max: 40
     })
     .withMessage('Длина логина не корректная!'),
-
     body('password', 'Укажите пароль')
     .isString()
     .isLength({
         min: 6,
         max: 40
     })
-    .withMessage('Пароль не корректен!'),
-    
+    .withMessage('Пароль не корректен!'),    
     body('password2', 'Укажите пароль')
     .isString()
     .isLength({
