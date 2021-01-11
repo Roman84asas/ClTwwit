@@ -26,18 +26,12 @@ class UserController {
         try {
             const userId = req.params.id;
             if (!userId) {
-                res.status(404).json({
-                    status: 'error',
-                    message: "ID не найден!",
-                });
+                res.status(404).send();
                 return
             }
             const user = await UserModel.findOne({_id: userId}).exec();
             if (!user) {
-                res.status(404).json({
-                    status: 'error',
-                    message: "Пользователь не найден!",
-                });
+                res.status(404).send();
                 return
             }
             res.json({
