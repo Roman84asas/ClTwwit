@@ -1,8 +1,11 @@
 import express from "express";
 import { validationResult } from "express-validator";
+import  mongoose  from "mongoose";
 import { UserModel, UserModelInterface } from "../models/UserModel";
 import { generatedHash } from "../utils/generathash";
 import { sendEmail } from '../utils/sendEmail';
+
+const isValidObjectId = mongoose.Types.ObjectId.isValid;
 
 class UserController {
     //return all Users
@@ -25,15 +28,17 @@ class UserController {
     async show(req:express.Request, res: express.Response): Promise<void> {
         try {
             const userId = req.params.id;
-            if (!userId) {
-                res.status(404).send();
+            if (!isValidObjectId(userId)) {
+                res.status(400).send();
                 return
             }
+
             const user = await UserModel.findOne({_id: userId}).exec();
             if (!user) {
-                res.status(404).send();
+                res.status(400).send();
                 return
             }
+            
             res.json({
                 status: 'success',
                 data: user,
