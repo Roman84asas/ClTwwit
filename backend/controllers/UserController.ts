@@ -38,7 +38,7 @@ class UserController {
                 res.status(400).send();
                 return
             }
-            
+
             res.json({
                 status: 'success',
                 data: user,
@@ -63,7 +63,7 @@ class UserController {
                 email: req.body.email,
                 fullname: req.body.fullname,
                 username: req.body.username,
-                password: req.body.password,
+                password: generatedHash(req.body.password + '8kdF9LEms67Z0Dffq'),
                 confirmHash: generatedHash(process.env.SECRET_KEY || Math.random().toString()),
             }
             const user = await UserModel.create(data);
@@ -108,6 +108,7 @@ class UserController {
                     status: 'error',
                     message: "Пользователь не найден!",
                 });
+                return
             }
             user.confirmed = true;
             user.save();
