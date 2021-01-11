@@ -32,6 +32,7 @@ const UserSchema = new Schema<UserModelDocumentInterface>({
     password: {
         required:true,
         type: String,
+        select: false,
     },
     confirmed: {
         type: Boolean,
@@ -40,6 +41,7 @@ const UserSchema = new Schema<UserModelDocumentInterface>({
     confirmHash: {
         required:true,
         type: String,
+        select: false,
     },
     location: {
         type: String,
