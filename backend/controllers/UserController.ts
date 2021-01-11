@@ -21,6 +21,29 @@ class UserController {
         }        
     }
 
+    //Return User
+    async show(req:express.Request, res: express.Response): Promise<void> {
+        try {
+            const userId = req.params.id;
+            const user = await UserModel.findOne({_id: userId}).exec();
+            if (!user) {
+                res.status(404).json({
+                    status: 'error',
+                    message: "Пользователь не найден!",
+                });
+            }
+            res.json({
+                status: 'success',
+                data: user,
+            });
+        } catch (error) {
+            res.status(500).json({
+                status: 'error',
+                message: JSON.stringify(error),
+            });
+        }        
+    }
+
     //return method creating User
     async create(req:express.Request, res: express.Response): Promise<void> {
         try {
