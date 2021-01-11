@@ -15,6 +15,7 @@ app.use(express.json())
 app.get('/users', UserCtrl.index);
 app.post('/users', registerValidator, UserCtrl.create);
 app.get('/verify', registerValidator, UserCtrl.verify);
+app.get('/user/:id', registerValidator, UserCtrl.show);
 //app.patch('/users', UserCtrl.patch);
 //app.delete('/users', UserCtrl.delete);
 

@@ -25,12 +25,20 @@ class UserController {
     async show(req:express.Request, res: express.Response): Promise<void> {
         try {
             const userId = req.params.id;
+            if (!userId) {
+                res.status(404).json({
+                    status: 'error',
+                    message: "ID не найден!",
+                });
+                return
+            }
             const user = await UserModel.findOne({_id: userId}).exec();
             if (!user) {
                 res.status(404).json({
                     status: 'error',
                     message: "Пользователь не найден!",
                 });
+                return
             }
             res.json({
                 status: 'success',
@@ -39,7 +47,7 @@ class UserController {
         } catch (error) {
             res.status(500).json({
                 status: 'error',
-                message: JSON.stringify(error),
+                user: null
             });
         }        
     }
