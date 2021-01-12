@@ -2,7 +2,7 @@ import express from "express";
 import { validationResult } from "express-validator";
 import  mongoose  from "mongoose";
 import jwt from 'jsonwebtoken';
-import { UserModel, UserModelInterface } from "../models/UserModel";
+import { UserModel, UserModelDocumentInterface, UserModelInterface } from "../models/UserModel";
 import { generatedHash } from "../utils/generathash";
 import { sendEmail } from '../utils/sendEmail';
 
@@ -128,14 +128,15 @@ class UserController {
 
     async afterLogin(req:express.Request, res: express.Response): Promise<void> {
         try {         
+            const user = req.user ? (req.user as UserModelDocumentInterface).toJSON() : undefined;
             res.json({
                 status: 'success',
                 data: {
-                    ...req.user,
-                    token: jwt.sign({user: req.user}, '8kdF9LEms67Z0Dffq')
+                    ...user,
+                    token: jwt.sign({user: user}, '8kdF9LEms67Z0Dffq')
                 }
             })  
-                                  
+
         } catch (error) {
             res.status(500).json({
                 status: 'error',
