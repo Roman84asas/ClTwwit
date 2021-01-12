@@ -133,7 +133,7 @@ class UserController {
                 status: 'success',
                 data: {
                     ...user,
-                    token: jwt.sign({user: user}, '8kdF9LEms67Z0Dffq')
+                    token: jwt.sign({user: user}, '8kdF9LEms67Z0Dffq', {expiresIn: '30d'})
                 }
             })  
 
