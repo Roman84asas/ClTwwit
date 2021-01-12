@@ -24,7 +24,7 @@ passport.use(
     ),
 );
 
-passport.serializeUser<any, any>((user: UserModelInterface, done) => {
+passport.serializeUser<UserModelInterface, any>((user: UserModelInterface, done) => {
     // @ts-ignore
     done(null, user._id);
 });
