@@ -126,15 +126,16 @@ class UserController {
         }        
     }
 
-    async afterLogin(req:any, res: express.Response): Promise<void> {
+    async afterLogin(req:express.Request, res: express.Response): Promise<void> {
         try {         
             res.json({
                 status: 'success',
                 data: {
                     ...req.user,
-                    token: jwt.sign(req.user, '8kdF9LEms67Z0Dffq')
+                    token: jwt.sign({user: req.user}, '8kdF9LEms67Z0Dffq')
                 }
-            })                        
+            })  
+                                  
         } catch (error) {
             res.status(500).json({
                 status: 'error',
