@@ -22,9 +22,7 @@ app.get('/api/user/:id', registerValidator, UserCtrl.show);
 //Group Auth 
 app.post('/api/auth/register', registerValidator, UserCtrl.create);
 app.get('/api/auth/verify', registerValidator, UserCtrl.verify);
-app.post('/api/auth/login', passport.authenticate('local'),  function (req, res) {
-  res.json(req.user)
-});
+app.post('/api/auth/login', passport.authenticate('local'), UserCtrl.afterLogin);
 
 
 app.listen(process.env.PORT, () => {
