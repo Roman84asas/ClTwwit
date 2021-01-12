@@ -144,6 +144,22 @@ class UserController {
             });
         }        
     }
+    
+    async getUserInfo(req:express.Request, res: express.Response): Promise<void> {
+        try {         
+            const user = req.user ? (req.user as UserModelDocumentInterface).toJSON() : undefined;
+            res.json({
+                status: 'success',
+                data: user,
+            })  
+
+        } catch (error) {
+            res.status(500).json({
+                status: 'error',
+                message: JSON.stringify(error),
+            });
+        }        
+    }
 };
 
 export const UserCtrl = new UserController;

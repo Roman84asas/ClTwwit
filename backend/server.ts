@@ -15,7 +15,8 @@ app.use(passport.initialize());
 
 //Group User 
 app.get('/api/users', UserCtrl.index);
-app.get('/api/user/:id', registerValidator, UserCtrl.show);
+app.get('/api/user/me', passport.authenticate('jwt'), UserCtrl.getUserInfo);
+app.get('/api/user/:id', UserCtrl.show);
 //app.patch('/api/users', UserCtrl.patch);
 //app.delete('/api/users', UserCtrl.delete);
 

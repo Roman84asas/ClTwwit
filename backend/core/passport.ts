@@ -31,12 +31,25 @@ passport.use(
             secretOrKey: '8kdF9LEms67Z0Dffq',
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
         },
-        async (payload, done)=> {
+        /*async (token, done)=> {
             try {
-                return done(null, payload.user)
+                return done(null, token.user)
             } catch (error) {
                 done(error)
             }
+        }*/
+        (jwt_payload, done) => {
+            UserModel.findOne({id: jwt_payload.sub}, (err: Error, user: UserModelInterface) => {
+                if (err) {
+                    return done(err, false);
+                }
+                if (user) {
+                    return done(null, user);
+                } else {
+                    return done(null, false);
+                    // or you could create a new account
+                }
+            });
         }
     )
 )
