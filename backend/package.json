@@ -27,6 +27,7 @@
     "@types/jsonwebtoken": "^8.5.0",
     "@types/nodemailer": "^6.4.0",
     "@types/passport": "^1.0.5",
+    "@types/passport-jwt": "^3.0.3",
     "@types/passport-local": "^1.0.33"
   },
   "scripts": {

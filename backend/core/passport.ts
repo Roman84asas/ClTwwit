@@ -1,5 +1,6 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy} from 'passport-local';
+import { Strategy as JWTstrategy, ExtractJwt} from 'passport-jwt';
 import { UserModel, UserModelInterface } from '../models/UserModel';
 import { generatedHash } from '../utils/generathash';
 
@@ -23,6 +24,22 @@ passport.use(
         },
     ),
 );
+
+passport.use(
+    new JWTstrategy(
+        {
+            secretOrKey: '8kdF9LEms67Z0Dffq',
+            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
+        },
+        async (payload, done)=> {
+            try {
+                return done(null, payload.user)
+            } catch (error) {
+                done(error)
+            }
+        }
+    )
+)
 
 passport.serializeUser<UserModelInterface, any>((user: UserModelInterface, done) => {
     // @ts-ignore
