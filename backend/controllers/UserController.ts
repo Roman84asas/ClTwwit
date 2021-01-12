@@ -76,7 +76,7 @@ class UserController {
                 emailFrom: "admin@test.com",
                 emailTo: req.body.email,
                 subject: "Подтверждение регистрации",
-                html: `Подтверждение регистрации по адрессу <a href='http://localhost:${process.env.PORT || 8000}/verify?hash=${data.confirmHash}'></a>.`,
+                html: `Подтверждение регистрации по адрессу <a href='http://localhost:${process.env.PORT || 8000}/api/auth/verify?hash=${data.confirmHash}'></a>.`,
             },
             (error: Error | null ) => {
                 if (error) {
@@ -133,7 +133,7 @@ class UserController {
                 status: 'success',
                 data: {
                     ...user,
-                    token: jwt.sign({user: user}, '8kdF9LEms67Z0Dffq', {expiresIn: '30d'})
+                    token: jwt.sign({user: user}, '8kdF9LEms67Z0Dffq', {expiresIn: '30 days'})
                 }
             })  
 
@@ -144,7 +144,7 @@ class UserController {
             });
         }        
     }
-    
+
     async getUserInfo(req:express.Request, res: express.Response): Promise<void> {
         try {         
             const user = req.user ? (req.user as UserModelDocumentInterface).toJSON() : undefined;
