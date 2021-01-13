@@ -76,7 +76,7 @@ class UserController {
                 emailFrom: "admin@test.com",
                 emailTo: req.body.email,
                 subject: "Подтверждение регистрации",
-                html: `Подтверждение регистрации по адрессу <a href='http://localhost:${process.env.PORT || 8000}/api/auth/verify?hash=${data.confirmHash}'></a>.`,
+                html: `Подтверждение регистрации <a href='http://localhost:${process.env.PORT || 8000}/api/auth/verify?hash=${data.confirmHash}'>по этому адрессу</a>.`,
             },
             (error: Error | null ) => {
                 if (error) {
