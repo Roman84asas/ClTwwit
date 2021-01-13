@@ -13,7 +13,7 @@ const TweetSchema = new Schema<TweetModelDocumentInterface>({
         required:true,
         type: String,
     },
-    fullname: {
+    user: {
         required:true,
         type: String,
     },
