@@ -2,10 +2,11 @@ import express from "express";
 import { validationResult } from "express-validator";
 import  mongoose  from "mongoose";
 
+
 const isValidObjectId = mongoose.Types.ObjectId.isValid;
 
 class TweetsController {
-    //return all Users
+    //return all Tweets
     async index(_: any, res: express.Response): Promise<void> {
         try {
            
@@ -17,7 +18,7 @@ class TweetsController {
         }        
     }
 
-    //Return User
+    //Return Tweet
     async show(req:express.Request, res: express.Response): Promise<void> {
         try {
             
@@ -29,7 +30,7 @@ class TweetsController {
         }        
     }
 
-    //return method creating User
+    //return method creating Tweet
     async create(req:express.Request, res: express.Response): Promise<void> {
         try {
                       
@@ -41,6 +42,7 @@ class TweetsController {
         }
     }
 
+    //Delete Tweet
     async delete(req:express.Request, res: express.Response): Promise<void> {
         try {
                       
@@ -53,4 +55,4 @@ class TweetsController {
     }
 };
 
-export const UserCtrl = new UserController;
+export const TweetsCtrl = new TweetsController;
