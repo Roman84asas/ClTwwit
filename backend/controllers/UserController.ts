@@ -126,6 +126,7 @@ class UserController {
         }        
     }
 
+    //Function create Token
     async afterLogin(req:express.Request, res: express.Response): Promise<void> {
         try {         
             const user = req.user ? (req.user as UserModelDocumentInterface).toJSON() : undefined;
@@ -145,6 +146,7 @@ class UserController {
         }        
     }
 
+    //Return Token`s User
     async getUserInfo(req:express.Request, res: express.Response): Promise<void> {
         try {         
             const user = req.user ? (req.user as UserModelDocumentInterface).toJSON() : undefined;
