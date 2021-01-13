@@ -1,12 +1,17 @@
 import express from "express";
 import { validationResult } from "express-validator";
+import { TweetModel } from "../models/TweetModel";
 import { isValidObjectId } from "../utils/isValidObjectId";
 
 class TweetsController {
     //return all Tweets
     async index(_: any, res: express.Response): Promise<void> {
         try {
-           
+            const tweets = await TweetModel.find({}).exec();
+            res.json({
+                status: 'success',
+                data: tweets,
+            }); 
         } catch (error) {
             res.status(500).json({
                 status: 'error',
