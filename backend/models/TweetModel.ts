@@ -12,6 +12,7 @@ const TweetSchema = new Schema<TweetModelDocumentInterface>({
     text: {
         required:true,
         type: String,
+        maxlength: 280,
     },
     user: {
         required:true,
