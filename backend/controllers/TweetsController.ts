@@ -1,9 +1,6 @@
 import express from "express";
 import { validationResult } from "express-validator";
-import  mongoose  from "mongoose";
-
-
-const isValidObjectId = mongoose.Types.ObjectId.isValid;
+import { isValidObjectId } from "../utils/isValidObjectId";
 
 class TweetsController {
     //return all Tweets

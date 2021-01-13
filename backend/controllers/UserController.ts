@@ -1,12 +1,10 @@
 import express from "express";
 import { validationResult } from "express-validator";
-import  mongoose  from "mongoose";
 import jwt from 'jsonwebtoken';
 import { UserModel, UserModelDocumentInterface, UserModelInterface } from "../models/UserModel";
 import { generatedHash } from "../utils/generathash";
+import { isValidObjectId } from "../utils/isValidObjectId";
 import { sendEmail } from '../utils/sendEmail';
-
-const isValidObjectId = mongoose.Types.ObjectId.isValid;
 
 class UserController {
     //return all Users
