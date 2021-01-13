@@ -1,6 +1,7 @@
 import express from "express";
 import { validationResult } from "express-validator";
-import { TweetModel } from "../models/TweetModel";
+import { TweetModel, TweetModelInterface } from "../models/TweetModel";
+import { UserModelInterface } from "../models/UserModel";
 import { isValidObjectId } from "../utils/isValidObjectId";
 
 class TweetsController {
@@ -50,7 +51,28 @@ class TweetsController {
     //return method creating Tweet
     async create(req:express.Request, res: express.Response): Promise<void> {
         try {
-                      
+            const user = req.user as UserModelInterface;
+            if (!user) {
+                res.status(404).send();
+                return
+            }
+
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                res.status(400).json({status: 'error', message: errors.array()});
+                return
+            };
+
+            const data: TweetModelInterface = {
+                text: req.body.text,
+                user: user._id,
+            }
+            
+            const tweet = await TweetModel.create(data);
+            res.json({
+                status: 'success',
+                data: tweet
+            });
         } catch (err) {
             res.status(500).json({
                 status: 'error',
