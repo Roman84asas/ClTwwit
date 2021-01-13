@@ -15,7 +15,7 @@ const TweetSchema = new Schema<TweetModelDocumentInterface>({
     },
     user: {
         required:true,
-        type: String,
+        type: Schema.Types.ObjectId,
     },
 });
 
