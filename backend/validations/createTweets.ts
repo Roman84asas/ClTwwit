@@ -1,5 +1,5 @@
 import {body} from 'express-validator';
 
-export const tweetsValidations = [
+export const createTweetValidations = [
     
 ];
