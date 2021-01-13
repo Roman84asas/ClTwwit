@@ -34,7 +34,7 @@ class UserController {
 
             const user = await UserModel.findOne({_id: userId}).exec();
             if (!user) {
-                res.status(400).send();
+                res.status(404).send();
                 return
             }
 
