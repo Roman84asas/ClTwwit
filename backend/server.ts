@@ -25,7 +25,7 @@ app.get('/api/user/:id', UserCtrl.show);
 //Group Auth 
 app.post('/api/auth/register', registerValidator, UserCtrl.create);
 app.get('/api/auth/verify', registerValidator, UserCtrl.verify);
-app.post('/api/auth/login', passport.authenticate('local'), UserCtrl.afterLogin);
+app.post('/api/auth/login', passport.authenticate('local'), createTweetValidations, UserCtrl.afterLogin);
 
 //Group Tweet
 app.get('/api/tweets', TweetsCtrl.index);
