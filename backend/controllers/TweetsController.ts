@@ -83,6 +83,7 @@ class TweetsController {
     //Delete Tweet
     async delete(req:express.Request, res: express.Response): Promise<void> {
         try {
+            const user = req.user as UserModelInterface;
             const tweetId = req.params.id;
             if (!isValidObjectId(tweetId)) {
                 res.status(400).send();
@@ -93,7 +94,8 @@ class TweetsController {
             if (!tweet) {
                 res.status(404).send();
                 return
-            } else {
+            } 
+            if(tweet) {
                 tweet.remove();
                 res.json({
                     status: 'success',
