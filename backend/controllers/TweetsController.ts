@@ -35,7 +35,6 @@ class TweetsController {
                 res.status(404).send();
                 return
             }
-
             res.json({
                 status: 'success',
                 data: tweet,
@@ -62,7 +61,6 @@ class TweetsController {
                 res.status(400).json({status: 'error', message: errors.array()});
                 return
             };
-
             const data: TweetModelInterface = {
                 text: req.body.text,
                 user: user._id,
