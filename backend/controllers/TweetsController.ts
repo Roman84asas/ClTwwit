@@ -55,22 +55,23 @@ class TweetsController {
                 res.status(404).send();
                 return
             }
-
-            const errors = validationResult(req);
-            if (!errors.isEmpty()) {
-                res.status(400).json({status: 'error', message: errors.array()});
-                return
-            };
-            const data: TweetModelInterface = {
-                text: req.body.text,
-                user: user._id,
-            }
-            
-            const tweet = await TweetModel.create(data);
-            res.json({
-                status: 'success',
-                data: tweet
-            });
+            if (user?._id) {
+                const errors = validationResult(req);
+                if (!errors.isEmpty()) {
+                    res.status(400).json({status: 'error', message: errors.array()});
+                    return
+                };
+                const data: TweetModelInterface = {
+                    text: req.body.text,
+                    user: user._id,
+                }
+                
+                const tweet = await TweetModel.create(data);
+                res.json({
+                    status: 'success',
+                    data: tweet
+                });
+            }            
         } catch (err) {
             res.status(500).json({
                 status: 'error',
