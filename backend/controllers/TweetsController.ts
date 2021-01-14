@@ -90,11 +90,16 @@ class TweetsController {
                 return
             }
 
-            const tweet = await TweetModel.deleteOne({_id: tweetId});
-            if (tweet) {
-                res.send();
+            const tweet = await TweetModel.findOne({_id: tweetId});
+            if (!tweet) {
+                res.status(404).send();
                 return
-            } 
+            } else {
+                tweet.remove();
+                res.json({
+                    status: 'success',
+                });
+            }                 
         } catch (err) {
             res.status(500).json({
                 status: 'error',
