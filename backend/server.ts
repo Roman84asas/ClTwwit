@@ -25,11 +25,13 @@ app.get('/api/user/:id', UserCtrl.show);
 //Group Auth 
 app.post('/api/auth/register', registerValidator, UserCtrl.create);
 app.get('/api/auth/verify', registerValidator, UserCtrl.verify);
+
 app.post('/api/auth/login', passport.authenticate('local'), createTweetValidations, UserCtrl.afterLogin);
 
 //Group Tweet
 app.get('/api/tweets', TweetsCtrl.index);
 app.get('/api/tweets/:id', TweetsCtrl.show);
+app.delete('/api/tweets/:id', passport.authenticate('jwt'), TweetsCtrl.delete);
 app.post('/api/tweets', passport.authenticate('jwt'), createTweetValidations, TweetsCtrl.create);
 
 app.listen(process.env.PORT, () => {
