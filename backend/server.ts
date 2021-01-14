@@ -30,7 +30,7 @@ app.post('/api/auth/login', passport.authenticate('local'), UserCtrl.afterLogin)
 //Group Tweet
 app.get('/api/tweets', TweetsCtrl.index);
 app.get('/api/tweets/:id', TweetsCtrl.show);
-app.post('/api/tweets', createTweetValidations, TweetsCtrl.create);
+app.post('/api/tweets', passport.authenticate('jwt'), createTweetValidations, TweetsCtrl.create);
 
 app.listen(process.env.PORT, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:8000`);
