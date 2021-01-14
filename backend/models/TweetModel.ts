@@ -4,7 +4,7 @@ import { UserModelDocumentInterface } from "./UserModel";
 export interface TweetModelInterface {
     _id?: string,
     text: string,
-    user: UserModelDocumentInterface,
+    user: UserModelDocumentInterface | string,
 }
 
 export type TweetModelDocumentInterface = TweetModelInterface & Document;

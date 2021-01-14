@@ -97,7 +97,7 @@ class TweetsController {
                 return
             } 
             if(tweet) {
-                if(user._id === tweet.user._id) {
+                if( tweet.user._id === user._id ) {
                     tweet.remove();
                     res.json({
                         status: 'success',
