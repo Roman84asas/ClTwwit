@@ -102,6 +102,42 @@ class TweetsController {
                     res.json({
                         status: 'success',
                     });
+                } else {
+                    res.status(403).send();
+                }
+            }                 
+        } catch (err) {
+            res.status(500).json({
+                status: 'error',
+                message: JSON.stringify(err),
+            });
+        }
+    }
+
+    //Update Tweet
+    async update(req:express.Request, res: express.Response): Promise<void> {
+        try {
+            const user = req.user as UserModelInterface;
+            const tweetId = req.params.id;
+
+            if (!isValidObjectId(tweetId)) {
+                res.status(400).send();
+                return
+            }
+
+            const tweet = await TweetModel.findOne({_id: tweetId});
+            if (!tweet) {
+                res.status(404).send();
+                return
+            } 
+            if(tweet) {
+                if( String(tweet.user._id) === String(user._id) ) {
+                    tweet.text = req.body.text;
+                    res.json({
+                        status: 'success',
+                    });
+                } else {
+                    res.status(403).send();
                 }
             }                 
         } catch (err) {
