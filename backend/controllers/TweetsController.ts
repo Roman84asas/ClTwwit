@@ -133,6 +133,7 @@ class TweetsController {
             if(tweet) {
                 if( String(tweet.user._id) === String(user._id) ) {
                     tweet.text = req.body.text;
+                    tweet.save();
                     res.json({
                         status: 'success',
                     });
