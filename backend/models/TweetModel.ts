@@ -19,7 +19,10 @@ const TweetSchema = new Schema<TweetModelDocumentInterface>({
         required:true,
         ref: 'User',
         type: Schema.Types.ObjectId,
-    },
+    }
+}, 
+{
+    timestamps: true
 });
 
 export const TweetModel = model<TweetModelDocumentInterface>('Tweet', TweetSchema);
