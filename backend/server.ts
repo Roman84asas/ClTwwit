@@ -8,6 +8,7 @@ import { registerValidator } from './validations/register';
 import {passport} from './core/passport';
 import { TweetsCtrl } from './controllers/TweetsController';
 import { createTweetValidations } from './validations/createTweets';
+import { updateTweet } from './validations/updateTweet';
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.post('/api/auth/login', passport.authenticate('local'), createTweetValidatio
 app.get('/api/tweets', TweetsCtrl.index);
 app.get('/api/tweets/:id', TweetsCtrl.show);
 app.delete('/api/tweets/:id', passport.authenticate('jwt'), TweetsCtrl.delete);
+app.patch('/api/tweets/:id', passport.authenticate('jwt'), updateTweet, TweetsCtrl.update);
 app.post('/api/tweets', passport.authenticate('jwt'), createTweetValidations, TweetsCtrl.create);
 
 app.listen(process.env.PORT, () => {
