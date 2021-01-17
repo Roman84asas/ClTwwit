@@ -6,8 +6,8 @@ import {FetchTweetActionInterface, setTweetData, setTweetLoadingState, TweetActi
 
 export function* fetchTweetRequest({payload: tweetId}: FetchTweetActionInterface) {
     try {
-        const data: Tweet[] = yield call(TweetsApi.fetchTweetData, tweetId);
-        yield put(setTweetData(data[0]))
+        const data: Tweet= yield call(TweetsApi.fetchTweetData, tweetId);
+        yield put(setTweetData(data))
     } catch (e) {
         yield put(setTweetLoadingState(LoadingState.ERROR));
     }
