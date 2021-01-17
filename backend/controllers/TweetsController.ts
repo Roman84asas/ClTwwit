@@ -60,11 +60,11 @@ class TweetsController {
                 if (!errors.isEmpty()) {
                     res.status(400).json({status: 'error', message: errors.array()});
                     return
-                };
+                }
                 const data: TweetModelInterface = {
                     text: req.body.text,
                     user: user._id,
-                }
+                };
                 
                 const tweet = await TweetModel.create(data);
                 res.json({
@@ -148,6 +148,6 @@ class TweetsController {
             });
         }
     }
-};
+}
 
 export const TweetsCtrl = new TweetsController;
