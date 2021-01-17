@@ -69,7 +69,7 @@ class TweetsController {
                 const tweet = await TweetModel.create(data);
                 res.json({
                     status: 'success',
-                    data: tweet
+                    data: await tweet.populate('user').execPopulate()
                 });
             }            
         } catch (err) {
