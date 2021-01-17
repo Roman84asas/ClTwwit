@@ -14,6 +14,7 @@ import ChatIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import RepeatIcon from '@material-ui/icons/RepeatOutlined';
 import LikeIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import ShareIcon from '@material-ui/icons/PresentToAllOutlined';
+import {formatDate} from "../../../utils/formateDate";
 
 
 export const FullTweet: React.FC = (): React.ReactElement | null => {
@@ -52,7 +53,7 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
                         <div>
                             <span className={classes.tweetUserName}>@{tweetData.user.username}</span>
                             <span className={classes.tweetUserName}> · </span>
-                            <span className={classes.tweetUserName}> 1 ч.</span>
+                            <span className={classes.tweetUserName}> {formatDate(new Date(tweetData.createdAt))}</span>
                         </div>
                     </Typography>
                 </div>

@@ -9,11 +9,13 @@ import ChatIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
 import RepeatIcon from '@material-ui/icons/RepeatOutlined';
 import LikeIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import ShareIcon from '@material-ui/icons/PresentToAllOutlined';
+import {formatDate} from "../../utils/formateDate";
 
 interface TweetProps {
     _id: string
     text: string;
     classes: ReturnType<typeof useHomeStyles>;
+    createdAt: string;
     user: {
         fullname: string;
         username: string;
@@ -21,7 +23,7 @@ interface TweetProps {
     };
 }
 
-export const Tweet: React.FC<TweetProps> = ({_id, text, classes, user}: TweetProps): React.ReactElement => {
+export const Tweet: React.FC<TweetProps> = ({_id, text, classes, user, createdAt}: TweetProps): React.ReactElement => {
     return(
         <Link to={`/home/tweet/${_id}`}>
             <Paper variant="outlined" className={classNames(classes.tweet, classes.tweetsHeader)}>
@@ -36,7 +38,7 @@ export const Tweet: React.FC<TweetProps> = ({_id, text, classes, user}: TweetPro
                         <b>{user.fullname} </b>
                         <span className={classes.tweetUserName}>@{user.username}</span>
                         <span className={classes.tweetUserName}> · </span>
-                        <span className={classes.tweetUserName}> 1 ч.</span>
+                        <span className={classes.tweetUserName}>{formatDate(new Date(createdAt))}</span>
                     </Typography>
                     <Typography variant="body1" gutterBottom>
                         {text}
