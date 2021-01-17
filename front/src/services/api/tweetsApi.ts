@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axios } from "../../core/axois";
 import {Tweet, TweetsState} from "../../store/ducks/tweets/contracts/state";
 
 interface Response<T> {
