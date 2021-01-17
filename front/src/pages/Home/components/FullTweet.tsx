@@ -14,8 +14,9 @@ import ChatIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import RepeatIcon from '@material-ui/icons/RepeatOutlined';
 import LikeIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import ShareIcon from '@material-ui/icons/PresentToAllOutlined';
-import {formatDate} from "../../../utils/formateDate";
 
+import format from 'date-fns/format'
+import ruLang from "date-fns/locale/ru";
 
 export const FullTweet: React.FC = (): React.ReactElement | null => {
     const classes = useHomeStyles();
@@ -59,9 +60,8 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
                 {tweetData.text}
             </Typography>
             <div>
-                <span className={classes.tweetUserName}> {formatDate(new Date(tweetData.createdAt))}</span>
-                <span className={classes.tweetUserName}> · </span>
-                <span className={classes.tweetUserName}> {formatDate(new Date(tweetData.createdAt))}</span>
+                <span className={classes.tweetUserName}> {format(new Date(tweetData.createdAt), 'H:mm', {locale: ruLang})} · </span>
+                <span className={classes.tweetUserName}> {format(new Date(tweetData.createdAt), 'dd MMM yyyy г.', {locale: ruLang})}</span>
             </div>
             <div className={classes.tweetFooter}>
                 <div>
