@@ -8,7 +8,7 @@ class TweetsController {
     //return all Tweets
     async index(_: any, res: express.Response): Promise<void> {
         try {
-            const tweets = await TweetModel.find({}).populate('user').exec();
+            const tweets = await TweetModel.find({}).populate('user').sort({'created': '-1'}).exec();
             res.json({
                 status: 'success',
                 data: tweets,
