@@ -13,7 +13,7 @@ import { updateTweet } from './validations/updateTweet';
 const app = express();
 
 //App middleware
-app.use(express.json())
+app.use(express.json());
 app.use(passport.initialize());
 
 //Group User 
