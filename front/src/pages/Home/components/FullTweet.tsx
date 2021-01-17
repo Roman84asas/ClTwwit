@@ -52,14 +52,17 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
                         <b>{tweetData.user.fullname} </b>
                         <div>
                             <span className={classes.tweetUserName}>@{tweetData.user.username}</span>
-                            <span className={classes.tweetUserName}> · </span>
-                            <span className={classes.tweetUserName}> {formatDate(new Date(tweetData.createdAt))}</span>
                         </div>
                     </Typography>
                 </div>
             <Typography className={classes.fullTweetText} gutterBottom>
                 {tweetData.text}
             </Typography>
+            <div>
+                <span className={classes.tweetUserName}> {formatDate(new Date(tweetData.createdAt))}</span>
+                <span className={classes.tweetUserName}> · </span>
+                <span className={classes.tweetUserName}> {formatDate(new Date(tweetData.createdAt))}</span>
+            </div>
             <div className={classes.tweetFooter}>
                 <div>
                     <IconButton color="primary">
