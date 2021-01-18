@@ -1,12 +1,14 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import { useParams} from 'react-router-dom';
+import format from 'date-fns/format'
+import ruLang from "date-fns/locale/ru";
 
 import {useHomeStyles} from "../theme";
-import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 import {fetchTweetData, setTweetData} from "../../../store/ducks/tweet/actionCreators";
 import {selectTweetData} from "../../../store/ducks/tweet/selectors";
 import {selectIsTweetLoading} from "../../../store/ducks/tweet/selectors";
+
 import Paper from "@material-ui/core/Paper/Paper";
 import classNames from "classnames";
 import {Avatar, IconButton, Typography} from "@material-ui/core";
@@ -14,9 +16,8 @@ import ChatIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import RepeatIcon from '@material-ui/icons/RepeatOutlined';
 import LikeIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import ShareIcon from '@material-ui/icons/PresentToAllOutlined';
+import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 
-import format from 'date-fns/format'
-import ruLang from "date-fns/locale/ru";
 
 export const FullTweet: React.FC = (): React.ReactElement | null => {
     const classes = useHomeStyles();
