@@ -25,7 +25,6 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
     const tweetData = useSelector(selectTweetData);
     const isLoading = useSelector(selectIsTweetLoading);
     const params: {id?: string} = useParams();
-
     const id = params.id;
 
     React.useEffect(() => {
