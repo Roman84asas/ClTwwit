@@ -13,6 +13,11 @@ interface LoginModalProps {
     onClose: ()=>void;
 }
 
+interface LoginFormProps {
+    email: string;
+    password: string;
+}
+
 const LoginModalSchema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup.string().min(6).required().matches(
@@ -22,16 +27,18 @@ const LoginModalSchema = yup.object().shape({
 
 export const LoginModal: React.FC<LoginModalProps> = ({open, onClose }: LoginModalProps): React.ReactElement => {
     const classes = useStyles();
-    const { register, handleSubmit, errors } = useForm({
+    const { register, handleSubmit, errors } = useForm<LoginFormProps>({
         resolver: yupResolver(LoginModalSchema)
     });
-    const onSubmit = (data: any) => console.log(data);
+    const onSubmit = (data: LoginFormProps) => console.log(data);
 
     return(
         <ModalBlock title="Войти в Твиттер" visible={open} onClose={onClose}>
+            <form onSubmit={handleSubmit(onSubmit)}>
             <FormControl component="fieldset" fullWidth>
                 <FormGroup aria-label="position" row>
                     <TextField
+                        name="email"
                         className={classes.loginSideField}
                         autoFocus
                         id="email"
@@ -40,11 +47,14 @@ export const LoginModal: React.FC<LoginModalProps> = ({open, onClose }: LoginMod
                             shrink: true,
                         }}
                         type="email"
+                        inputRef={register}
                         variant="filled"
                         fullWidth
                     >
                     </TextField>
+                    <p>{errors.email && "Емаил должен иметь минимум 6 символом и обязателен"}</p>
                     <TextField
+                        name="password"
                         className={classes.loginSideField}
                         autoFocus
                         id="password"
@@ -54,14 +64,17 @@ export const LoginModal: React.FC<LoginModalProps> = ({open, onClose }: LoginMod
                         label="Ваш пароль"
                         type="password"
                         variant="filled"
+                        inputRef={register}
                         fullWidth
                     >
                     </TextField>
+                    <p>{errors.password && "Паспорт должен иметь минимум 6 символом"}</p>
                 </FormGroup>
             </FormControl>
-            <Button onClick={onClose} color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
+            <Button type="submit" color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
                 Войти
             </Button>
+            </form>
         </ModalBlock>
     )
 };
