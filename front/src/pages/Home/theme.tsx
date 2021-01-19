@@ -81,6 +81,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     },
     tweet: {
         cursor: 'pointer',
+        position: 'relative',
         '&:hover': {
             backgroundColor: 'rgb(245,248,250)',
         },
@@ -193,5 +194,10 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     },
     tweetContent: {
         flex: 1,
-    }
+    },
+    tweetPopupMenu: {
+        position: 'absolute',
+        right: 0,
+        top: 0,
+    },
 }));

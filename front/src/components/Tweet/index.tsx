@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import classNames from "classnames";
 import { useHomeStyles } from '../../pages/Home/theme';
 import {formatDate} from "../../utils/formateDate";
@@ -38,8 +38,8 @@ export const Tweet: React.FC<TweetProps> = ({_id, text, classes, user, createdAt
     };
 
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-        event.stopPropagation();
         event.preventDefault();
+        event.stopPropagation();
         setAnchorEl(event.currentTarget);
     };
 
@@ -63,8 +63,7 @@ export const Tweet: React.FC<TweetProps> = ({_id, text, classes, user, createdAt
                             <span className={classes.tweetUserName}> · </span>
                             <span className={classes.tweetUserName}>{formatDate(new Date(createdAt))}</span>
                         </div>
-
-                        <div>
+                        <div className={classes.tweetPopupMenu}>
                             <IconButton
                                 aria-label="more"
                                 aria-controls="long-menu"
