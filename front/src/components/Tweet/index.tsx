@@ -10,6 +10,9 @@ import ChatIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
 import RepeatIcon from '@material-ui/icons/RepeatOutlined';
 import LikeIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import ShareIcon from '@material-ui/icons/PresentToAllOutlined';
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 
 interface TweetProps {
@@ -25,7 +28,17 @@ interface TweetProps {
 }
 
 export const Tweet: React.FC<TweetProps> = ({_id, text, classes, user, createdAt}: TweetProps): React.ReactElement => {
-    return(
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
+
+    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+    return (
         <Link to={`/home/tweet/${_id}`}>
             <Paper variant="outlined" className={classNames(classes.tweet, classes.tweetsHeader)}>
                 <Avatar
@@ -35,11 +48,38 @@ export const Tweet: React.FC<TweetProps> = ({_id, text, classes, user, createdAt
                     style={{marginRight: 25}}
                 />
                 <div>
-                    <Typography >
-                        <b>{user.fullname} </b>
-                        <span className={classes.tweetUserName}>@{user.username}</span>
-                        <span className={classes.tweetUserName}> · </span>
-                        <span className={classes.tweetUserName}>{formatDate(new Date(createdAt))}</span>
+                    <Typography>
+                        <div>
+                            <b>{user.fullname} </b>
+                            <span className={classes.tweetUserName}>@{user.username}</span>
+                            <span className={classes.tweetUserName}> · </span>
+                            <span className={classes.tweetUserName}>{formatDate(new Date(createdAt))}</span>
+                        </div>
+                        <div>
+                            <IconButton
+                                aria-label="more"
+                                aria-controls="long-menu"
+                                aria-haspopup="true"
+                                onClick={handleClick}
+                            >
+                                <MoreVertIcon/>
+                            </IconButton>
+                            <Menu
+                                id="long-menu"
+                                anchorEl={anchorEl}
+                                keepMounted
+                                open={open}
+                                onClose={handleClose}
+                            >
+                                <MenuItem onClick={handleClose}>
+                                    Редактировать твит
+                                </MenuItem>
+                                <MenuItem onClick={handleClose}>
+                                    Удалить твит
+                                </MenuItem>
+                            </Menu>
+                        </div>
+
                     </Typography>
                     <Typography variant="body1" gutterBottom>
                         {text}
@@ -47,31 +87,31 @@ export const Tweet: React.FC<TweetProps> = ({_id, text, classes, user, createdAt
                     <div className={classes.tweetFooter}>
                         <div>
                             <IconButton color="primary">
-                                <ChatIcon style={{ fontSize: 20}}/>
+                                <ChatIcon style={{fontSize: 20}}/>
                             </IconButton>
-                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
+                            <span style={{fontSize: 14, marginLeft: 5}}>1</span>
                         </div>
                         <div>
                             <IconButton color="primary">
-                                <RepeatIcon style={{ fontSize: 20}}/>
+                                <RepeatIcon style={{fontSize: 20}}/>
                             </IconButton>
-                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
+                            <span style={{fontSize: 14, marginLeft: 5}}>1</span>
                         </div>
                         <div>
                             <IconButton color="primary">
-                                <LikeIcon style={{ fontSize: 20}}/>
+                                <LikeIcon style={{fontSize: 20}}/>
                             </IconButton>
-                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
+                            <span style={{fontSize: 14, marginLeft: 5}}>1</span>
                         </div>
                         <div>
                             <IconButton color="primary">
-                                <ShareIcon style={{ fontSize: 20}}/>
+                                <ShareIcon style={{fontSize: 20}}/>
                             </IconButton>
-                            <span style={{ fontSize: 14, marginLeft: 5 }}>1</span>
+                            <span style={{fontSize: 14, marginLeft: 5}}>1</span>
                         </div>
                     </div>
                 </div>
             </Paper>
         </Link>
-    )
+    );
 };
