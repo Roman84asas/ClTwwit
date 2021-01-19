@@ -79,7 +79,6 @@ export const Tweet: React.FC<TweetProps> = ({_id, text, classes, user, createdAt
                                 </MenuItem>
                             </Menu>
                         </div>
-
                     </Typography>
                     <Typography variant="body1" gutterBottom>
                         {text}
