@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import classNames from "classnames";
 import { useHomeStyles } from '../../pages/Home/theme';
 import {formatDate} from "../../utils/formateDate";
@@ -30,9 +30,16 @@ interface TweetProps {
 export const Tweet: React.FC<TweetProps> = ({_id, text, classes, user, createdAt}: TweetProps): React.ReactElement => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
+    const history = useHistory();
+
+    const handelClickTweet = (event: React.MouseEvent<HTMLAnchorElement>): void => {
+        event.preventDefault();
+        history.push(`/home/tweet/${_id}`);
+    };
 
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         event.stopPropagation();
+        event.preventDefault();
         setAnchorEl(event.currentTarget);
     };
 
@@ -40,7 +47,7 @@ export const Tweet: React.FC<TweetProps> = ({_id, text, classes, user, createdAt
         setAnchorEl(null);
     };
     return (
-        <Link to={`/home/tweet/${_id}`}>
+        <a href={`/home/tweet/${_id}`} onClick={handelClickTweet}>
             <Paper variant="outlined" className={classNames(classes.tweet, classes.tweetsHeader)}>
                 <Avatar
                     className={classes.tweetAvatar}
@@ -113,6 +120,6 @@ export const Tweet: React.FC<TweetProps> = ({_id, text, classes, user, createdAt
                     </div>
                 </div>
             </Paper>
-        </Link>
+        </a>
     );
 };
