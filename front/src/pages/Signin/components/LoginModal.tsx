@@ -13,7 +13,7 @@ interface LoginModalProps {
     onClose: ()=>void;
 }
 
-interface LoginFormProps {
+export interface LoginFormProps {
     email: string;
     password: string;
 }
