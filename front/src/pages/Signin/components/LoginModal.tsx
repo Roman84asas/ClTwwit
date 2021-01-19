@@ -1,7 +1,7 @@
 import React from "react";
 import {ModalBlock} from "../../../components/ModalBlock";
 import {useStyles} from "../index";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
@@ -27,7 +27,7 @@ const LoginModalSchema = yup.object().shape({
 
 export const LoginModal: React.FC<LoginModalProps> = ({open, onClose }: LoginModalProps): React.ReactElement => {
     const classes = useStyles();
-    const { register, handleSubmit, errors } = useForm<LoginFormProps>({
+    const {control, register, handleSubmit, errors } = useForm<LoginFormProps>({
         resolver: yupResolver(LoginModalSchema)
     });
     const onSubmit = (data: LoginFormProps) => console.log(data);
@@ -37,11 +37,14 @@ export const LoginModal: React.FC<LoginModalProps> = ({open, onClose }: LoginMod
             <form onSubmit={handleSubmit(onSubmit)}>
             <FormControl component="fieldset" fullWidth>
                 <FormGroup aria-label="position" row>
-                    <TextField
+                    <Controller
+                        as={TextField}
+                        control={control}
                         name="email"
                         className={classes.loginSideField}
                         autoFocus
                         id="email"
+                        defaultValue=""
                         label="Email пользователя"
                         InputLabelProps={{
                             shrink: true,
@@ -50,10 +53,13 @@ export const LoginModal: React.FC<LoginModalProps> = ({open, onClose }: LoginMod
                         inputRef={register}
                         variant="filled"
                         fullWidth
-                    >
-                    </TextField>
-                    <p>{errors.email && "Емаил должен иметь минимум 6 символом и обязателен"}</p>
-                    <TextField
+                        error={!!errors.email}
+                        helperText={errors.email && "Емаил должен иметь минимум 6 символом и обязателен"}
+                    />
+                    <Controller
+                        as={TextField}
+                        control={control}
+                        defaultValue=""
                         name="password"
                         className={classes.loginSideField}
                         autoFocus
@@ -66,9 +72,9 @@ export const LoginModal: React.FC<LoginModalProps> = ({open, onClose }: LoginMod
                         variant="filled"
                         inputRef={register}
                         fullWidth
-                    >
-                    </TextField>
-                    <p>{errors.password && "Паспорт должен иметь минимум 6 символом"}</p>
+                        error={!!errors.password}
+                        helperText={errors.password && "Паспорт должен иметь минимум 6 символом"}
+                    />
                 </FormGroup>
             </FormControl>
             <Button type="submit" color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
