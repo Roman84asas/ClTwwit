@@ -32,6 +32,7 @@ export const Tweet: React.FC<TweetProps> = ({_id, text, classes, user, createdAt
     const open = Boolean(anchorEl);
 
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+        event.stopPropagation();
         setAnchorEl(event.currentTarget);
     };
 
