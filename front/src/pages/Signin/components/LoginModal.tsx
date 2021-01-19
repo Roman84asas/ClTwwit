@@ -13,13 +13,19 @@ interface LoginModalProps {
     onClose: ()=>void;
 }
 
-const schema = yup.object().shape({
-    firstName: yup.string().required(),
-    age: yup.number().positive().integer().required(),
+const LoginModalSchema = yup.object().shape({
+    email: yup.string().email().required(),
+    password: yup.string().min(6).required().matches(
+        /^[a-zA-Z0-9]*$/
+    ),
 });
 
 export const LoginModal: React.FC<LoginModalProps> = ({open, onClose }: LoginModalProps): React.ReactElement => {
     const classes = useStyles();
+    const { register, handleSubmit, errors } = useForm({
+        resolver: yupResolver(LoginModalSchema)
+    });
+    const onSubmit = (data: any) => console.log(data);
 
     return(
         <ModalBlock title="Войти в Твиттер" visible={open} onClose={onClose}>
