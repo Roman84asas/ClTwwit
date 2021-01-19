@@ -1,12 +1,22 @@
 import React from "react";
-import {Button, FormControl, FormGroup, TextField} from "@material-ui/core";
 import {ModalBlock} from "../../../components/ModalBlock";
 import {useStyles} from "../index";
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
+import {Button, FormControl, FormGroup, TextField} from "@material-ui/core";
+
 
 interface LoginModalProps {
     open: boolean;
     onClose: ()=>void;
 }
+
+const schema = yup.object().shape({
+    firstName: yup.string().required(),
+    age: yup.number().positive().integer().required(),
+});
 
 export const LoginModal: React.FC<LoginModalProps> = ({open, onClose }: LoginModalProps): React.ReactElement => {
     const classes = useStyles();
