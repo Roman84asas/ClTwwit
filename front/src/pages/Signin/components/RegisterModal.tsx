@@ -4,14 +4,15 @@ import {ModalBlock} from "../../../components/ModalBlock";
 import {useStyles} from "../index";
 
 interface RegisterModalProps {
-    open: string | undefined;
-    handelCloseModel: ()=>void;
-    classes: ReturnType<typeof useStyles>;
+    open: boolean;
+    onClose: ()=>void;
 }
 
-export const RegisterModal: React.FC<RegisterModalProps> = ({open, handelCloseModel, classes}: RegisterModalProps): React.ReactElement => {
+export const RegisterModal: React.FC<RegisterModalProps> = ({open, onClose}: RegisterModalProps): React.ReactElement => {
+    const classes = useStyles();
+
     return(
-        <ModalBlock title="Создайте учетную запись" visible={open === 'signUp'} onClose={handelCloseModel}>
+        <ModalBlock title="Создайте учетную запись" visible={open} onClose={onClose}>
             <FormControl component="fieldset" fullWidth>
                 <FormGroup aria-label="position" row>
                     <TextField
@@ -55,7 +56,7 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({open, handelCloseMo
                     </TextField>
                 </FormGroup>
             </FormControl>
-            <Button onClick={handelCloseModel} color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
+            <Button onClick={onClose} color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
                 Зарегестрироваться
             </Button>
         </ModalBlock>

@@ -138,8 +138,8 @@ export const SignIn: React.FC = (): React.ReactElement => {
                     <Typography className={classes.loginDescription}>Присоединяйтесь к Тввитеру прямо сейчас!</Typography>
                     <Button variant="contained" color="primary" fullWidth className={classes.formTop} onClick={handleClickOpenSignUp}>Зарегестрироваться</Button>
                     <Button variant="outlined" color="primary" fullWidth onClick={handleClickOpenSignIn}>Войти</Button>
-                    <LoginModal open={open} classes={classes} handelCloseModel={handelCloseModel} />
-                    <RegisterModal open={open} classes={classes} handelCloseModel={handelCloseModel} />
+                    <LoginModal open={open === 'signIn'}  onClose={handelCloseModel} />
+                    <RegisterModal open={open === 'signUp'}  onClose={handelCloseModel} />
                 </div>
             </div>
         </div>

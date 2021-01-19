@@ -4,14 +4,15 @@ import {ModalBlock} from "../../../components/ModalBlock";
 import {useStyles} from "../index";
 
 interface LoginModalProps {
-    open: string | undefined;
-    handelCloseModel: ()=>void;
-    classes: ReturnType<typeof useStyles>;
+    open: boolean;
+    onClose: ()=>void;
 }
 
-export const LoginModal: React.FC<LoginModalProps> = ({open, handelCloseModel, classes}: LoginModalProps): React.ReactElement => {
+export const LoginModal: React.FC<LoginModalProps> = ({open, onClose }: LoginModalProps): React.ReactElement => {
+    const classes = useStyles();
+
     return(
-        <ModalBlock title="Войти в Твиттер" visible={open === 'signIn'} onClose={handelCloseModel}>
+        <ModalBlock title="Войти в Твиттер" visible={open} onClose={onClose}>
             <FormControl component="fieldset" fullWidth>
                 <FormGroup aria-label="position" row>
                     <TextField
@@ -42,7 +43,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({open, handelCloseModel, c
                     </TextField>
                 </FormGroup>
             </FormControl>
-            <Button onClick={handelCloseModel} color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
+            <Button onClick={onClose} color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
                 Войти
             </Button>
         </ModalBlock>
