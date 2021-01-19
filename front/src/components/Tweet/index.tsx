@@ -47,7 +47,7 @@ export const Tweet: React.FC<TweetProps> = ({_id, text, classes, user, createdAt
                     src={user.avatar}
                     style={{marginRight: 25}}
                 />
-                <div>
+                <div className={classes.tweetContent}>
                     <Typography className={classes.tweetHeader}>
                         <div>
                             <b>{user.fullname} </b>

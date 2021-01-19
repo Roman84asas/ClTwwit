@@ -190,5 +190,8 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     tweetsCentred: {
         textAlign: 'center',
         marginTop: 50,
+    },
+    tweetContent: {
+        flex: 1,
     }
 }));
