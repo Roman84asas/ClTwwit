@@ -177,6 +177,11 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         display: 'flex',
         alignItems: 'center',
     },
+    tweetHeader: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    },
     tweetFooter: {
         display: 'flex',
         justifyContent: 'space-between',
