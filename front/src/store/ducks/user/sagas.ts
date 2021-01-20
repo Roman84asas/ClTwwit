@@ -1,21 +1,19 @@
 import {call, put, takeLatest} from 'redux-saga/effects'
-import {FetchSignInDataActionInterface, UserActionsType} from "./actionCreators";
+import {FetchSignInDataActionInterface, setUserData, setUserDataLoadingState, UserActionsType} from "./actionCreators";
 import {AuthApi} from "../../../services/api/authApi";
-import {setTweets} from "../tweets/actionCreators";
 import {LoadingState} from "./contracts/state";
-import {selectUserStatus} from "./selectors";
 
 
 export function* fetchSignInRequest({payload}: FetchSignInDataActionInterface) {
     try {
-        const items = yield call(AuthApi.signIn, payload);
-        yield put(setTweets(items))
+        const data = yield call(AuthApi.signIn, payload);
+        yield put(setUserData(data))
     } catch (e) {
-        yield put(selectUserStatus(LoadingState.ERROR));
+        yield put(setUserDataLoadingState(LoadingState.ERROR));
     }
 
 }
 
-export function* tweetsSaga() {
-    yield takeLatest(UserActionsType.FETCH_TWEETS, fetchSignInRequest);
+export function* userSaga() {
+    yield takeLatest(UserActionsType.FETCH_SIGN_IN, fetchSignInRequest);
 }
