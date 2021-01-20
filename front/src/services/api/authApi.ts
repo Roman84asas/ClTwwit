@@ -9,6 +9,6 @@ interface Response {
 export const AuthApi = {
     async signIn(postData: LoginFormProps): Promise<Response> {
         const { data } = await axios.post('/api/auth/login', postData);
-        return data.data;
+        return data;
     },
 };

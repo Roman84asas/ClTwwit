@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
 import {Button, FormControl, FormGroup, TextField} from "@material-ui/core";
+import {AuthApi} from "../../../services/api/authApi";
 
 
 interface LoginModalProps {
@@ -30,7 +31,15 @@ export const LoginModal: React.FC<LoginModalProps> = ({open, onClose }: LoginMod
     const {control, register, handleSubmit, errors } = useForm<LoginFormProps>({
         resolver: yupResolver(LoginModalSchema)
     });
-    const onSubmit = (data: LoginFormProps) => console.log(data);
+    const onSubmit = async (data: LoginFormProps) => {
+        try {
+            const userData = await AuthApi.signIn(data);
+        } catch (e) {
+
+        }
+    };
+
+
 
     return(
         <ModalBlock title="Войти в Твиттер" visible={open} onClose={onClose}>
