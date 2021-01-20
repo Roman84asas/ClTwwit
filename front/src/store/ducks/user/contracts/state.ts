@@ -1,3 +1,9 @@
+export enum LoadingState {
+    LOADED = 'LOADED',
+    LOADING = 'LOADING',
+    ERROR = 'ERROR',
+    NEVER = 'NEVER',
+}
 export interface User {
     _id?: string;
     email: string;
@@ -12,5 +18,6 @@ export interface User {
 }
 
 export interface UserState {
-    data: User
+    data: User;
+    loading: LoadingState;
 }
