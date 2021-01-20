@@ -4,6 +4,7 @@ import {Action} from "redux";
 
 export enum UserActionsType {
     SET_USER_DATA = 'user/SET_USER_DATA',
+    FETCH_SIGN_IN = 'user/FETCH_SIGN_IN',
     SET_LOADING_STATE = 'user/SET_LOADING_STATE',
 }
 
@@ -11,6 +12,10 @@ export enum UserActionsType {
 export interface SetUserDataActionInterface extends Action<UserActionsType> {
     type: UserActionsType.SET_USER_DATA;
     payload: User | undefined;
+}
+export interface FetchSignInDataActionInterface extends Action<UserActionsType> {
+    type: UserActionsType.FETCH_SIGN_IN;
+    payload: User;
 }
 export interface SetUserLoadingStateActionInterface extends Action<UserActionsType> {
     type: UserActionsType.SET_LOADING_STATE;
@@ -26,4 +31,4 @@ export const setUserDataLoadingState = (payload: UserState['status']): SetUserLo
     payload,
 });
 
-export type UserActions = SetUserDataActionInterface | SetUserLoadingStateActionInterface;
+export type UserActions = SetUserDataActionInterface | SetUserLoadingStateActionInterface | FetchSignInDataActionInterface;
