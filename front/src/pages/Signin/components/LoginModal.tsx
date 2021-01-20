@@ -4,9 +4,11 @@ import {useStyles} from "../index";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import {Notification} from '../../../components/Notification/Notification'
 
 import {Button, FormControl, FormGroup, TextField} from "@material-ui/core";
 import {AuthApi} from "../../../services/api/authApi";
+import {Color} from "@material-ui/lab/Alert";
 
 
 interface LoginModalProps {
@@ -15,12 +17,12 @@ interface LoginModalProps {
 }
 
 export interface LoginFormProps {
-    email: string;
+    username: string;
     password: string;
 }
 
 const LoginModalSchema = yup.object().shape({
-    email: yup.string().email().required(),
+    username: yup.string().email().required(),
     password: yup.string().min(6).required().matches(
         /^[a-zA-Z0-9]*$/
     ),
@@ -31,65 +33,72 @@ export const LoginModal: React.FC<LoginModalProps> = ({open, onClose }: LoginMod
     const {control, register, handleSubmit, errors } = useForm<LoginFormProps>({
         resolver: yupResolver(LoginModalSchema)
     });
-    const onSubmit = async (data: LoginFormProps) => {
+    const onSubmit = async (openNotification: (text: string, type: Color)=>void,data: LoginFormProps) =>{
+
+        console.log(data);
         try {
             const userData = await AuthApi.signIn(data);
         } catch (e) {
-
+            openNotification('еверный логин или пароль', 'error');
         }
     };
 
 
 
-    return(
-        <ModalBlock title="Войти в Твиттер" visible={open} onClose={onClose}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-            <FormControl component="fieldset" fullWidth>
-                <FormGroup aria-label="position" row>
-                    <Controller
-                        as={TextField}
-                        control={control}
-                        name="email"
-                        className={classes.loginSideField}
-                        autoFocus
-                        id="email"
-                        defaultValue=""
-                        label="Email пользователя"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        type="email"
-                        inputRef={register}
-                        variant="filled"
-                        fullWidth
-                        error={!!errors.email}
-                        helperText={errors.email && "Емаил должен иметь минимум 6 символом и обязателен"}
-                    />
-                    <Controller
-                        as={TextField}
-                        control={control}
-                        defaultValue=""
-                        name="password"
-                        className={classes.loginSideField}
-                        autoFocus
-                        id="password"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        label="Ваш пароль"
-                        type="password"
-                        variant="filled"
-                        inputRef={register}
-                        fullWidth
-                        error={!!errors.password}
-                        helperText={errors.password && "Паспорт должен иметь минимум 6 символом"}
-                    />
-                </FormGroup>
-            </FormControl>
-            <Button type="submit" color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
-                Войти
-            </Button>
-            </form>
-        </ModalBlock>
+    return(<Notification>
+            {
+                openNotification => (
+                    <ModalBlock title="Войти в Твиттер" visible={open} onClose={onClose}>
+                        <form onSubmit={handleSubmit(onSubmit.bind(null, openNotification))}>
+                            <FormControl component="fieldset" fullWidth>
+                                <FormGroup aria-label="position" row>
+                                    <Controller
+                                        as={TextField}
+                                        control={control}
+                                        name="username"
+                                        className={classes.loginSideField}
+                                        autoFocus
+                                        id="username"
+                                        defaultValue=""
+                                        label="Email пользователя"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        type="email"
+                                        inputRef={register}
+                                        variant="filled"
+                                        fullWidth
+                                        error={!!errors.username}
+                                        helperText={errors.username && "Емаил должен иметь минимум 6 символом и обязателен"}
+                                    />
+                                    <Controller
+                                        as={TextField}
+                                        control={control}
+                                        defaultValue=""
+                                        name="password"
+                                        className={classes.loginSideField}
+                                        autoFocus
+                                        id="password"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        label="Ваш пароль"
+                                        type="password"
+                                        variant="filled"
+                                        inputRef={register}
+                                        fullWidth
+                                        error={!!errors.password}
+                                        helperText={errors.password && "Паспорт должен иметь минимум 6 символом"}
+                                    />
+                                </FormGroup>
+                            </FormControl>
+                            <Button type="submit" color="primary" variant="contained" fullWidth style={{marginBottom: 20}} >
+                                Войти
+                            </Button>
+                        </form>
+                    </ModalBlock>
+                )
+            }
+    </Notification>
     )
 };

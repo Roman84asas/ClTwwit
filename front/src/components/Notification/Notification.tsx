@@ -1,18 +1,21 @@
 import React from 'react';
-import {Alert} from "@material-ui/lab";
+import Alert, {Color} from "@material-ui/lab/Alert";
 import {Snackbar} from "@material-ui/core";
 
 interface NotificationProps {
-    children: (callback: (text: string) => void) => React.ReactElement;
+    children: (callback: (text: string, type: Color) => void) => React.ReactElement;
 }
 
 
 export const Notification: React.FC<NotificationProps> = ({children}: NotificationProps): React.ReactElement => {
     const [open, setOpen] = React.useState(false);
-    const [notificationText, setNotificationText] = React.useState<string>('');
+    const [notificationObj, setNotificationObj] = React.useState<{text: string, type: Color}>();
 
-    const openNotification = (text: string) => {
-        setNotificationText(text);
+    const openNotification = (text: string, type: Color) => {
+        setNotificationObj({
+            text,
+            type
+        });
         setOpen(true);
     };
 
@@ -20,8 +23,8 @@ export const Notification: React.FC<NotificationProps> = ({children}: Notificati
         <>
             {children(openNotification)}
             <Snackbar open={open} autoHideDuration={6000} onClose={()=> setOpen(false)}>
-                <Alert onClose={()=> setOpen(false)} severity="success">
-                    {notificationText}
+                <Alert onClose={()=> setOpen(false)} severity={notificationObj?.type}>
+                    {notificationObj?.text}
                 </Alert>
             </Snackbar>
         </>
