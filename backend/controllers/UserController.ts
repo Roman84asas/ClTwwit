@@ -57,14 +57,14 @@ class UserController {
             if (!errors.isEmpty()) {
                 res.status(400).json({status: 'error', message: errors.array()});
                 return
-            };
+            }
             const data: UserModelInterface = {
                 email: req.body.email,
                 fullname: req.body.fullname,
                 username: req.body.username,
                 password: generatedHash(req.body.password + '8kdF9LEms67Z0Dffq'),
                 confirmHash: generatedHash(process.env.SECRET_KEY || Math.random().toString()),
-            }
+            };
             const user = await UserModel.create(data);
             res.json({
                 status: 'success',
@@ -160,6 +160,6 @@ class UserController {
             });
         }        
     }
-};
+}
 
 export const UserCtrl = new UserController;

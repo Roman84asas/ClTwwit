@@ -11,4 +11,8 @@ export const AuthApi = {
         const { data } = await axios.post('/api/auth/login', postData);
         return data;
     },
+    async getMe(): Promise<Response> {
+        const { data } = await axios.get('/api/user/me');
+        return data;
+    },
 };
