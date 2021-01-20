@@ -3,6 +3,7 @@ export enum LoadingState {
     LOADING = 'LOADING',
     ERROR = 'ERROR',
     NEVER = 'NEVER',
+    SUCCESS = 'SUCCESS'
 }
 export interface User {
     _id?: string;

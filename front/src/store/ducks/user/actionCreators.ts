@@ -1,5 +1,6 @@
 import {LoadingState, User, UserState} from "./contracts/state";
 import {Action} from "redux";
+import {LoginFormProps} from "../../../pages/Signin/components/LoginModal";
 
 
 export enum UserActionsType {
@@ -15,7 +16,7 @@ export interface SetUserDataActionInterface extends Action<UserActionsType> {
 }
 export interface FetchSignInDataActionInterface extends Action<UserActionsType> {
     type: UserActionsType.FETCH_SIGN_IN;
-    payload: User;
+    payload: LoginFormProps;
 }
 export interface SetUserLoadingStateActionInterface extends Action<UserActionsType> {
     type: UserActionsType.SET_LOADING_STATE;
@@ -24,6 +25,10 @@ export interface SetUserLoadingStateActionInterface extends Action<UserActionsTy
 
 export const setUserData = (payload: UserState['data']): SetUserDataActionInterface => ({
     type: UserActionsType.SET_USER_DATA,
+    payload,
+});
+export const fetchSignIn = (payload: LoginFormProps): FetchSignInDataActionInterface => ({
+    type: UserActionsType.FETCH_SIGN_IN,
     payload,
 });
 export const setUserDataLoadingState = (payload: UserState['status']): SetUserLoadingStateActionInterface => ({
