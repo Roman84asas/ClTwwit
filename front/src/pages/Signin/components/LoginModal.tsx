@@ -48,7 +48,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({open, onClose }: LoginMod
     React.useEffect(()=> {
         if (loadingStatus === LoadingState.SUCCESS){
             openNotificationRef.current('Авторизация прошла успешно', 'success');
-        } else {
+        } else if (loadingStatus === LoadingState.ERROR) {
             openNotificationRef.current('Неверный логин или пароль', 'error');
         }
     }, [loadingStatus]);
