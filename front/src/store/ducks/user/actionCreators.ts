@@ -10,7 +10,7 @@ export enum UserActionsType {
 
 export interface SetUserDataActionInterface extends Action<UserActionsType> {
     type: UserActionsType.SET_USER_DATA;
-    payload: User;
+    payload: User | undefined;
 }
 export interface SetUserLoadingStateActionInterface extends Action<UserActionsType> {
     type: UserActionsType.SET_LOADING_STATE;
@@ -21,7 +21,7 @@ export const setUserData = (payload: UserState['data']): SetUserDataActionInterf
     type: UserActionsType.SET_USER_DATA,
     payload,
 });
-export const setUserDataLoadingState = (payload: LoadingState): SetUserLoadingStateActionInterface => ({
+export const setUserDataLoadingState = (payload: UserState['status']): SetUserLoadingStateActionInterface => ({
     type: UserActionsType.SET_LOADING_STATE,
     payload,
 });

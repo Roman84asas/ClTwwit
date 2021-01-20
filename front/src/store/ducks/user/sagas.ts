@@ -1,11 +1,4 @@
 import {call, put, takeLatest} from 'redux-saga/effects'
-import {
-    addTweet,
-    FetchAddTweetActionInterface, setAddFormState,
-    setTweets,
-    setTweetsLoadingState,
-    TweetsActionsType
-} from "./actionCreators";
 import {TweetsApi} from "../../../services/api/tweetsApi";
 import {AddFormState, LoadingState} from "./contracts/state";
 
