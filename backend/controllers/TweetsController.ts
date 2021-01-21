@@ -149,5 +149,4 @@ class TweetsController {
         }
     }
 }
-
 export const TweetsCtrl = new TweetsController;
