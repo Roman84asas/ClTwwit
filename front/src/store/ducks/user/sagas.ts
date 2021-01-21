@@ -6,9 +6,9 @@ import {LoadingState} from "./contracts/state";
 
 export function* fetchSignInRequest({payload}: FetchSignInDataActionInterface) {
     try {
-        const data = yield call(AuthApi.signIn, payload);
+        const {data} = yield call(AuthApi.signIn, payload);
         yield put(setUserData(data));
-        window.localStorage.setItem('token', data.data.token)
+        window.localStorage.setItem('token', data.token)
     } catch (e) {
         yield put(setUserDataLoadingState(LoadingState.ERROR));
     }
