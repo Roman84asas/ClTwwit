@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Switch, useHistory } from 'react-router-dom';
-import { SignIn } from "./pages/Signin/index";
+import { SignIn } from "./pages/Signin";
 import { Home } from "./pages/Home/";
 import {AuthApi} from "./services/api/authApi";
 import {useDispatch} from "react-redux";
