@@ -1,4 +1,3 @@
-import { TagsState} from "./contracts/state";
 import {Action} from "redux";
 import {User} from "../user/contracts/state";
 
@@ -18,4 +17,4 @@ export const setUsers = (payload: User[]): SetUsersItemsActionInterface => ({
     payload,
 });
 
-export type UsersItemsActions = SetUsersItemsActionInterface;
+export type UsersActions = SetUsersItemsActionInterface;
