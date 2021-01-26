@@ -17,23 +17,17 @@ import {SearchTextField} from "../../components/SearchTextField";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import SearchIcon from '@material-ui/icons/Search';
-import PersonAddIcon from '@material-ui/icons/PersonAddOutlined';
 import {
     Container,
     Typography,
-    Button,
     InputAdornment,
-    List,
-    ListItem,
-    ListItemText,
-    ListItemAvatar,
-    Avatar,
 } from "@material-ui/core";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {fetchTags} from "../../store/ducks/tags/actionCreators";
 import {Tags} from "../../components/Tags/Tags";
 import {BackButton} from "../../components/BackButton/BackButton";
 import {FullTweet} from "./components/FullTweet";
+import {Users} from "../../components/Users";
 
 
 export const Home = (): React.ReactElement => {
@@ -112,32 +106,7 @@ export const Home = (): React.ReactElement => {
                             fullWidth
                         />
                         <Tags classes={classes} />
-                        <Paper className={classes.rightSideBlock}>
-                            <Paper className={classes.rightSideBlockHeader} >
-                                <b>Кого читать</b>
-                            </Paper>
-                            <List>
-                                <ListItem className={classes.rightSideBlockItem}>
-                                    <ListItemAvatar>
-                                        <Avatar
-                                            alt="Nicolas Babin"
-                                            src="https://pbs.twimg.com/profile_images/773909130352402432/XKlKwdPG_bigger.jpg"
-                                        />
-                                    </ListItemAvatar>
-                                    <ListItemText
-                                        primary="Paris"
-                                        secondary={
-                                            <Typography component="span" variant="body2">
-                                                Твитов:3 388
-                                            </Typography>
-                                        }
-                                    />
-                                    <Button color="primary">
-                                        <PersonAddIcon />
-                                    </Button>
-                                </ListItem>
-                            </List>
-                        </Paper>
+                        <Users />
                     </div>
                 </Grid>
             </Grid>
