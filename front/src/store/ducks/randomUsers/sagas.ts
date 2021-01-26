@@ -13,6 +13,6 @@ export function* fetchUsersRequest() {
     }*/
 }
 
-export function* tagsSaga() {
+export function* usersSaga() {
     //yield takeLatest(TagsActionsType.FETCH_TAGS, fetchUsersRequest)
 }
