@@ -1,4 +1,4 @@
-import {LoadingState, TagsState} from "./contracts/state";
+import { TagsState} from "./contracts/state";
 import {Action} from "redux";
 
 export enum TagsActionsType {
