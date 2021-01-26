@@ -1,3 +1,5 @@
+import {User} from "../../user/contracts/state";
+
 export enum LoadingState {
     LOADED = 'LOADED',
     LOADING = 'LOADING',
@@ -5,13 +7,7 @@ export enum LoadingState {
     NEVER = 'NEVER',
 }
 
-export interface Tag {
-    _id: string;
-    name: string;
-    count: number;
-}
-
-export interface TagsState {
-    items: Tag[];
+export interface UsersState {
+    items: User[];
     loadingState: LoadingState;
 }
