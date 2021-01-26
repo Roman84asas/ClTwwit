@@ -1,20 +1,21 @@
 import { TagsState} from "./contracts/state";
 import {Action} from "redux";
+import {User} from "../user/contracts/state";
 
 export enum UsersActionsType {
     SET_ITEMS = 'randomUsers/SET_ITEMS',
     FETCH_ITEMS = 'randomUsers/FETCH_ITEMS',
 }
 
-export interface SetTagsActionInterface extends Action<UsersActionsType> {
+export interface SetUsersItemsActionInterface extends Action<UsersActionsType> {
     type: UsersActionsType.SET_ITEMS;
-    payload: TagsState['items'];
+    payload: User[];
 }
 
 
-export const setTags = (payload: TagsState['items']): SetTagsActionInterface => ({
+export const setUsers = (payload: User[]): SetUsersItemsActionInterface => ({
     type: UsersActionsType.SET_ITEMS,
     payload,
 });
 
-export type TagsActions = SetTagsActionInterface;
+export type UsersItemsActions = SetUsersItemsActionInterface;
