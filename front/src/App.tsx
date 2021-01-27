@@ -23,6 +23,8 @@ function App() {
         }
     };
 
+    React.useEffect(()=> {console.log('authUser => '+authUser)}, [authUser]);
+
     React.useEffect(()=>{
         checkAth();
     }, []);
