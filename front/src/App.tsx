@@ -22,9 +22,11 @@ function App() {
             console.log(e);
         }
     };
+
     React.useEffect(()=>{
         checkAth();
     }, []);
+
   return (
     <div className="App">
       <Switch>
