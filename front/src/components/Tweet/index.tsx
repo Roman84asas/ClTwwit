@@ -46,6 +46,7 @@ export const Tweet: React.FC<TweetProps> = ({_id, text, classes, user, createdAt
     const handleClose = () => {
         setAnchorEl(null);
     };
+
     return (
         <a href={`/home/tweet/${_id}`} onClick={handelClickTweet}>
             <Paper variant="outlined" className={classNames(classes.tweet, classes.tweetsHeader)}>
