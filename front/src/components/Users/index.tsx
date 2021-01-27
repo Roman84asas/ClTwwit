@@ -1,10 +1,13 @@
 import React from "react";
-import Paper from "@material-ui/core/Paper/Paper";
-import {Avatar, Button, List, ListItem, ListItemAvatar, ListItemText, Typography} from "@material-ui/core";
-import PersonAddIcon from "@material-ui/core/SvgIcon/SvgIcon";
-import {useHomeStyles} from "../../pages/Home/theme";
 import {useSelector} from "react-redux";
+
+import {useHomeStyles} from "../../pages/Home/theme";
 import {selectUsersItems} from "../../store/ducks/randomUsers/selectors";
+
+
+import Paper from "@material-ui/core/Paper/Paper";
+import PersonAddIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import {Avatar, Button, List, ListItem, ListItemAvatar, ListItemText, Typography} from "@material-ui/core";
 
 
 export const Users = () => {
