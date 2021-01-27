@@ -4,30 +4,24 @@ import { Route } from "react-router-dom";
 
 import {Tweet} from "../../components/Tweet/";
 import {SideMenu} from "../../components/SideMenu";
-
-
-import {fetchTweets} from "../../store/ducks/tweets/actionCreators";
-import {selectIsTweetsLoading, selectTweetsItems} from "../../store/ducks/tweets/selectors";
-
-import {useHomeStyles} from "./theme";
-
 import {AddTweetForm} from "../../components/AddTweetForm";
 import {SearchTextField} from "../../components/SearchTextField";
-
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import SearchIcon from '@material-ui/icons/Search';
-import {
-    Container,
-    Typography,
-    InputAdornment,
-} from "@material-ui/core";
-import CircularProgress from '@material-ui/core/CircularProgress';
-import {fetchTags} from "../../store/ducks/tags/actionCreators";
 import {Tags} from "../../components/Tags/Tags";
 import {BackButton} from "../../components/BackButton/BackButton";
 import {FullTweet} from "./components/FullTweet";
 import {Users} from "../../components/Users";
+
+import {fetchTweets} from "../../store/ducks/tweets/actionCreators";
+import {fetchTags} from "../../store/ducks/tags/actionCreators";
+import {selectIsTweetsLoading, selectTweetsItems} from "../../store/ducks/tweets/selectors";
+
+import {useHomeStyles} from "./theme";
+
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import SearchIcon from '@material-ui/icons/Search';
+import { Container, Typography, InputAdornment } from "@material-ui/core";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 export const Home = (): React.ReactElement => {

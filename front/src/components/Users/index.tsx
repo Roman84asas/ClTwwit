@@ -43,7 +43,6 @@ export const Users = () => {
                         </ListItem>
                     ))
                 }
-
             </List>
         </Paper>
     )
