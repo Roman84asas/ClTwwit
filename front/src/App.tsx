@@ -23,7 +23,7 @@ function App() {
         }
     };
 
-    React.useEffect(()=> {console.log('authUser => '+authUser)}, [authUser]);
+    React.useEffect(()=> {if (authUser) history.push('/home')}, [authUser]);
 
     React.useEffect(()=>{
         checkAth();
