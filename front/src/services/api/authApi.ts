@@ -13,14 +13,7 @@ export const AuthApi = {
         return data;
     },
     async signUp(postData: RegisterFormProps): Promise<Response> {
-        const { data } = await axios.post('/api/auth/register',
-            {
-                email: postData.email,
-                fullname: postData.fullname,
-                username: postData.username,
-                password: postData.password,
-                password2: postData.password,
-            });
+        const { data } = await axios.post('/api/auth/register', { email: postData.email, fullname: postData.fullname, username: postData.username, password: postData.password, password2: postData.password});
         return data;
     },
     async getMe(): Promise<Response> {

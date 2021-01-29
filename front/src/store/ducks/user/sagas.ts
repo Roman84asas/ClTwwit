@@ -21,8 +21,10 @@ export function* fetchSignInRequest({payload}: FetchSignInDataActionInterface) {
 }
 export function* fetchSignUpRequest({payload}: FetchSignUPDataActionInterface) {
     try {
-        const {data} = yield call(AuthApi.signIn, payload);
-        yield put(setUserData(data));
+        // @ts-ignore
+        yield call(AuthApi.signUp, payload);
+
+        yield put(setUserDataLoadingState(LoadingState.LOADED));
     } catch (e) {
         yield put(setUserDataLoadingState(LoadingState.ERROR));
     }
@@ -30,4 +32,5 @@ export function* fetchSignUpRequest({payload}: FetchSignUPDataActionInterface) {
 
 export function* userSaga() {
     yield takeLatest(UserActionsType.FETCH_SIGN_IN, fetchSignInRequest);
+    yield takeLatest(UserActionsType.FETCH_SIGN_UP, fetchSignUpRequest);
 }
