@@ -1,15 +1,19 @@
 import React from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {Controller, useForm} from "react-hook-form";
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
+import {ModalBlock} from "../../../components/ModalBlock";
+import {fetchSignUp} from "../../../store/ducks/user/actionCreators";
+import {LoadingState} from "../../../store/ducks/user/contracts/state";
+import {selectUserStatus} from "../../../store/ducks/user/selectors";
 
 import {Button, FormControl, FormGroup, TextField} from "@material-ui/core";
-import {ModalBlock} from "../../../components/ModalBlock";
-import {useStyles} from "../index";
-import {fetchSignUp} from "../../../store/ducks/user/actionCreators";
-import {useDispatch} from "react-redux";
 import {Color} from "@material-ui/lab/Alert";
+
+import {useStyles} from "../index";
+
 
 interface RegisterModalProps {
     open: boolean;
@@ -38,6 +42,7 @@ const RegisterModalSchema = yup.object().shape({
 export const RegisterModal: React.FC<RegisterModalProps> = ({open, onClose}: RegisterModalProps): React.ReactElement => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const loadingStatus = useSelector(selectUserStatus);
     const openNotificationRef = React.useRef<(text: string, type: Color)=>void>(()=>{});
 
     const {control, register, handleSubmit, errors } = useForm<RegisterFormProps>({
@@ -46,6 +51,14 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({open, onClose}: Reg
     const onSubmit = async (data: RegisterFormProps) =>{
         dispatch(fetchSignUp(data));
     };
+    React.useEffect(()=> {
+        if (loadingStatus === LoadingState.SUCCESS){
+            openNotificationRef.current('Авторизация прошла успешно', 'success');
+            onClose();
+        } else if (loadingStatus === LoadingState.ERROR) {
+            openNotificationRef.current('Неверный логин или пароль', 'error');
+        }
+    }, [loadingStatus]);
     return(
         <ModalBlock title="Создайте учетную запись" visible={open} onClose={onClose}>
             <form onSubmit={handleSubmit(onSubmit)}>
