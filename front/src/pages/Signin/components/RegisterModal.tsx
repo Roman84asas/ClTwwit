@@ -48,9 +48,11 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({open, onClose}: Reg
     const {control, register, handleSubmit, errors } = useForm<RegisterFormProps>({
         resolver: yupResolver(RegisterModalSchema)
     });
+
     const onSubmit = async (data: RegisterFormProps) =>{
         dispatch(fetchSignUp(data));
     };
+
     React.useEffect(()=> {
         if (loadingStatus === LoadingState.SUCCESS){
             openNotificationRef.current('Авторизация прошла успешно', 'success');
@@ -59,6 +61,7 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({open, onClose}: Reg
             openNotificationRef.current('Неверный логин или пароль', 'error');
         }
     }, [loadingStatus]);
+
     return(
         <ModalBlock title="Создайте учетную запись" visible={open} onClose={onClose}>
             <form onSubmit={handleSubmit(onSubmit)}>
