@@ -21,6 +21,8 @@ export function* fetchSignInRequest({payload}: FetchSignInDataActionInterface) {
 }
 export function* fetchSignUpRequest({payload}: FetchSignUPDataActionInterface) {
     try {
+        yield put(setUserDataLoadingState(LoadingState.LOADING));
+
         // @ts-ignore
         yield call(AuthApi.signUp, payload);
 
