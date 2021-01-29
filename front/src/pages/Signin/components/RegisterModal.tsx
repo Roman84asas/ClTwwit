@@ -128,7 +128,7 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({open, onClose}: Reg
                         />
                     </FormGroup>
                 </FormControl>
-                <Button onClick={onClose} color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
+                <Button type="submit" color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
                     Зарегестрироваться
                 </Button>
             </form>
