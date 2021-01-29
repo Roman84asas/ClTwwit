@@ -1,4 +1,9 @@
 import React from "react";
+//import {Controller, useForm} from "react-hook-form";
+//import {yupResolver} from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
+
 import {Button, FormControl, FormGroup, TextField} from "@material-ui/core";
 import {ModalBlock} from "../../../components/ModalBlock";
 import {useStyles} from "../index";
@@ -14,6 +19,15 @@ export interface RegisterFormProps {
    email: string;
    password: string;
 }
+
+const RegisterModalSchema = yup.object().shape({
+    fullname: yup.string().required('Введите свое имя'),
+    username: yup.string().required('Введите свой логин'),
+    mail: yup.string().email().required(),
+    password: yup.string().min(6).required().matches(
+        /^[a-zA-Z0-9]*$/
+    ),
+});
 
 export const RegisterModal: React.FC<RegisterModalProps> = ({open, onClose}: RegisterModalProps): React.ReactElement => {
     const classes = useStyles();
