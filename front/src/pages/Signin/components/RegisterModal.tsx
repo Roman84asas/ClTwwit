@@ -1,12 +1,16 @@
 import React from "react";
-//import {Controller, useForm} from "react-hook-form";
-//import {yupResolver} from '@hookform/resolvers/yup';
+import {Controller, useForm} from "react-hook-form";
+import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
 
 import {Button, FormControl, FormGroup, TextField} from "@material-ui/core";
 import {ModalBlock} from "../../../components/ModalBlock";
 import {useStyles} from "../index";
+import {LoginFormProps} from "./LoginModal";
+import {fetchSignIn} from "../../../store/ducks/user/actionCreators";
+import {useDispatch} from "react-redux";
+import {Color} from "@material-ui/lab/Alert";
 
 interface RegisterModalProps {
     open: boolean;
@@ -29,57 +33,71 @@ const RegisterModalSchema = yup.object().shape({
     ),
 });
 
+
 export const RegisterModal: React.FC<RegisterModalProps> = ({open, onClose}: RegisterModalProps): React.ReactElement => {
     const classes = useStyles();
+    const dispatch = useDispatch();
+    const openNotificationRef = React.useRef<(text: string, type: Color)=>void>(()=>{});
 
+    const {control, register, handleSubmit, errors } = useForm<LoginFormProps>({
+        resolver: yupResolver(RegisterModalSchema)
+    });
+    const onSubmit = async (data: RegisterFormProps) =>{
+        dispatch(fetchSignIn(data));
+    };
     return(
         <ModalBlock title="Создайте учетную запись" visible={open} onClose={onClose}>
-            <FormControl component="fieldset" fullWidth>
-                <FormGroup aria-label="position" row>
-                    <TextField
-                        className={classes.loginSideField}
-                        autoFocus
-                        id="name"
-                        label="Имя"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        type="name"
-                        variant="filled"
-                        fullWidth
-                    >
-                    </TextField>
-                    <TextField
-                        className={classes.loginSideField}
-                        autoFocus
-                        id="email"
-                        label="Email"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        type="email"
-                        variant="filled"
-                        fullWidth
-                    >
-                    </TextField>
-                    <TextField
-                        className={classes.registerSideField}
-                        autoFocus
-                        id="password"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        label="Ваш пароль"
-                        type="password"
-                        variant="filled"
-                        fullWidth
-                    >
-                    </TextField>
-                </FormGroup>
-            </FormControl>
-            <Button onClick={onClose} color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
-                Зарегестрироваться
-            </Button>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <FormControl component="fieldset" fullWidth>
+                    <FormGroup aria-label="position" row>
+                        <Controller
+                            as={TextField}
+                            className={classes.loginSideField}
+                            autoFocus
+                            name="fullname"
+                            id="name"
+                            label="Имя"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            type="name"
+                            variant="filled"
+                            fullWidth
+                        />
+                        <Controller
+                            as={TextField}
+                            className={classes.loginSideField}
+                            autoFocus
+                            name="email"
+                            id="email"
+                            label="Email"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            type="email"
+                            variant="filled"
+                            fullWidth
+                        />
+                        <Controller
+                            as={TextField}
+                            className={classes.registerSideField}
+                            autoFocus
+                            name="password"
+                            id="password"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            label="Ваш пароль"
+                            type="password"
+                            variant="filled"
+                            fullWidth
+                        />
+                    </FormGroup>
+                </FormControl>
+                <Button onClick={onClose} color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
+                    Зарегестрироваться
+                </Button>
+            </form>
         </ModalBlock>
     )
 };
