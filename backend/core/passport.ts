@@ -13,7 +13,7 @@ passport.use(
                 if (!user) {
                     return done(null, false);
                 } 
-                if (user.password === generatedHash(password + '8kdF9LEms67Z0Dffq')) {
+                if (user.confirmed && user.password === generatedHash(password + '8kdF9LEms67Z0Dffq')) {
                     return done(null, user);
                 } else {
                     return done(null, false);

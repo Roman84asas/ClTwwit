@@ -63,7 +63,7 @@ class UserController {
                 fullname: req.body.fullname,
                 username: req.body.username,
                 password: generatedHash(req.body.password + '8kdF9LEms67Z0Dffq'),
-                confirmHash: generatedHash(process.env.SECRET_KEY || Math.random().toString()),
+                confirmHash: generatedHash(req.body.password + process.env.SECRET_KEY ||req.body.password + Math.random().toString()),
             };
             const user = await UserModel.create(data);
             res.json({
@@ -110,7 +110,7 @@ class UserController {
                 return
             }
             user.confirmed = true;
-            user.save();
+            await user.save();
 
             res.json({
                 status: 'success'
