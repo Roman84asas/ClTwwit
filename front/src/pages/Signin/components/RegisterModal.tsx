@@ -27,7 +27,7 @@ export interface RegisterFormProps {
 const RegisterModalSchema = yup.object().shape({
     fullname: yup.string().required('Введите свое имя'),
     username: yup.string().required('Введите свой логин'),
-    mail: yup.string().email().required(),
+    email: yup.string().email().required(),
     password: yup.string().min(6).required().matches(
         /^[a-zA-Z0-9]*$/
     ),
@@ -39,11 +39,11 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({open, onClose}: Reg
     const dispatch = useDispatch();
     const openNotificationRef = React.useRef<(text: string, type: Color)=>void>(()=>{});
 
-    const {control, register, handleSubmit, errors } = useForm<LoginFormProps>({
+    const {control, register, handleSubmit, errors } = useForm<RegisterFormProps>({
         resolver: yupResolver(RegisterModalSchema)
     });
     const onSubmit = async (data: RegisterFormProps) =>{
-        dispatch(fetchSignIn(data));
+        console.log(data);
     };
     return(
         <ModalBlock title="Создайте учетную запись" visible={open} onClose={onClose}>
@@ -52,37 +52,68 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({open, onClose}: Reg
                     <FormGroup aria-label="position" row>
                         <Controller
                             as={TextField}
+                            control={control}
+                            name="fullname"
                             className={classes.loginSideField}
                             autoFocus
-                            name="fullname"
-                            id="name"
-                            label="Имя"
+                            id="fullname"
+                            defaultValue=""
+                            label="Полное имя пользователя"
                             InputLabelProps={{
                                 shrink: true,
                             }}
-                            type="name"
+                            type="text"
+                            inputRef={register}
                             variant="filled"
                             fullWidth
+                            error={!!errors.fullname}
+                            helperText={errors.fullname && "Полное имя пользователя должен иметь минимум 6 символом и обязателен"}
                         />
                         <Controller
                             as={TextField}
+                            control={control}
+                            name="username"
                             className={classes.loginSideField}
                             autoFocus
+                            id="username"
+                            defaultValue=""
+                            label="Логин пользователя"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            type="text"
+                            inputRef={register}
+                            variant="filled"
+                            fullWidth
+                            error={!!errors.username}
+                            helperText={errors.username && "Логин пользователя должен иметь минимум 6 символом и обязателен"}
+                        />
+                        <Controller
+                            as={TextField}
+                            control={control}
                             name="email"
+                            className={classes.loginSideField}
+                            autoFocus
                             id="email"
-                            label="Email"
+                            defaultValue=""
+                            label="Email пользователя"
                             InputLabelProps={{
                                 shrink: true,
                             }}
                             type="email"
+                            inputRef={register}
                             variant="filled"
                             fullWidth
+                            error={!!errors.email}
+                            helperText={errors.email && "Емаил должен иметь минимум 6 символом и обязателен"}
                         />
                         <Controller
                             as={TextField}
-                            className={classes.registerSideField}
-                            autoFocus
+                            control={control}
+                            defaultValue=""
                             name="password"
+                            className={classes.loginSideField}
+                            autoFocus
                             id="password"
                             InputLabelProps={{
                                 shrink: true,
@@ -90,7 +121,10 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({open, onClose}: Reg
                             label="Ваш пароль"
                             type="password"
                             variant="filled"
+                            inputRef={register}
                             fullWidth
+                            error={!!errors.password}
+                            helperText={errors.password && "Паспорт должен иметь минимум 6 символом"}
                         />
                     </FormGroup>
                 </FormControl>
