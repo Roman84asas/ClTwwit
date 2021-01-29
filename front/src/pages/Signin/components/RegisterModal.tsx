@@ -21,6 +21,7 @@ export interface RegisterFormProps {
    username: string;
    email: string;
    password: string;
+   password2?: string;
 }
 
 const RegisterModalSchema = yup.object().shape({
@@ -30,6 +31,7 @@ const RegisterModalSchema = yup.object().shape({
     password: yup.string().min(6).required().matches(
         /^[a-zA-Z0-9]*$/
     ),
+    password2: yup.string().oneOf([yup.ref('password'), null], 'Пароль неправильный')
 });
 
 
@@ -124,6 +126,25 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({open, onClose}: Reg
                             fullWidth
                             error={!!errors.password}
                             helperText={errors.password && "Паспорт должен иметь минимум 6 символом"}
+                        />
+                        <Controller
+                            as={TextField}
+                            control={control}
+                            defaultValue=""
+                            name="password2"
+                            className={classes.loginSideField}
+                            autoFocus
+                            id="password2"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            label="Ваш пароль"
+                            type="password"
+                            variant="filled"
+                            inputRef={register}
+                            fullWidth
+                            error={!!errors.password2}
+                            helperText={errors.password2 && "Паспорт должен иметь минимум 6 символом"}
                         />
                     </FormGroup>
                 </FormControl>
