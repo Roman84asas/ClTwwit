@@ -7,8 +7,7 @@ import * as yup from "yup";
 import {Button, FormControl, FormGroup, TextField} from "@material-ui/core";
 import {ModalBlock} from "../../../components/ModalBlock";
 import {useStyles} from "../index";
-import {LoginFormProps} from "./LoginModal";
-import {fetchSignIn} from "../../../store/ducks/user/actionCreators";
+import {fetchSignUp} from "../../../store/ducks/user/actionCreators";
 import {useDispatch} from "react-redux";
 import {Color} from "@material-ui/lab/Alert";
 
@@ -43,7 +42,7 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({open, onClose}: Reg
         resolver: yupResolver(RegisterModalSchema)
     });
     const onSubmit = async (data: RegisterFormProps) =>{
-        console.log(data);
+        dispatch(fetchSignUp(data));
     };
     return(
         <ModalBlock title="Создайте учетную запись" visible={open} onClose={onClose}>
