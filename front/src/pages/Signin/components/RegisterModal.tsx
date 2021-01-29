@@ -8,6 +8,13 @@ interface RegisterModalProps {
     onClose: ()=>void;
 }
 
+export interface RegisterFormProps {
+   fullname: string;
+   username: string;
+   email: string;
+   password: string;
+}
+
 export const RegisterModal: React.FC<RegisterModalProps> = ({open, onClose}: RegisterModalProps): React.ReactElement => {
     const classes = useStyles();
 
