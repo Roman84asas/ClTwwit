@@ -26,7 +26,7 @@ export function* fetchSignUpRequest({payload}: FetchSignUPDataActionInterface) {
         // @ts-ignore
         yield call(AuthApi.signUp, payload);
 
-        yield put(setUserDataLoadingState(LoadingState.LOADED));
+        yield put(setUserDataLoadingState(LoadingState.SUCCESS));
     } catch (e) {
         yield put(setUserDataLoadingState(LoadingState.ERROR));
     }

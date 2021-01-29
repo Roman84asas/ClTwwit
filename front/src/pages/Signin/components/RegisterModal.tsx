@@ -55,10 +55,10 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({open, onClose}: Reg
 
     React.useEffect(()=> {
         if (loadingStatus === LoadingState.SUCCESS){
-            openNotificationRef.current('Авторизация прошла успешно', 'success');
+            openNotificationRef.current('Регистрация прошла успешно', 'success');
             onClose();
         } else if (loadingStatus === LoadingState.ERROR) {
-            openNotificationRef.current('Неверный логин или пароль', 'error');
+            openNotificationRef.current('Ошибка регистрации', 'error');
         }
     }, [loadingStatus]);
 
@@ -164,7 +164,7 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({open, onClose}: Reg
                         />
                     </FormGroup>
                 </FormControl>
-                <Button type="submit" color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
+                <Button disabled={loadingStatus === LoadingState.LOADING} type="submit" color="primary" variant="contained" fullWidth style={{marginBottom: 20}}>
                     Зарегестрироваться
                 </Button>
             </form>

@@ -1,5 +1,5 @@
 import {RootState} from "../../store";
-import {UserState} from "./contracts/state";
+import {LoadingState, UserState} from "./contracts/state";
 
 export const selectUserState = (state: RootState): UserState => state.user;
 
@@ -8,3 +8,5 @@ export const selectUserSData = (state: RootState): UserState['data'] => selectUs
 export const selectIsAuth = (state: RootState): boolean => !!selectUserState(state).data;
 
 export const selectUserStatus = (state: RootState): UserState['status'] => selectUserState(state).status;
+
+export const selectUserIsLoading = (state: RootState): boolean => selectUserState(state).status === LoadingState.LOADING;
